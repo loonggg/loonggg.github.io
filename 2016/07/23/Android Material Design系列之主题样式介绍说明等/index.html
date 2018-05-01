@@ -1,0 +1,895 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Material Design,主题样式," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="今天这篇文章应该算是Material Design系列的补充篇，因为这篇文章本来应该放到前面讲的，因为讲的是主题嘛，对于一些状态和颜色的介绍，因为我们一新建一个项目时，系统自带了三个属性的颜色，现在就重点介绍这三个颜色属性的意义和作用。讲明白这个，留着以后讲别的用。
+
+最常用的三个颜色属性
+colorPrimary
+colorPrimaryDark
+colorAccent
+
+这三个分别代表什么意">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Material Design系列之主题样式介绍说明等">
+<meta property="og:url" content="http://loonggg.github.io/2016/07/23/Android Material Design系列之主题样式介绍说明等/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="今天这篇文章应该算是Material Design系列的补充篇，因为这篇文章本来应该放到前面讲的，因为讲的是主题嘛，对于一些状态和颜色的介绍，因为我们一新建一个项目时，系统自带了三个属性的颜色，现在就重点介绍这三个颜色属性的意义和作用。讲明白这个，留着以后讲别的用。
+
+最常用的三个颜色属性
+colorPrimary
+colorPrimaryDark
+colorAccent
+
+这三个分别代表什么意">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/MaterialDesignDemo/master/image/style.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/MaterialDesignDemo/master/image/styless.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/MaterialDesignDemo/master/image/textinput.gif">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Material Design系列之主题样式介绍说明等">
+<meta name="twitter:description" content="今天这篇文章应该算是Material Design系列的补充篇，因为这篇文章本来应该放到前面讲的，因为讲的是主题嘛，对于一些状态和颜色的介绍，因为我们一新建一个项目时，系统自带了三个属性的颜色，现在就重点介绍这三个颜色属性的意义和作用。讲明白这个，留着以后讲别的用。
+
+最常用的三个颜色属性
+colorPrimary
+colorPrimaryDark
+colorAccent
+
+这三个分别代表什么意">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/loonggg/MaterialDesignDemo/master/image/style.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android Material Design系列之主题样式介绍说明等 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android Material Design系列之主题样式介绍说明等
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T12:39:04+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/Material-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Material Design</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/07/23/Android Material Design系列之主题样式介绍说明等/" class="leancloud_visitors" data-flag-title="Android Material Design系列之主题样式介绍说明等">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>今天这篇文章应该算是Material Design系列的补充篇，因为这篇文章本来应该放到前面讲的，因为讲的是主题嘛，对于一些状态和颜色的介绍，因为我们一新建一个项目时，系统自带了三个属性的颜色，现在就重点介绍这三个颜色属性的意义和作用。讲明白这个，留着以后讲别的用。</p>
+</blockquote>
+<h3 id="最常用的三个颜色属性"><a href="#最常用的三个颜色属性" class="headerlink" title="最常用的三个颜色属性"></a>最常用的三个颜色属性</h3><ul>
+<li>colorPrimary</li>
+<li>colorPrimaryDark</li>
+<li>colorAccent</li>
+</ul>
+<p>这三个分别代表什么意思呢？</p>
+<ul>
+<li>colorPrimaryDark 是状态栏底色</li>
+<li>colorPrimary 如果你不手动自己去修改toolbar背景色的话，它就是默认的toolbar背景色</li>
+<li>colorAccent 各控制元件(比如：checkbox、switch 或是 radio) 被勾选 (checked) 或是选定 (selected) 的颜色</li>
+</ul>
+<a id="more"></a>
+<p>文字描述可能还不是很直观，来看张图，如下：<br><img src="https://raw.githubusercontent.com/loonggg/MaterialDesignDemo/master/image/style.png" alt="image"></p>
+<h3 id="其他属性相关介绍"><a href="#其他属性相关介绍" class="headerlink" title="其他属性相关介绍"></a>其他属性相关介绍</h3><ul>
+<li>navigationBarColor 导航栏的背景色，但只能用在 API Level 21 以上的版本，也就是5.0以上才可以</li>
+<li>windowBackground App 的背景色</li>
+<li>colorControlNormal 这个也只能在API21以上才能用各控制元件的预设颜色和colorAccent正好对应</li>
+</ul>
+<h3 id="在Style上设置"><a href="#在Style上设置" class="headerlink" title="在Style上设置"></a>在Style上设置</h3><p>以上的颜色属性均是在 style 的属性中设置。如下：<br><img src="https://raw.githubusercontent.com/loonggg/MaterialDesignDemo/master/image/styless.png" alt="image"></p>
+<p>关于这些颜色的属性介绍就到这里了，相信大家应该都明白了。要是光讲这些文章有点短，不太充实，所以今天我们再补充两个非常简单的 Material Design 风格的控件，可能大家都知道了，知道的就不用看了哈，略过就好。</p>
+<h3 id="TextInputLayout"><a href="#TextInputLayout" class="headerlink" title="TextInputLayout"></a>TextInputLayout</h3><p>TextInputLayout继承LinearLayout，因此我们需要将EditView包含在TextInputLayout之内才可以使用，言外之意：TextInputLayout不能单独使用。里面可以包含一个且只能有一个EditText,与传统的EditText不同，在输入时EditText的hint提示文字会滑到上方，在用户输入的同时提示用户当前要输入的是什么，同时还可以设置输入错误的提示信息。</p>
+<p>代码布局如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">android.support.design.widget.TextInputLayout</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/email_textlayout"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"20dp"</span></div><div class="line">        <span class="attr">android:layout_marginRight</span>=<span class="string">"20dp"</span></div><div class="line">        <span class="attr">android:layout_marginTop</span>=<span class="string">"35dp"</span></div><div class="line">        &gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">EditText</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/email_et"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">            <span class="attr">android:hint</span>=<span class="string">"请输入你的邮箱"</span></div><div class="line">            <span class="attr">android:inputType</span>=<span class="string">"textEmailAddress"</span></div><div class="line">            <span class="attr">android:textColor</span>=<span class="string">"@color/text_color"</span>/&gt;</div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.design.widget.TextInputLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>TextInputLayout常用的方法有如下：</p>
+<ul>
+<li>setHint()：设置提示语。</li>
+<li>getEditText()：得到TextInputLayout中的EditView控件。</li>
+<li>setErrorEnabled():设置是否可以显示错误信息。</li>
+<li>setError()：设置当用户输入错误时弹出的错误信息。</li>
+</ul>
+<p>特别注意：TextInputLayout不能单独使用，必须包裹EditView组件，且只能一个,设置错误提示信息时一定要先setErrorEnabled(true);再设置setError()。</p>
+<h3 id="TextInputEditText"><a href="#TextInputEditText" class="headerlink" title="TextInputEditText"></a>TextInputEditText</h3><p>TextInputEditText和TextInputLayout类似，Design包还有一个组件TextInputEditText,它继承了AppCompatEditText,可以在右侧显示出错误信息的小弹窗提示。用法和TextInputEditText类似，而且不用设置错误信息消除，重新在TextInputEditText输出会自动取消，非常的灵活和人性化。</p>
+<p>用法很简单：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">android.support.design.widget.TextInputEditText</span></span></div><div class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/pwd_et"</span></div><div class="line">       <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">       <span class="attr">android:layout_marginLeft</span>=<span class="string">"20dp"</span></div><div class="line">       <span class="attr">android:layout_marginRight</span>=<span class="string">"20dp"</span></div><div class="line">       <span class="attr">android:hint</span>=<span class="string">"请输入密码"</span></div><div class="line">       <span class="attr">android:inputType</span>=<span class="string">"textEmailAddress"</span></div><div class="line">       <span class="attr">android:textColor</span>=<span class="string">"@color/text_color"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://raw.githubusercontent.com/loonggg/MaterialDesignDemo/master/image/textinput.gif" alt="image"></p>
+<p>到这里今天的内容就讲完了，Material Design系列其实还没有完，今天讲了主题样式，下次就有可能讲根据主题样式设置夜间模式，还有以后的转场动画等内容。这个系列可能有些基础，但是众口难调还请大家理解，会的同学可以略过，不会的就好好学习。总之，都是为了大家更进一步。重口难调，还请大家理解。</p>
+<p>demo的github地址：<a href="https://github.com/loonggg/MaterialDesignDemo" target="_blank" rel="external">https://github.com/loonggg/MaterialDesignDemo</a> 去star吧，我会慢慢完善的。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Material-Design/" rel="tag">#Material Design</a>
+          
+            <a href="/tags/主题样式/" rel="tag">#主题样式</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/09/Android Material Design系列之CoordinatorLayout，CollapsingToolbarLayout等/" rel="next" title="Android Material Design系列之CoordinatorLayout，CollapsingToolbarLayout等">
+                <i class="fa fa-chevron-left"></i> Android Material Design系列之CoordinatorLayout，CollapsingToolbarLayout等
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/28/Android Material Design系列之夜间模式/" rel="prev" title="Android Material Design系列之夜间模式">
+                Android Material Design系列之夜间模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最常用的三个颜色属性"><span class="nav-number">1.</span> <span class="nav-text">最常用的三个颜色属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他属性相关介绍"><span class="nav-number">2.</span> <span class="nav-text">其他属性相关介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Style上设置"><span class="nav-number">3.</span> <span class="nav-text">在Style上设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TextInputLayout"><span class="nav-number">4.</span> <span class="nav-text">TextInputLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TextInputEditText"><span class="nav-number">5.</span> <span class="nav-text">TextInputEditText</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果图"><span class="nav-number">6.</span> <span class="nav-text">效果图</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

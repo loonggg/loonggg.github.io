@@ -1,0 +1,915 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React Native,基础组件,TouchableHighlight,TouchableNativeFeedback,TouchableOpacity,TouchableWithoutFeedback," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在上篇 ScrollView 的讲解的实例中，我们使用了TouchableOpacity的点击事件组件，可能很多人不是很理解，所以今天我们来讲讲触摸组件，这样有利于我们以后写实例。
+
+Touchable前传Touchable系列组件，为什么是系列组件呢，去看官方文档我们知道，文档导航组件介绍中，有四个关于Touchable的组件，分别是：TouchableHighlight ，Touchable">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础篇章：关于 React Native 之 Touchable 系列组件的讲解">
+<meta property="og:url" content="http://loonggg.github.io/2016/10/31/基础篇章：关于 React Native 之 Touchable 系列组件的讲解/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="在上篇 ScrollView 的讲解的实例中，我们使用了TouchableOpacity的点击事件组件，可能很多人不是很理解，所以今天我们来讲讲触摸组件，这样有利于我们以后写实例。
+
+Touchable前传Touchable系列组件，为什么是系列组件呢，去看官方文档我们知道，文档导航组件介绍中，有四个关于Touchable的组件，分别是：TouchableHighlight ，Touchable">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/touchable/1.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/touchable/2.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/touchable/3.gif">
+<meta property="og:updated_time" content="2016-11-13T13:24:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础篇章：关于 React Native 之 Touchable 系列组件的讲解">
+<meta name="twitter:description" content="在上篇 ScrollView 的讲解的实例中，我们使用了TouchableOpacity的点击事件组件，可能很多人不是很理解，所以今天我们来讲讲触摸组件，这样有利于我们以后写实例。
+
+Touchable前传Touchable系列组件，为什么是系列组件呢，去看官方文档我们知道，文档导航组件介绍中，有四个关于Touchable的组件，分别是：TouchableHighlight ，Touchable">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/touchable/1.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 基础篇章：关于 React Native 之 Touchable 系列组件的讲解 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基础篇章：关于 React Native 之 Touchable 系列组件的讲解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-31T10:39:04+08:00" content="2016-10-31">
+              2016-10-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/10/31/基础篇章：关于 React Native 之 Touchable 系列组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 Touchable 系列组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在上篇 ScrollView 的讲解的实例中，我们使用了TouchableOpacity的点击事件组件，可能很多人不是很理解，所以今天我们来讲讲触摸组件，这样有利于我们以后写实例。</p>
+</blockquote>
+<h2 id="Touchable前传"><a href="#Touchable前传" class="headerlink" title="Touchable前传"></a>Touchable前传</h2><p>Touchable系列组件，为什么是系列组件呢，去看官方文档我们知道，文档导航组件介绍中，有四个关于Touchable的组件，分别是：TouchableHighlight ，TouchableNativeFeedback，TouchableOpacity，TouchableWithoutFeedback。为什么要放到一起讲呢，因为这四个组件功能差不多，只不过是效果不太一样，所以放到一起讲很方便，而是从名字我们就可以看出触摸有效果和没效果之分，所以TouchableHighlight ，TouchableNativeFeedback，TouchableOpacity这三个带有触摸效果的组件是继承与TouchableWithoutFeedback的，它是触摸不带有反馈效果的。</p>
+<h2 id="TouchableWithoutFeedback"><a href="#TouchableWithoutFeedback" class="headerlink" title="TouchableWithoutFeedback"></a>TouchableWithoutFeedback</h2><p>除非你有一个非常的原因和理由，否则不要轻易使用这个组件。所有能够响应触摸事件的元素都应该带有一个反馈效果，这就是为什么web应用体验总是显得不如原生效果好的原因之一。</p>
+<blockquote>
+<p>友情提示：TouchableWithoutFeedback supports only one child If you wish to have several child components, wrap them in a View.（TouchableWithoutFeedback只支持一个子节点，如果你希望有多个子元素，请用view包裹住它们再使用）。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>我们一起来看看，它有哪些属性方法呢？</p>
+<ul>
+<li>accessibilityComponentType 顾名思义：设置可访问的组件类型</li>
+<li>accessibilityTraits 设置可访问的特征</li>
+<li>accessible bool 当前组件是否可以访问</li>
+<li>delayLongPress number 设置延迟毫秒的时间，从onPressIn方法开始到onLongPress被调用之前</li>
+<li>delayPressIn 设置延迟时间，从用户触摸到delayPressIn被调用之间</li>
+<li>delayPressOut  number 设置延迟时间，从触摸事件释放到delayPressOut被调用这段时间</li>
+<li>disabled bool 如果为true，禁用次组件所有的交互</li>
+<li>hitSlop {top: number, left: number, bottom: number, right: number} 扩大了按钮的外延范围</li>
+<li>onLayout function 当布局加载或者改变时被调用</li>
+<li>onLongPress function 长按组件时调用该方法</li>
+<li>onPress function 当用户点击时被调用</li>
+<li>onPressIn function 当用户开始触摸组件时回调方法</li>
+<li>onPressOut function  同上相反，当用户完成触摸时调用</li>
+<li>pressRetentionOffset {top: number, left: number, bottom: number, right: number} 在当前视图不能滚动的前提下指定这个属性，可以决定当手指移开多远距离之后，会不再激活按钮。但如果手指再次移回范围内，按钮会被再次激活。只要视图不能滚动，你可以来回多次这样的操作。确保你传入一个常量来减少内存分配。</li>
+</ul>
+<p>我说了该组件官网说了，不建议使用，因为没有反馈效果，所以常用的是其他三种，而且都是继承自它。我们主要讲解下面是三种效果。</p>
+<h2 id="TouchableHighlight"><a href="#TouchableHighlight" class="headerlink" title="TouchableHighlight"></a>TouchableHighlight</h2><p>TouchableHighlight，我们可以翻译一下什么意思？Touchable可触摸，Highlight高亮，所以这个触摸组件的效果是点击会出现高亮的反馈效果。</p>
+<p>TouchableHighlight组件用于封装视图，使其可以正确响应用户的触摸操作。当我们按下的时候，封装的视图的不透明度会降低，同时会有一个底层的颜色透过并被用户看到，使得视图变暗或变亮。在底层实现上，实际会创建一个新的视图到视图层级中，如果使用的方法不正确，有时候会导致一些不希望出现的视觉效果出现。比如没有给视图的backgroundColor显式声明一个不透明的颜色。</p>
+<blockquote>
+<p>友情提示：TouchableHighlight只支持一个子节点，如果你希望有多个子元素，请用view包裹住它们再使用。</p>
+</blockquote>
+<h3 id="TouchableHighlight属性"><a href="#TouchableHighlight属性" class="headerlink" title="TouchableHighlight属性"></a>TouchableHighlight属性</h3><p>上面我们说了，TouchableHighlight继承于TouchableWithoutFeedback，所以TouchableWithoutFeedback得属性，我们都可以使用，这里就不重复介绍了。咱们介绍它自己有的。</p>
+<ul>
+<li>activeOpacity number 设置封装的视图在被触摸操作激活时用多少不透明度显示（通常在0到1之间）。</li>
+<li>onHideUnderlay function 当底层隐藏后立即调用</li>
+<li>onShowUnderlay function 同上面相反，显示时，立即调用</li>
+<li>style 风格样式的使用同View的一样，这里就省略了，不知道的去看View的style</li>
+<li>underlayColor  当视图被触摸或者点击时，显示的颜色</li>
+</ul>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><blockquote>
+<p>我们还是拿前面那个Image和ScrollView中使用的例子，只不过我们现在给它加上按压效果。来看看吧，先看效果图，具体代码，我在最后放出来。</p>
+</blockquote>
+<p>效果图如下：<br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/touchable/1.gif" alt=""></p>
+<h2 id="TouchableOpacity"><a href="#TouchableOpacity" class="headerlink" title="TouchableOpacity"></a>TouchableOpacity</h2><p>关于TouchableOpacity的例子，我们在上篇ScrollView中用到过了，现在讲讲概念。</p>
+<p>TouchableOpacity组件用于封装视图，它使其可以正确响应触摸操作。当按下的时候，封装的视图的不透明度会降低，但是这个过程并不会真正改变视图层级，而且我们非常容易简单的添加到应用而且不会产生其他额外的一些错误。</p>
+<h3 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h3><p>同理，TouchableOpacity继承于TouchableWithoutFeedback，所以TouchableWithoutFeedback得属性，我们都可以使用，这里就不重复介绍了。咱们介绍它自己有的。</p>
+<ul>
+<li>activeOpacity number 设置按压效果时，视图的透明度</li>
+<li>setOpacityTo(value) 这是一个设置不透明度的方法</li>
+</ul>
+<h3 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/touchable/2.gif" alt=""></p>
+<h2 id="TouchableNativeFeedback"><a href="#TouchableNativeFeedback" class="headerlink" title="TouchableNativeFeedback"></a>TouchableNativeFeedback</h2><p>注意：这个组件仅限于在Android平台使用，顾名思义：就是触摸事件带有本地原声反馈效果。在Android设备上，这个组件利用原生状态来渲染触摸的反馈。目前它只支持一个单独的View实例作为子节点。在底层实现上，实际会创建一个新的RCTView结点替换当前的子View，并附带一些额外的属性。而且原生触摸操作反馈的背景可以使用background属性来自定义。</p>
+<h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><p>同理，TouchableNativeFeedback继承于TouchableWithoutFeedback，所以TouchableWithoutFeedback得属性，我们都可以使用，这里就不重复介绍了。咱们介绍它自己有的。</p>
+<ul>
+<li>background 决定在触摸反馈的时候显示什么类型的背景。它接受一个有着type属性和一些基于type属性的额外数据的对象。我们推荐使用以下的静态方法之一来创建这个对象：<ul>
+<li>TouchableNativeFeedback.SelectableBackground() - 会创建一个对象，表示安卓主题默认的对于被选中对象的背景。(?android:attr/selectableItemBackground)</li>
+<li>TouchableNativeFeedback.SelectableBackgroundBorderless() - 会创建一个对象，表示安卓主题默认的对于被选中的无边框对象的背景。(?android:attr/selectableItemBackgroundBorderless)。只在Android API level 21+适用。</li>
+<li>TouchableNativeFeedback.Ripple(color, borderless) - 会创建一个对象，当按钮被按下时产生一个涟漪状的背景，你可以通过color参数来指定颜色，如果参数borderless是true，那么涟漪还会渲染到视图的范围之外。（参见原生的actionbar buttons作为该效果的一个例子）。这个背景类型只在Android API level 21+适用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="效果展示-2"><a href="#效果展示-2" class="headerlink" title="效果展示"></a>效果展示</h3><p>看看5.0以后的新特性，水波纹特性，如下：<br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/touchable/3.gif" alt=""><br>怎么样？很漂亮吧？</p>
+<h2 id="综合实例"><a href="#综合实例" class="headerlink" title="综合实例"></a>综合实例</h2><p>代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line"> AppRegistry,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  Image,</div><div class="line">  ScrollView,</div><div class="line">  TouchableOpacity,</div><div class="line">  TouchableHighlight,</div><div class="line">  TouchableNativeFeedback,</div><div class="line">  View</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TouchableDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">	<span class="keyword">return</span> (</div><div class="line">	  &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">		 &lt;View style=&#123;styles.title_view&#125;&gt;</div><div class="line">		 &lt;Text style=&#123;styles.title_text&#125;&gt;</div><div class="line">			   空间动态</div><div class="line">		 &lt;/Text&gt;</div><div class="line">		&lt;/View&gt;</div><div class="line">		&lt;ScrollView  ref=&#123;(scrollView) =&gt; &#123; _scrollView = scrollView; &#125;&#125;&gt;</div><div class="line">		&lt;View style=&#123;styles.three_image_view&#125;&gt;</div><div class="line">		 &lt;View style=&#123;styles.vertical_view&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/igs.png')&#125; style=&#123;&#123;alignSelf:'center',width:45,height:45&#125;&#125; /&gt;</div><div class="line">			  &lt;Text style=&#123;styles.top_text&#125;&gt;</div><div class="line">				好友动态</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		  &lt;View style=&#123;styles.vertical_view&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/eqc.png')&#125; style=&#123;&#123;alignSelf:'center',width:45,height:45&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.top_text&#125;&gt;</div><div class="line">				附近</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		  &lt;View style=&#123;styles.vertical_view&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/iei.png')&#125; style=&#123;&#123;alignSelf:'center',width:45,height:45&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.top_text&#125; &gt;</div><div class="line">				兴趣部落</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		&lt;/View&gt;</div><div class="line">		&lt;View style=&#123;&#123;height:30,backgroundColor:'#f9f9fb'&#125;&#125;/&gt;</div><div class="line">		&lt;TouchableHighlight </div><div class="line">		  underlayColor="blue"</div><div class="line">		  activeOpacity=&#123;0.5&#125;</div><div class="line">		  onPress=&#123;()=&gt;&#123;</div><div class="line">		  console.log('我被点击了');</div><div class="line">		  &#125;&#125;</div><div class="line">		&gt;</div><div class="line">			&lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">			  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">				  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">				  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">					羽毛球</div><div class="line">				  &lt;/Text&gt;</div><div class="line">			  &lt;/View&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">			&lt;/View&gt;</div><div class="line">		 &lt;/TouchableHighlight&gt;</div><div class="line">		 &lt;TouchableNativeFeedback </div><div class="line">			background=&#123;TouchableNativeFeedback.SelectableBackground()&#125;</div><div class="line">			onPress=&#123;()=&gt;&#123;</div><div class="line">			console.log('我被点击了');</div><div class="line">			&#125;&#125;</div><div class="line">		 &gt;</div><div class="line">			&lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">			  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">				  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">				  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">					火车票</div><div class="line">				  &lt;/Text&gt;</div><div class="line">			  &lt;/View&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">			&lt;/View&gt;</div><div class="line">		 &lt;/TouchableNativeFeedback&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;/ScrollView&gt;</div><div class="line">		 &lt;TouchableOpacity</div><div class="line">		  activeOpacity=&#123;0.2&#125;</div><div class="line">		  style=&#123;styles.button&#125;</div><div class="line">		  onPress=&#123;() =&gt; &#123; _scrollView.scrollTo(&#123;y: 0&#125;); &#125;&#125;&gt;</div><div class="line">		  &lt;Text&gt;让我滚回去(注意看按压时透明度的改变)&lt;/Text&gt;</div><div class="line">		&lt;/TouchableOpacity&gt;</div><div class="line">	  &lt;/View&gt;</div><div class="line">	);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">	flex: 1,</div><div class="line">	backgroundColor: 'white',</div><div class="line">  &#125;,</div><div class="line">   title_view:&#123;</div><div class="line">	flexDirection:'row',</div><div class="line">	height:50,</div><div class="line">	justifyContent: 'center',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor:'#27b5ee',</div><div class="line">  &#125;,</div><div class="line">   title_text:&#123;</div><div class="line">	color:'white',</div><div class="line">	fontSize:20,</div><div class="line">	textAlign:'center'</div><div class="line">  &#125;,</div><div class="line">  three_image_view:&#123;</div><div class="line">	paddingTop: 15,</div><div class="line">	flexDirection:'row',</div><div class="line">	justifyContent: 'space-around',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor:'white',</div><div class="line">  &#125;,</div><div class="line">  vertical_view:&#123;</div><div class="line">	justifyContent: 'center',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor:'white',</div><div class="line">	paddingBottom:15,</div><div class="line">  &#125;,</div><div class="line">   top_text:&#123;</div><div class="line">	marginTop:5,</div><div class="line">	color:'black',</div><div class="line">	fontSize:16,</div><div class="line">	textAlign:'center'</div><div class="line">  &#125;,</div><div class="line">  rectangle_view:&#123;</div><div class="line">	paddingTop:8,</div><div class="line">	paddingBottom:8,</div><div class="line">	paddingLeft:15,</div><div class="line">	paddingRight:15,</div><div class="line">	flexDirection:'row',</div><div class="line">	justifyContent: 'space-between',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor:'white',  </div><div class="line">	borderBottomColor:'#dedfe0',</div><div class="line">	borderBottomWidth:1,</div><div class="line">  &#125;,</div><div class="line">  rectangle_text:&#123;</div><div class="line">	color:'black',</div><div class="line">	fontSize:16,</div><div class="line">	textAlign:'center',</div><div class="line">	paddingLeft:8,</div><div class="line">  &#125;,</div><div class="line">  button: &#123;</div><div class="line">	margin: 7,</div><div class="line">	padding: 5,</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor: '#eaeaea',</div><div class="line">	borderRadius: 3,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent('TouchableDemo', () =&gt; TouchableDemo);</div></pre></td></tr></table></figure></p>
+<p>关于触摸按压的组件，我们就讲到这里了，东西确实很简单，喜欢看英文的，还是建议看官网，这些内容其实都是我从官网学的，然后根据学的，自己写了一个例子罢了，没有什么难的，希望大家多动手实践吧！</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag">#React Native</a>
+          
+            <a href="/tags/基础组件/" rel="tag">#基础组件</a>
+          
+            <a href="/tags/TouchableHighlight/" rel="tag">#TouchableHighlight</a>
+          
+            <a href="/tags/TouchableNativeFeedback/" rel="tag">#TouchableNativeFeedback</a>
+          
+            <a href="/tags/TouchableOpacity/" rel="tag">#TouchableOpacity</a>
+          
+            <a href="/tags/TouchableWithoutFeedback/" rel="tag">#TouchableWithoutFeedback</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/05/reactnative-scrollview/" rel="next" title="基础篇章：React Native之 ScrollView 的讲解">
+                <i class="fa fa-chevron-left"></i> 基础篇章：React Native之 ScrollView 的讲解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/" rel="prev" title="基础篇章：关于 React Native 之 ListView 组件的讲解">
+                基础篇章：关于 React Native 之 ListView 组件的讲解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Touchable前传"><span class="nav-number">1.</span> <span class="nav-text">Touchable前传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TouchableWithoutFeedback"><span class="nav-number">2.</span> <span class="nav-text">TouchableWithoutFeedback</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">2.1.</span> <span class="nav-text">属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TouchableHighlight"><span class="nav-number">3.</span> <span class="nav-text">TouchableHighlight</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TouchableHighlight属性"><span class="nav-number">3.1.</span> <span class="nav-text">TouchableHighlight属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果展示"><span class="nav-number">3.2.</span> <span class="nav-text">效果展示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TouchableOpacity"><span class="nav-number">4.</span> <span class="nav-text">TouchableOpacity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性和方法"><span class="nav-number">4.1.</span> <span class="nav-text">属性和方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果展示-1"><span class="nav-number">4.2.</span> <span class="nav-text">效果展示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TouchableNativeFeedback"><span class="nav-number">5.</span> <span class="nav-text">TouchableNativeFeedback</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性-1"><span class="nav-number">5.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果展示-2"><span class="nav-number">5.2.</span> <span class="nav-text">效果展示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合实例"><span class="nav-number">6.</span> <span class="nav-text">综合实例</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

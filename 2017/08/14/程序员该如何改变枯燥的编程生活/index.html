@@ -1,0 +1,856 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说，编程这件事肯定是枯燥的，即使是对编程非常有兴趣的同学和朋友也会如此，我为什么这么说呢？大家可以不看下文，在这里停顿思考一下。
+实事求是的说，作为一个开发者，一个程序员，我相信大多数人干同一份工作的时间基本上不会超过两年，换句话说就是：一个程序员在同一家公司干同一份工作超过两年的很少。
+很多人说，程序员是一个跳槽比较频繁的职业，每一次的跳槽都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序员该如何改变枯燥的编程生活？">
+<meta property="og:url" content="http://loonggg.github.io/2017/08/14/程序员该如何改变枯燥的编程生活/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说，编程这件事肯定是枯燥的，即使是对编程非常有兴趣的同学和朋友也会如此，我为什么这么说呢？大家可以不看下文，在这里停顿思考一下。
+实事求是的说，作为一个开发者，一个程序员，我相信大多数人干同一份工作的时间基本上不会超过两年，换句话说就是：一个程序员在同一家公司干同一份工作超过两年的很少。
+很多人说，程序员是一个跳槽比较频繁的职业，每一次的跳槽都">
+<meta property="og:updated_time" content="2017-08-23T01:15:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="程序员该如何改变枯燥的编程生活？">
+<meta name="twitter:description" content="今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说，编程这件事肯定是枯燥的，即使是对编程非常有兴趣的同学和朋友也会如此，我为什么这么说呢？大家可以不看下文，在这里停顿思考一下。
+实事求是的说，作为一个开发者，一个程序员，我相信大多数人干同一份工作的时间基本上不会超过两年，换句话说就是：一个程序员在同一家公司干同一份工作超过两年的很少。
+很多人说，程序员是一个跳槽比较频繁的职业，每一次的跳槽都">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 程序员该如何改变枯燥的编程生活？ | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                程序员该如何改变枯燥的编程生活？
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-14T12:39:04+08:00" content="2017-08-14">
+              2017-08-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2017/08/14/程序员该如何改变枯燥的编程生活/" class="leancloud_visitors" data-flag-title="程序员该如何改变枯燥的编程生活？">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天我们来聊一聊程序员枯燥的编程生活，相对于其他行业来说，编程这件事肯定是枯燥的，即使是对编程非常有兴趣的同学和朋友也会如此，我为什么这么说呢？大家可以不看下文，在这里停顿思考一下。</p>
+<p>实事求是的说，作为一个开发者，一个程序员，我相信大多数人干同一份工作的时间基本上不会超过两年，换句话说就是：一个程序员在同一家公司干同一份工作超过两年的很少。</p>
+<p>很多人说，程序员是一个跳槽比较频繁的职业，每一次的跳槽都会使工资大幅度甚至成倍的增长，所以这时候就会有很多人跳出来说：程序员跳槽的目的很简单，就是因为想涨工资了。在这里，我想说：我并不否认，确实有很多开发者和程序员跳槽是为了涨工资，但是我相信作为一个有责任，有志向的程序员，跳槽中最大的目的并非涨薪，而是换一个更好的环境，更好的成长平台和发展空间，涨薪只不过是跳槽过程中附带的价值。</p>
+<p>聊到这里，你们可能会说：你是不是跑题了？今天不是聊枯燥的编程生活，以及如何改变这种现状吗？其实这是有关联的，而且有时候可能关联还是很大的。我先卖个关子，一会再说其中的关系，在这里你们也可以停顿思考一下，到底是什么关系？好，回到正题上来说：程序员的编程生活为什么很枯燥，或者换句话说:是什么导致程序员的编程很枯燥的？<br><a id="more"></a><br>其实原因无非就是以下这几种：</p>
+<h3 id="同一个环境，同一种技术"><a href="#同一个环境，同一种技术" class="headerlink" title="同一个环境，同一种技术"></a>同一个环境，同一种技术</h3><p>什么意思？跟同一个世界，同一个梦想不同的是，你在一个公司待久了，使用你所知的一种技术，重复的干着一个项目，你说时间久了，是不是很无聊呢？如果在一个公司做一个项目，长达一年，在这一年里，你仅仅是用你所知的技术一步一步的去实现，学不到新的技术和知识，技能得不到提高？这时候，无聊自然就会随之而来，悄无声息。可能对于公司来说，这是有意义的工作，但是对你来说：这是重复的，机械的搬砖。</p>
+<h3 id="粘贴复制……"><a href="#粘贴复制……" class="headerlink" title="粘贴复制……"></a>粘贴复制……</h3><p>其实和上边道理差不多。工作每天都是从网上粘贴复制，项目就是这样被垒起来的。很多人离开了网络，基本上就丧失了百分之八十的编程能力，而剩余的那百分之二十还是抄书。很多程序员编程不思考，而是简单的粘贴复制。</p>
+<p>当然，聪明点的程序员还是会封装的，自己就会把一些常用的工具类，一些方法，一些控件进行封装，留着以后备用。在公司开发完 A 项目，然后开发 B 项目的时候，就会很简单，把自己封装的东西拿过来直接用，这样机械的复用或者粘贴复制是不是很无聊呢？答案是肯定的。</p>
+<h3 id="重复的迭代和维护，以及修改-Bug"><a href="#重复的迭代和维护，以及修改-Bug" class="headerlink" title="重复的迭代和维护，以及修改 Bug"></a>重复的迭代和维护，以及修改 Bug</h3><p>其实当一个项目进入测试阶段以及后期维护和迭代阶段的时候，开发人员基本上百分之九十的工作任务就是在修复 Bug ，而不是在研发新功能，学习和使用新技术。天天在维护和更新迭代这个项目的时候，其实工作是很乏味的。</p>
+<h3 id="没有思想的程序员"><a href="#没有思想的程序员" class="headerlink" title="没有思想的程序员"></a>没有思想的程序员</h3><p>其实很多时候，程序员是没有话语权的，尤其是在小的创业公司，因为老板基本上就是产品经理，需求说让你做什么，你就得做什么？让你去实现什么，你就得实现什么。不会让你参与到产品的讨论当中来的，当然，如果老板让你参加，估计由于产品经理是老板，你也没有什么话语权和发言权。</p>
+<p>再这样一个没有个人思想和独立思考的开发环境中，你是不是很无聊呢？只是机械的去实现老板想法的一个工具？是的，你就是一个工具，这种现状那又该如何改变呢？</p>
+<p>你们感觉还有哪些让程序员编程无聊的原因呢？</p>
+<p>既然，有原因了，那就得想解决办法，而不是选择逃避。我们该如何改变这种编程无聊的状态呢？</p>
+<h2 id="如何解决编程无聊的状态"><a href="#如何解决编程无聊的状态" class="headerlink" title="如何解决编程无聊的状态"></a>如何解决编程无聊的状态</h2><p>首先，面对环境的限制，技术的瓶颈，其实我们应该想的是如何实现自我的需求和改变，而不是通过逃避和跳槽，其实你应该知道，不管你怎么跳槽，你都会将要面临这种无聊的状态，除非你这一辈子都在跳槽中度过。你试想一下：你今天跳槽了了另外一个公司，解决当时的无聊状态，学到了新东西，可是在新公司待了一段时间，又发展受限，技术又遇到瓶颈该怎么办？还跳槽，一直跳槽？</p>
+<p>遇到问题，首先想到的应该是解决办法，而不是用跳槽的方式来逃避。比如：我们可以尝试轮岗，让前端去学习后台，后台来学习前端，大家互相帮忙，一起交流学习，是不是能够解决你这种无聊呢？还比如：公司的一群小伙伴，可以一起尝试着去创造和维护一个开源项目，再或者长期举办一些技术分享，拓展视野。其实从本质上讲要学会利用公司资源来改变无聊的现状，当然公司也应该在实现自己利益的前提下，还要关注和满足员工自己自我需求的实现才行。</p>
+<p>其次，不要整天想着粘贴和复制，应该自己学习思考和学习，尤其是编程的思想和原理，平时多看，多读一些项目的源码，系统源码，看看高手是如何实现这个功能的，学会其中的思想和原理，不要仅仅从网上找到相关工具类或者开源项目就什么都不想，什么都不管，直接感觉能用就行。这样从本质上解决不了你自身的任何问题，当然，这确实让你实现项目功能，但是哪有如何呢？又不是你的。</p>
+<p>再次，维护和迭代，以及修改 Bug ，不管你跳槽到哪家公司，这都是避免不了的，你感觉天天修改 Bug 和维护项目很无聊，那该如何改变这个现状呢？</p>
+<ol>
+<li>不要出现 Bug 就暴力的去堵，很多程序员解决 Bug 的方式就是暴力解决法，举个例子：比如报了空指针异常，他们就会在报空指针异常的地方做不为空的判断，这也太暴力了，宜疏不宜堵。你应该找到报空指针的真正原因，看看有没有更好的，更合适的解决方式，这样可能就会一下子解决很多地方的相同的 Bug 。</li>
+<li>还可以尝试着想着办法，如何优化一段代码，可能是不是有更好的方式可以提高性能，加入你的代码性能提高1秒的速度，你可能就会很高兴，就感觉很有成就感，这样就不会很枯燥和无聊了，反而很高兴。</li>
+<li>在 code review 的时候，可以项目的人之间相互 code review ，这样大家可以互相来找茬，既能够学到对方的编程的方法和方式，还能够把代码共同维护好，何乐而不为呢？</li>
+</ol>
+<p>最后，关于没有思想的程序员来说，这个其实是公司文化的一部分，当然可能跟公司太小有关，其实不管产品经理听不听你的，你都可以尝试着大胆说出自己的想法和看法，有时候，老板并不是专横，而是由于你们不敢说，认为老板专横。如果你的想法更好，我不相信你老板傻到还在坚持自己？当然，我并否认有这样傻的老板。总之，要鼓励讨论的公司企业文化，要大胆说出自己想法。说不定，有一天，你们老板由于没有听你的，而感到后悔，这可能也是你的成就感。</p>
+<p>最后的最后，我想说：公司环境，还有技术瓶颈，还有一些导致无聊的原因其实那都是外部原因，本质上遇到这些问题，解决的最后的方式是从自己身上找到解决方法，而不是逃避和抱怨。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag">#编程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/02/WebView 和 JS 交互，如何将 Java 对象和 List 传值给 JS/" rel="next" title="WebView 和 JS 交互，如何将 Java 对象和 List 传值给 JS ？">
+                <i class="fa fa-chevron-left"></i> WebView 和 JS 交互，如何将 Java 对象和 List 传值给 JS ？
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/14/程序员为什么喜欢编程这项工作/" rel="prev" title="程序员为什么喜欢编程这项工作？">
+                程序员为什么喜欢编程这项工作？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">101</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/7f902caed210/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-jianshu"></i>
+                  
+                  jianshu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#同一个环境，同一种技术"><span class="nav-number">1.</span> <span class="nav-text">同一个环境，同一种技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#粘贴复制……"><span class="nav-number">2.</span> <span class="nav-text">粘贴复制……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复的迭代和维护，以及修改-Bug"><span class="nav-number">3.</span> <span class="nav-text">重复的迭代和维护，以及修改 Bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#没有思想的程序员"><span class="nav-number">4.</span> <span class="nav-text">没有思想的程序员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决编程无聊的状态"><span class="nav-number"></span> <span class="nav-text">如何解决编程无聊的状态</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

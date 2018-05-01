@@ -1,0 +1,899 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React Native,基础组件,Flexbox," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="今天在讲解Flexbox之前，我们先讲解一下高度和宽度的问题。因为Height and Width的问题很简单，就不单独写一篇文章了。顺带说一下即可。
+
+Height and Width一个组件的高度和宽度，决定了它在屏幕上显示的大小。
+固定尺寸最简单的设置组件的尺寸的方法就是通过添加一个固定的宽度和高度。所有尺寸大小在React Native没有单位的,代表着独立的像素密度。
+官网例子1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础篇章：React Native之Flexbox的讲解（Height and Width）">
+<meta property="og:url" content="http://loonggg.github.io/2016/10/02/react-native-flexbox/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="今天在讲解Flexbox之前，我们先讲解一下高度和宽度的问题。因为Height and Width的问题很简单，就不单独写一篇文章了。顺带说一下即可。
+
+Height and Width一个组件的高度和宽度，决定了它在屏幕上显示的大小。
+固定尺寸最简单的设置组件的尺寸的方法就是通过添加一个固定的宽度和高度。所有尺寸大小在React Native没有单位的,代表着独立的像素密度。
+官网例子1234">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/5.png">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础篇章：React Native之Flexbox的讲解（Height and Width）">
+<meta name="twitter:description" content="今天在讲解Flexbox之前，我们先讲解一下高度和宽度的问题。因为Height and Width的问题很简单，就不单独写一篇文章了。顺带说一下即可。
+
+Height and Width一个组件的高度和宽度，决定了它在屏幕上显示的大小。
+固定尺寸最简单的设置组件的尺寸的方法就是通过添加一个固定的宽度和高度。所有尺寸大小在React Native没有单位的,代表着独立的像素密度。
+官网例子1234">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 基础篇章：React Native之Flexbox的讲解（Height and Width） | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基础篇章：React Native之Flexbox的讲解（Height and Width）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-02T12:39:04+08:00" content="2016-10-02">
+              2016-10-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/10/02/react-native-flexbox/" class="leancloud_visitors" data-flag-title="基础篇章：React Native之Flexbox的讲解（Height and Width）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>今天在讲解Flexbox之前，我们先讲解一下高度和宽度的问题。因为Height and Width的问题很简单，就不单独写一篇文章了。顺带说一下即可。</p>
+</blockquote>
+<h2 id="Height-and-Width"><a href="#Height-and-Width" class="headerlink" title="Height and Width"></a>Height and Width</h2><p>一个组件的高度和宽度，决定了它在屏幕上显示的大小。</p>
+<h2 id="固定尺寸"><a href="#固定尺寸" class="headerlink" title="固定尺寸"></a>固定尺寸</h2><p>最简单的设置组件的尺寸的方法就是通过添加一个固定的宽度和高度。所有尺寸大小在React Native没有单位的,代表着独立的像素密度。</p>
+<h3 id="官网例子"><a href="#官网例子" class="headerlink" title="官网例子"></a>官网例子</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRegistry, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FixedDimensionsBasics</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'powderblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 100, height: 100, backgroundColor: 'skyblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 150, height: 150, backgroundColor: 'steelblue'&#125;&#125; /&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">AppRegistry.registerComponent('AwesomeProject', () =&gt; FixedDimensionsBasics);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>效果图：<br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/1.png" alt=""></p>
+<blockquote>
+<p>这样设置尺寸大小的方式，比较适合于要求不同的屏幕上显示相同大小的View或者组件。写固定的尺寸大小，死值。</p>
+</blockquote>
+<h2 id="弹性宽高"><a href="#弹性宽高" class="headerlink" title="弹性宽高"></a>弹性宽高</h2><p>我们可以在组件样式中使用flex让组件根据可用空间动态的收缩和扩展。通常情况下我们可以使用<strong>flex: 1</strong>，告诉某个组件来填充剩余的所有的空间，如果是多个组件的话，则是所有的这些组件去平分父容器中的剩余的所有空间。。如果这些并列的子组件的flex值不一样，则谁的值更大，谁占据剩余空间的比例就更大（跟我们android中weight的用法差不多）。</p>
+<h3 id="官网例子-1"><a href="#官网例子-1" class="headerlink" title="官网例子"></a>官网例子</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRegistry, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlexDimensionsBasics</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="comment">// Try removing the `flex: 1` on the parent View.</span></div><div class="line">      <span class="comment">// The parent will not have dimensions, so the children can't expand.</span></div><div class="line">      <span class="comment">// What if you add `height: 300` instead of `flex: 1`?</span></div><div class="line">      &lt;View style=&#123;&#123;<span class="attr">flex</span>: <span class="number">1</span>&#125;&#125;&gt;</div><div class="line">        &lt;View style=&#123;&#123;flex: 1, backgroundColor: 'powderblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;flex: 2, backgroundColor: 'skyblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;flex: 3, backgroundColor: 'steelblue'&#125;&#125; /&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">AppRegistry.registerComponent('AwesomeProject', () =&gt; FlexDimensionsBasics);</div></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/2.png" alt=""></p>
+<p>关于高度和宽度就讲这些吧，其实内容都是翻译与官网的docs，地址：<br><a href="https://facebook.github.io/react-native/docs/height-and-width.html#height-and-width" target="_blank" rel="external">https://facebook.github.io/react-native/docs/height-and-width.html#height-and-width</a></p>
+<h2 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h2><p>一个组件可以使用Flexbox指定其子组件或元素之间的布局。Flexbox旨在为不同的屏幕上提供一致的布局。</p>
+<p>通常情况下，我们结合使用flexDirection、alignItems和 justifyContent三个样式属性就已经能够实现我们所需的布局。</p>
+<blockquote>
+<p>注意：Flexbox在React Native的工作原理和使用方式与css在web上的方式基本一样，当然也有一些例外：比如flexDirection的默认值是column而不是row，alignItems的默认值是stretch而不是flex-start，以及flex只能指定一个数字值。</p>
+</blockquote>
+<h3 id="Flex-Direction"><a href="#Flex-Direction" class="headerlink" title="Flex Direction"></a>Flex Direction</h3><p>向一个组件的样式中添加Flex Direction可以决定一个布局的主轴。子元素应该沿着水平方向(row)排列，还是沿着竖直方向(column)排列呢？默认值是竖直(column)方向。</p>
+<h4 id="官网例子-2"><a href="#官网例子-2" class="headerlink" title="官网例子"></a>官网例子</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRegistry, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlexDirectionBasics</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="comment">// Try setting `flexDirection` to `column`.</span></div><div class="line">      &lt;View style=&#123;&#123;<span class="attr">flex</span>: <span class="number">1</span>, <span class="attr">flexDirection</span>: <span class="string">'row'</span>&#125;&#125;&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'powderblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'skyblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'steelblue'&#125;&#125; /&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">AppRegistry.registerComponent('AwesomeProject', () =&gt; FlexDirectionBasics);</div></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/3.png" alt=""></p>
+<h3 id="Justify-Content"><a href="#Justify-Content" class="headerlink" title="Justify Content"></a>Justify Content</h3><p>向组件的样式中添加Justify Content可以决定其子元素沿着主轴的排列方式。子元素应该分布在主轴的开始端，还是中间，最后，还是均匀分布？可用的选项有：flex-start、center、flex-end、space-around以及space-between。</p>
+<ul>
+<li>flex-start：弹性盒子元素将与行起始位置对齐。该行的第一个子元素的主起始位置的边界将与该行的主起始位置的边界对齐，同时所有后续的伸缩盒项目与其前一个项目对齐。</li>
+<li>flex-end：弹性盒子元素将与行结束位置对齐。该行的第一个子元素的主结束位置的边界将与该行的主结束位置的边界对齐，同时所有后续的伸缩盒项目与其前一个项目对齐。</li>
+<li>center：弹性盒子元素将与行中间位置对齐。该行的子元素将相互对齐并在行中居中对齐，同时第一个元素与行的主起始位置的边距等同与最后一个元素与行的主结束位置的边距（如果剩余空间是负数，则保持两端相等长度的溢出）。</li>
+<li>space-between：弹性盒子元素会均匀分布在行里。如果最左边的剩余空间是负数，或该行只有一个子元素，则该值等效于’flex-start’。在其它情况下，第一个元素的边界与行的主起始位置的边界对齐，同时最后一个元素的边界与行的主结束位置的边距对齐，而剩余的伸缩盒项目则平均分布，并确保两两之间的空白空间相等。</li>
+<li>space-around：弹性盒子元素会均匀分布在行里，两端保留子元素与子元素之间间距大小的一半。如果最左边的剩余空间是负数，或该行只有一个伸缩盒项目，则该值等效于’center’。在其它情况下，伸缩盒项目则平均分布，并确保两两之间的空白空间相等，同时第一个元素前的空间以及最后一个元素后的空间为其他空白空间的一半。</li>
+</ul>
+<h4 id="官网例子-3"><a href="#官网例子-3" class="headerlink" title="官网例子"></a>官网例子</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRegistry, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JustifyContentBasics</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="comment">// Try setting `justifyContent` to `center`.</span></div><div class="line">      <span class="comment">// Try setting `flexDirection` to `row`.</span></div><div class="line">      &lt;View style=&#123;&#123;</div><div class="line">        <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">        <span class="attr">flexDirection</span>: <span class="string">'column'</span>,</div><div class="line">        <span class="attr">justifyContent</span>: <span class="string">'space-between'</span>,</div><div class="line">      &#125;&#125;&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'powderblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'skyblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'steelblue'&#125;&#125; /&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">AppRegistry.registerComponent('AwesomeProject', () =&gt; JustifyContentBasics);</div></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/4.png" alt=""></p>
+<h3 id="Align-Items"><a href="#Align-Items" class="headerlink" title="Align Items"></a>Align Items</h3><p>向组件的样式（style）中添加alignItems可以决定其子元素沿着次轴（就是与主轴垂直的轴，比如若主轴方向为row，则次轴方向为column）的排列方式。子元素是应该靠近次轴的开始端还是中间，还是末端，亦或是拉伸来填补呢？可用选项有：flex-start、center、flex-end以及stretch。</p>
+<ul>
+<li>flex-start：弹性盒子元素的次轴起始位置的边界紧靠该行的次轴起始边界。</li>
+<li>flex-end：弹性盒子元素的次轴起始位置的边界紧靠住该行的次轴结束边界。</li>
+<li>center：弹性盒子元素在该行的次轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。</li>
+<li>stretch：如果指定次轴大小的属性值为’auto’，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照’min/max-width/height’属性的限制。</li>
+</ul>
+<blockquote>
+<p>注意：要使stretch选项生效的话，子元素在次轴方向上不能有固定的尺寸。在下面的例子中：只有将子元素样式中的width: 50去掉之后，alignItems: ‘stretch’才能生效。</p>
+</blockquote>
+<h4 id="官网例子-4"><a href="#官网例子-4" class="headerlink" title="官网例子"></a>官网例子</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRegistry, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlignItemsBasics</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="comment">// Try setting `alignItems` to 'flex-start'</span></div><div class="line">      <span class="comment">// Try setting `justifyContent` to `flex-end`.</span></div><div class="line">      <span class="comment">// Try setting `flexDirection` to `row`.</span></div><div class="line">      &lt;View style=&#123;&#123;</div><div class="line">        <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">        <span class="attr">flexDirection</span>: <span class="string">'column'</span>,</div><div class="line">        <span class="attr">justifyContent</span>: <span class="string">'center'</span>,</div><div class="line">        <span class="attr">alignItems</span>: <span class="string">'center'</span>,</div><div class="line">      &#125;&#125;&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'powderblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'skyblue'&#125;&#125; /&gt;</div><div class="line">        &lt;View style=&#123;&#123;width: 50, height: 50, backgroundColor: 'steelblue'&#125;&#125; /&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">AppRegistry.registerComponent('AwesomeProject', () =&gt; AlignItemsBasics);</div></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/flexbox/5.png" alt=""></p>
+<p>文章翻译并参考于Flexbox官方文档，地址：<br><a href="https://facebook.github.io/react-native/docs/flexbox.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/flexbox.html</a></p>
+<p>好了，到这里关于Flexbox的讲解就讲到这里了，关于Flexbox运用，上面的例子只是冰山一角，要想真正熟练掌握，还得靠自己亲自动手去写，去实践，才能够真正来理解各个属性的意思。赶紧动手去实践吧。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag">#React Native</a>
+          
+            <a href="/tags/基础组件/" rel="tag">#基础组件</a>
+          
+            <a href="/tags/Flexbox/" rel="tag">#Flexbox</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/01/基础篇章：关于 React Native 的Props，state，style的讲解/" rel="next" title="基础篇章：关于 React Native 的props，state，style的讲解">
+                <i class="fa fa-chevron-left"></i> 基础篇章：关于 React Native 的props，state，style的讲解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/03/reactnative-textview/" rel="prev" title="基础篇章：React Native 之 View 和 Text 的讲解">
+                基础篇章：React Native 之 View 和 Text 的讲解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Height-and-Width"><span class="nav-number">1.</span> <span class="nav-text">Height and Width</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定尺寸"><span class="nav-number">2.</span> <span class="nav-text">固定尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官网例子"><span class="nav-number">2.1.</span> <span class="nav-text">官网例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹性宽高"><span class="nav-number">3.</span> <span class="nav-text">弹性宽高</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官网例子-1"><span class="nav-number">3.1.</span> <span class="nav-text">官网例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flexbox"><span class="nav-number">4.</span> <span class="nav-text">Flexbox</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flex-Direction"><span class="nav-number">4.1.</span> <span class="nav-text">Flex Direction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官网例子-2"><span class="nav-number">4.1.1.</span> <span class="nav-text">官网例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Justify-Content"><span class="nav-number">4.2.</span> <span class="nav-text">Justify Content</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官网例子-3"><span class="nav-number">4.2.1.</span> <span class="nav-text">官网例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Align-Items"><span class="nav-number">4.3.</span> <span class="nav-text">Align Items</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官网例子-4"><span class="nav-number">4.3.1.</span> <span class="nav-text">官网例子</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

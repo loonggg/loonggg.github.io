@@ -1,0 +1,888 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Material Design,RecyclerView,CardView," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="去年很早之前，我就讲解过RecyclerView的使用，今天我们就在讲解CardView的时候，顺便再把RecyclerView同时讲解一下。RecyclerView、CardView为用于显示复杂视图的新增Widget。接下来看看如何使用吧。
+
+RecyclerViewRecyclerView介绍RecyclerView作为替代ListView使用，它更先进，更灵活，RecyclerView标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Material Design系列之RecyclerView和CardView">
+<meta property="og:url" content="http://loonggg.github.io/2016/07/01/Android Material Design系列之RecyclerView和CardView/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="去年很早之前，我就讲解过RecyclerView的使用，今天我们就在讲解CardView的时候，顺便再把RecyclerView同时讲解一下。RecyclerView、CardView为用于显示复杂视图的新增Widget。接下来看看如何使用吧。
+
+RecyclerViewRecyclerView介绍RecyclerView作为替代ListView使用，它更先进，更灵活，RecyclerView标">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/dsdfdsfdsfdfdse3455.gif">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/Screenshot_2016-06-25-20-34-34-413_MaterialDesign.png">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Material Design系列之RecyclerView和CardView">
+<meta name="twitter:description" content="去年很早之前，我就讲解过RecyclerView的使用，今天我们就在讲解CardView的时候，顺便再把RecyclerView同时讲解一下。RecyclerView、CardView为用于显示复杂视图的新增Widget。接下来看看如何使用吧。
+
+RecyclerViewRecyclerView介绍RecyclerView作为替代ListView使用，它更先进，更灵活，RecyclerView标">
+<meta name="twitter:image" content="http://7xsgef.com1.z0.glb.clouddn.com/dsdfdsfdsfdfdse3455.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android Material Design系列之RecyclerView和CardView | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android Material Design系列之RecyclerView和CardView
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-01T12:39:04+08:00" content="2016-07-01">
+              2016-07-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/Material-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Material Design</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/07/01/Android Material Design系列之RecyclerView和CardView/" class="leancloud_visitors" data-flag-title="Android Material Design系列之RecyclerView和CardView">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>去年很早之前，我就讲解过RecyclerView的使用，今天我们就在讲解CardView的时候，顺便再把RecyclerView同时讲解一下。RecyclerView、CardView为用于显示复杂视图的新增Widget。接下来看看如何使用吧。</p>
+</blockquote>
+<h3 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a>RecyclerView</h3><h4 id="RecyclerView介绍"><a href="#RecyclerView介绍" class="headerlink" title="RecyclerView介绍"></a>RecyclerView介绍</h4><p>RecyclerView作为替代ListView使用，它更先进，更灵活，RecyclerView标准化了ViewHolder，ListView中convertView是复用的，在RecyclerView中，是把ViewHolder作为缓存的单位了，然后convertView作为ViewHolder的成员变量保持在ViewHolder中，也就是说，假设手机屏幕可显示10个条目，则会创建10个ViewHolder缓存起来，每次复用的是ViewHolder，所以他把getView这个方法变为了onCreateViewHolder。 ViewHolder更适合多种子布局的列表，尤其IM聊天对话框列表。</p>
+<p>注意的是：RecyclerView不提供ListView中的setOnItemClickListener方法，我们可以在ViewHolder中添加类似的点击事件。<br><a id="more"></a></p>
+<h4 id="RecyclerView注意事项，如何用"><a href="#RecyclerView注意事项，如何用" class="headerlink" title="RecyclerView注意事项，如何用"></a>RecyclerView注意事项，如何用</h4><p>虽然RecyclerView充分考虑了它的扩展性，更好用，更灵活，但是用起来也有些麻烦。所以要使用RecyclerView，要好好考虑以下几点：</p>
+<ul>
+<li>RecyclerView.Adapter：RecyclerView.Adapter包含了一种新型适配器，其实与以前我们使用的适配器基本类似，只是稍微有所不同，比如viewholder它帮我们封装好了，不用像以前使用listview的适配器一样自己去写viewholder了。所以它的性能比以前应该好了不少。</li>
+<li>LayoutManager：这个LayoutManager类决定视图被放在画面中哪个位置，但这只是它的众多职责之一。它可以管理滚动和循环利用。LayoutManager是一个抽象类，好在系统提供了3个实现类：<br>1、LinearLayoutManager 现行管理器，支持横向、纵向。<br>2、GridLayoutManager 网格布局管理器<br>3、StaggeredGridLayoutManager 瀑布就式布局管理器</li>
+<li>ItemAnimator：ItemAnimator简单来说是会根据适配器上收到的相关通知去动画的显示组件的修改，添加和删除等。它会自动添加和移除item的动画。自带的默认效果也不错，已经非常好了。</li>
+</ul>
+<p>如何用呢？这里我就不过多介绍了，因为关于RecyclerView的使用，去年我很早时间就写过一篇文章。建议大家参考：<br><a href="http://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&amp;mid=208467006&amp;idx=1&amp;sn=c29971b395611008319222eaffad4f31#rd" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MjM5NDkxMTgyNw==&amp;mid=208467006&amp;idx=1&amp;sn=c29971b395611008319222eaffad4f31#rd</a></p>
+<h4 id="RecyclerView上拉更多"><a href="#RecyclerView上拉更多" class="headerlink" title="RecyclerView上拉更多"></a>RecyclerView上拉更多</h4><p>RecyclerView具体使用不讲了，今天我们顺便讲一下如何在RecyclerView加上拉更多的效果吧，下拉刷新我们使用SwipeRefreshLayout的效果就行。因为我看市面上目前大部分的app都是这样做的，下拉刷新用SwipeRefreshLayout的效果，自己在RecyclerView上添加上拉更多。</p>
+<p>很可惜的是，RecyclerView并没有像ListView那样提供给我们addFooterView()那样的方法，那该如何实现呢？前面我们介绍RecyclerView时，说过RecyclerView适合多种嵌套的布局效果， ViewHolder更适合多种子布局的列表。所以我们看 RecyclerView的Adapter中的一个方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup viewGroup, <span class="keyword">int</span> viewType)</span></span></div></pre></td></tr></table></figure></p>
+<p>看到viewType了吧，就是在这里处理多种布局效果，上拉更多的布局和其他item其实没有什么区别。所以处理方式大家都知道了吧。</p>
+<ul>
+<li>第一步：添加布局状态标识，并增加一项FooterView<br>在adapter中声明布局状态标识，是普通布局还是foot布局<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_NORMAL_ITEM = <span class="number">0</span>;  <span class="comment">//普通Item</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_FOOTER_ITEM = <span class="number">1</span>;  <span class="comment">//底部FooterView</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在getItemCount()中加1<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">     <span class="comment">//+1是加入底部的加载布局项</span></div><div class="line">    <span class="keyword">return</span> list.size() + <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>第二步：重写getItemViewType判断不同布局</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemViewType</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">    <span class="comment">// 如果position+1等于整个布局所有数总和就是底部布局</span></div><div class="line">    <span class="keyword">if</span> (position + <span class="number">1</span> == getItemCount()) &#123;</div><div class="line">         <span class="keyword">return</span> TYPE_FOOTER_ITEM;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">         <span class="keyword">return</span> TYPE_NORMAL_ITEM;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第三步：在onCreateViewHolder根据viewType返回不同的布局</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//创建新View，被LayoutManager所调用</span></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup viewGroup, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">    <span class="comment">//如果viewType是普通item返回普通的布局，否则是底部布局并返回</span></div><div class="line">    <span class="keyword">if</span> (viewType == TYPE_NORMAL_ITEM) &#123;</div><div class="line">        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout</div><div class="line">                .cardview_recyclerview_item, viewGroup, <span class="keyword">false</span>);</div><div class="line">        <span class="keyword">final</span> NormalItmeViewHolder vh = <span class="keyword">new</span> NormalItmeViewHolder(view);</div><div class="line">        <span class="keyword">if</span> (mClickListener != <span class="keyword">null</span>) &#123;</div><div class="line">            vh.itemView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                    mClickListener.onItemClick(vh.itemView, vh.getLayoutPosition());</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> vh;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout</div><div class="line">                .recyclerview_footer_view, viewGroup, <span class="keyword">false</span>);</div><div class="line">        FooterViewHolder vh = <span class="keyword">new</span> FooterViewHolder(view);</div><div class="line">        <span class="keyword">return</span> vh;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第四步：根据holder类型判断数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将数据与界面进行绑定的操作</span></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder viewHolder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (viewHolder <span class="keyword">instanceof</span> NormalItmeViewHolder) &#123;</div><div class="line">        ((NormalItmeViewHolder) viewHolder).titleTv.setText(list.get(position).getTitle());</div><div class="line">        ((NormalItmeViewHolder) viewHolder).contentTv.setText(list.get(position).getContent());</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (viewHolder <span class="keyword">instanceof</span> FooterViewHolder) &#123;</div><div class="line">        FooterViewHolder footViewHolder = (FooterViewHolder) viewHolder;</div><div class="line">        <span class="keyword">switch</span> (load_more_status) &#123;</div><div class="line">            <span class="keyword">case</span> PULLUP_LOAD_MORE:</div><div class="line">                footViewHolder.foot_view_item_tv.setVisibility(View.VISIBLE);</div><div class="line">                footViewHolder.foot_view_item_tv.setText(<span class="string">"上拉加载更多"</span>);</div><div class="line">                footViewHolder.pb.setVisibility(View.GONE);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> LOADING_MORE:</div><div class="line">                footViewHolder.foot_view_item_tv.setVisibility(View.GONE);</div><div class="line">                footViewHolder.pb.setVisibility(View.VISIBLE);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>到这里，关于上拉更多基本就配置完了。一会完整adapter我会贴出来的。先看效果图，如下：<br><img src="http://7xsgef.com1.z0.glb.clouddn.com/dsdfdsfdsfdfdse3455.gif" alt=""></p>
+<p>Adapter的全部代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PullMoreRecyclerAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerView</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_NORMAL_ITEM = <span class="number">0</span>;  <span class="comment">//普通Item</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_FOOTER_ITEM = <span class="number">1</span>;  <span class="comment">//底部FooterView</span></div><div class="line"></div><div class="line">    <span class="comment">//上拉加载更多</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PULLUP_LOAD_MORE = <span class="number">1</span>;</div><div class="line">    <span class="comment">//正在加载中</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LOADING_MORE = <span class="number">2</span>;</div><div class="line">    <span class="comment">//默认为0</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> load_more_status = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> List&lt;CardInfo&gt; list;</div><div class="line">    <span class="keyword">private</span> OnItemClickListener mClickListener;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PullMoreRecyclerAdapter</span><span class="params">(List&lt;CardInfo&gt; list)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.list = list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//创建新View，被LayoutManager所调用</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup viewGroup, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">        <span class="comment">//如果viewType是普通item返回普通的布局，否则是底部布局并返回</span></div><div class="line">        <span class="keyword">if</span> (viewType == TYPE_NORMAL_ITEM) &#123;</div><div class="line">            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout</div><div class="line">                    .cardview_recyclerview_item, viewGroup, <span class="keyword">false</span>);</div><div class="line">            <span class="keyword">final</span> NormalItmeViewHolder vh = <span class="keyword">new</span> NormalItmeViewHolder(view);</div><div class="line">            <span class="keyword">if</span> (mClickListener != <span class="keyword">null</span>) &#123;</div><div class="line">                vh.itemView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                        mClickListener.onItemClick(vh.itemView, vh.getLayoutPosition());</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> vh;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout</div><div class="line">                    .recyclerview_footer_view, viewGroup, <span class="keyword">false</span>);</div><div class="line">            FooterViewHolder vh = <span class="keyword">new</span> FooterViewHolder(view);</div><div class="line">            <span class="keyword">return</span> vh;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//将数据与界面进行绑定的操作</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder viewHolder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (viewHolder <span class="keyword">instanceof</span> NormalItmeViewHolder) &#123;</div><div class="line">            ((NormalItmeViewHolder) viewHolder).titleTv.setText(list.get(position).getTitle());</div><div class="line">            ((NormalItmeViewHolder) viewHolder).contentTv.setText(list.get(position).getContent());</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (viewHolder <span class="keyword">instanceof</span> FooterViewHolder) &#123;</div><div class="line">            FooterViewHolder footViewHolder = (FooterViewHolder) viewHolder;</div><div class="line">            <span class="keyword">switch</span> (load_more_status) &#123;</div><div class="line">                <span class="keyword">case</span> PULLUP_LOAD_MORE:</div><div class="line">                    footViewHolder.foot_view_item_tv.setVisibility(View.VISIBLE);</div><div class="line">                    footViewHolder.foot_view_item_tv.setText(<span class="string">"上拉加载更多"</span>);</div><div class="line">                    footViewHolder.pb.setVisibility(View.GONE);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> LOADING_MORE:</div><div class="line">                    footViewHolder.foot_view_item_tv.setVisibility(View.GONE);</div><div class="line">                    footViewHolder.pb.setVisibility(View.VISIBLE);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//+1是加入底部的加载布局项</span></div><div class="line">        <span class="keyword">return</span> list.size() + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemViewType</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="comment">// 如果position+1等于整个布局所有数总和就是底部布局</span></div><div class="line">        <span class="keyword">if</span> (position + <span class="number">1</span> == getItemCount()) &#123;</div><div class="line">            <span class="keyword">return</span> TYPE_FOOTER_ITEM;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> TYPE_NORMAL_ITEM;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//自定义的ViewHolder，持有每个Item的的所有界面元素</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalItmeViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line">        <span class="keyword">public</span> TextView titleTv, contentTv;</div><div class="line">        <span class="keyword">public</span> ImageView iv;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">NormalItmeViewHolder</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(view);</div><div class="line">            titleTv = (TextView) view.findViewById(R.id.item_title_tv);</div><div class="line">            contentTv = (TextView) view.findViewById(R.id.item_content_tv);</div><div class="line">            iv = (ImageView) view.findViewById(R.id.item_iv);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 底部FooterView布局</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">FooterViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line">        <span class="keyword">public</span> TextView foot_view_item_tv;</div><div class="line">        <span class="keyword">public</span> ProgressBar pb;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">FooterViewHolder</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(view);</div><div class="line">            pb = (ProgressBar) view.findViewById(R.id.progress_view);</div><div class="line">            foot_view_item_tv = (TextView) view.findViewById(R.id.tv_content);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMoreStatus</span><span class="params">(<span class="keyword">int</span> status)</span></span>&#123;</div><div class="line">        load_more_status=status;</div><div class="line">        notifyDataSetChanged();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnItemClickListener</span><span class="params">(OnItemClickListener listener)</span> </span>&#123;</div><div class="line">        mClickListener = listener;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnItemClickListener</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(View itemView, <span class="keyword">int</span> pos)</span></span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Activity中的代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CardViewActivity</span> <span class="keyword">extends</span> <span class="title">BaseActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> RecyclerView rv;</div><div class="line">    <span class="keyword">private</span> SwipeRefreshLayout swipeRefreshWidget;</div><div class="line">    <span class="keyword">private</span> PullMoreRecyclerAdapter adapter;</div><div class="line">    <span class="keyword">private</span> LinearLayoutManager mLayoutManager;</div><div class="line">    List&lt;CardInfo&gt; list = <span class="keyword">new</span> ArrayList&lt;CardInfo&gt;();</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_card_view);</div><div class="line">        rv = (RecyclerView) findViewById(R.id.rv);</div><div class="line">        swipeRefreshWidget = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_widget);</div><div class="line">        swipeRefreshWidget.setColorSchemeResources(R.color.colorAccent, R.color.add_bg_color, R</div><div class="line">                .color.colorPrimary, R.color.colorPrimaryDark, R.color.add_selected_color);</div><div class="line">        <span class="comment">//创建默认的线性LayoutManager</span></div><div class="line">        mLayoutManager = <span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>);</div><div class="line">        rv.setLayoutManager(mLayoutManager);</div><div class="line">        <span class="comment">//创建并设置Adapter</span></div><div class="line">        adapter = <span class="keyword">new</span> PullMoreRecyclerAdapter(getDatas());</div><div class="line">        rv.setAdapter(adapter);</div><div class="line"></div><div class="line">        swipeRefreshWidget.setOnRefreshListener(<span class="keyword">new</span> SwipeRefreshLayout.OnRefreshListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span> </span>&#123;</div><div class="line">                swipeRefreshWidget.setEnabled(<span class="keyword">false</span>);</div><div class="line">                <span class="keyword">new</span> Handler().postDelayed(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                        list.clear();</div><div class="line">                        getDatas();</div><div class="line">                        adapter.notifyDataSetChanged();</div><div class="line">                        swipeRefreshWidget.setEnabled(<span class="keyword">true</span>);</div><div class="line">                        swipeRefreshWidget.setRefreshing(<span class="keyword">false</span>);</div><div class="line">                    &#125;</div><div class="line">                &#125;, <span class="number">2000</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        rv.addOnScrollListener(<span class="keyword">new</span> RecyclerView.OnScrollListener() &#123;</div><div class="line">            <span class="keyword">private</span> <span class="keyword">int</span> lastVisibleItem;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> newState)</span> </span>&#123;</div><div class="line">                <span class="keyword">super</span>.onScrollStateChanged(recyclerView, newState);</div><div class="line">                <span class="keyword">if</span> (newState == RecyclerView.SCROLL_STATE_IDLE &amp;&amp; lastVisibleItem + <span class="number">1</span> == adapter</div><div class="line">                        .getItemCount()) &#123;</div><div class="line">                    adapter.setMoreStatus(PullMoreRecyclerAdapter.LOADING_MORE);</div><div class="line">                    <span class="keyword">new</span> Handler().postDelayed(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                            getDatas();</div><div class="line">                            adapter.setMoreStatus(PullMoreRecyclerAdapter.PULLUP_LOAD_MORE);</div><div class="line">                            adapter.notifyDataSetChanged();</div><div class="line">                        &#125;</div><div class="line">                    &#125;, <span class="number">2000</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</div><div class="line">                <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</div><div class="line">                lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> List&lt;CardInfo&gt; <span class="title">getDatas</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">            CardInfo ci = <span class="keyword">new</span> CardInfo();</div><div class="line">            ci.setContent(<span class="string">"美女说：非著名程序员公众号是东半球最好的技术分享公众号"</span>);</div><div class="line">            ci.setTitle(<span class="string">"非著名程序员"</span> + i);</div><div class="line">            list.add(ci);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="CardView"><a href="#CardView" class="headerlink" title="CardView"></a>CardView</h3><h4 id="CardView介绍"><a href="#CardView介绍" class="headerlink" title="CardView介绍"></a>CardView介绍</h4><p>CardView是Android5.0之后为新增的控件，CardView是一个卡片布局，布局可以包含圆角和阴影，本质上CardView是一个FrameLayout，因此它作为一个布局容器，可以布局其他的View。</p>
+<h4 id="CardView属性"><a href="#CardView属性" class="headerlink" title="CardView属性"></a>CardView属性</h4><p>CardView中常用的属性有：</p>
+<ul>
+<li>cardElevation:设置阴影的大小</li>
+<li>cardBackgroundColor:卡片布局的背景颜色</li>
+<li>cardCornerRadius：卡片布局的圆角的大小</li>
+<li>conentPadding：卡片布局和内容之间的距离</li>
+</ul>
+<h4 id="效果图和实例代码"><a href="#效果图和实例代码" class="headerlink" title="效果图和实例代码"></a>效果图和实例代码</h4><p>效果图如下：<br><img src="http://7xsgef.com1.z0.glb.clouddn.com/Screenshot_2016-06-25-20-34-34-413_MaterialDesign.png" alt=""><br>代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">android.support.v7.widget.CardView</span></span></div><div class="line">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">    <span class="attr">android:layout_marginBottom</span>=<span class="string">"12dp"</span></div><div class="line">    <span class="attr">android:layout_marginTop</span>=<span class="string">"12dp"</span></div><div class="line">    <span class="attr">android:layout_marginLeft</span>=<span class="string">"15dp"</span></div><div class="line">    <span class="attr">android:layout_marginRight</span>=<span class="string">"15dp"</span></div><div class="line">    <span class="attr">app:cardBackgroundColor</span>=<span class="string">"@color/white"</span></div><div class="line">    <span class="attr">app:contentPadding</span>=<span class="string">"8dp"</span></div><div class="line">    <span class="attr">app:cardCornerRadius</span>=<span class="string">"10dp"</span></div><div class="line">    <span class="attr">app:cardElevation</span>=<span class="string">"10dp"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:paddingTop</span>=<span class="string">"8dp"</span></div><div class="line">        <span class="attr">android:paddingBottom</span>=<span class="string">"8dp"</span></div><div class="line">        <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/item_iv"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"120dp"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"90dp"</span></div><div class="line">            <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></div><div class="line">            <span class="attr">android:layout_margin</span>=<span class="string">"6dp"</span></div><div class="line">            <span class="attr">android:background</span>=<span class="string">"@drawable/item_one"</span></div><div class="line">            <span class="attr">android:scaleType</span>=<span class="string">"centerCrop"</span>/&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">            <span class="attr">android:layout_marginLeft</span>=<span class="string">"6dp"</span></div><div class="line">            <span class="attr">android:layout_marginRight</span>=<span class="string">"10dp"</span></div><div class="line">            <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></div><div class="line">            <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</div><div class="line"></div><div class="line">            <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/item_title_tv"</span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:textColor</span>=<span class="string">"#383838"</span></div><div class="line">                <span class="attr">android:textSize</span>=<span class="string">"20sp"</span></div><div class="line">                <span class="attr">android:textStyle</span>=<span class="string">"bold"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:text</span>=<span class="string">"非著名程序员"</span>/&gt;</div><div class="line"></div><div class="line">            <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/item_content_tv"</span></div><div class="line">                <span class="attr">android:textColor</span>=<span class="string">"#545454"</span></div><div class="line">                <span class="attr">android:textSize</span>=<span class="string">"16sp"</span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">                <span class="attr">android:layout_marginTop</span>=<span class="string">"8dp"</span></div><div class="line">                <span class="attr">android:text</span>=<span class="string">"美女说：非著名程序员公众号是东半球最好的技术分享公众号"</span>/&gt;</div><div class="line">        <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.v7.widget.CardView</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>最后友情提醒一下，使用CardView别忘了添加依赖：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile 'com.android.support:cardview-v7:23.4.0'</div></pre></td></tr></table></figure></p>
+<p>demo的github地址：<a href="https://github.com/loonggg/MaterialDesignDemo" target="_blank" rel="external">https://github.com/loonggg/MaterialDesignDemo</a> 去star吧，我会慢慢完善的。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Material-Design/" rel="tag">#Material Design</a>
+          
+            <a href="/tags/RecyclerView/" rel="tag">#RecyclerView</a>
+          
+            <a href="/tags/CardView/" rel="tag">#CardView</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/28/Android Material Design系列之Toolbar/" rel="next" title="Android Material Design系列之Toolbar">
+                <i class="fa fa-chevron-left"></i> Android Material Design系列之Toolbar
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/04/Android Material Design系列之Palette/" rel="prev" title="Android Material Design系列之Palette">
+                Android Material Design系列之Palette <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RecyclerView"><span class="nav-number">1.</span> <span class="nav-text">RecyclerView</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RecyclerView介绍"><span class="nav-number">1.1.</span> <span class="nav-text">RecyclerView介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RecyclerView注意事项，如何用"><span class="nav-number">1.2.</span> <span class="nav-text">RecyclerView注意事项，如何用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RecyclerView上拉更多"><span class="nav-number">1.3.</span> <span class="nav-text">RecyclerView上拉更多</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CardView"><span class="nav-number">2.</span> <span class="nav-text">CardView</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CardView介绍"><span class="nav-number">2.1.</span> <span class="nav-text">CardView介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CardView属性"><span class="nav-number">2.2.</span> <span class="nav-text">CardView属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效果图和实例代码"><span class="nav-number">2.3.</span> <span class="nav-text">效果图和实例代码</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

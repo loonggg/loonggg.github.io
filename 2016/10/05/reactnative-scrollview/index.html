@@ -1,0 +1,889 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React Native,基础组件,ScrollView," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="大家好，我是ScrollView，相信做过移动或者前端开发的人肯定都很熟悉我，对，我就是那个可以滚动的容器，滚有点难听，我是可以滑动的容器，我滑动起来，摩擦摩擦，似魔鬼的步伐。我不仅可以上下滚动，就是垂直，还可以左右滚动，这叫有水平。我厉不厉害？我这个人，为人心胸宽广，可以包容很多东西，我这叫宰相肚子里能撑船，什么组件，什么视图都可以放进来，主要是本人太饿了，啥都喜欢吃。这就是我的自我介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础篇章：React Native之 ScrollView 的讲解">
+<meta property="og:url" content="http://loonggg.github.io/2016/10/05/reactnative-scrollview/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="大家好，我是ScrollView，相信做过移动或者前端开发的人肯定都很熟悉我，对，我就是那个可以滚动的容器，滚有点难听，我是可以滑动的容器，我滑动起来，摩擦摩擦，似魔鬼的步伐。我不仅可以上下滚动，就是垂直，还可以左右滚动，这叫有水平。我厉不厉害？我这个人，为人心胸宽广，可以包容很多东西，我这叫宰相肚子里能撑船，什么组件，什么视图都可以放进来，主要是本人太饿了，啥都喜欢吃。这就是我的自我介绍。">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/7.gif">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础篇章：React Native之 ScrollView 的讲解">
+<meta name="twitter:description" content="大家好，我是ScrollView，相信做过移动或者前端开发的人肯定都很熟悉我，对，我就是那个可以滚动的容器，滚有点难听，我是可以滑动的容器，我滑动起来，摩擦摩擦，似魔鬼的步伐。我不仅可以上下滚动，就是垂直，还可以左右滚动，这叫有水平。我厉不厉害？我这个人，为人心胸宽广，可以包容很多东西，我这叫宰相肚子里能撑船，什么组件，什么视图都可以放进来，主要是本人太饿了，啥都喜欢吃。这就是我的自我介绍。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/7.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 基础篇章：React Native之 ScrollView 的讲解 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基础篇章：React Native之 ScrollView 的讲解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-05T10:39:04+08:00" content="2016-10-05">
+              2016-10-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/10/05/reactnative-scrollview/" class="leancloud_visitors" data-flag-title="基础篇章：React Native之 ScrollView 的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>大家好，我是ScrollView，相信做过移动或者前端开发的人肯定都很熟悉我，对，我就是那个可以滚动的容器，滚有点难听，我是可以滑动的容器，我滑动起来，摩擦摩擦，似魔鬼的步伐。我不仅可以上下滚动，就是垂直，还可以左右滚动，这叫有水平。我厉不厉害？我这个人，为人心胸宽广，可以包容很多东西，我这叫宰相肚子里能撑船，什么组件，什么视图都可以放进来，主要是本人太饿了，啥都喜欢吃。这就是我的自我介绍。</p>
+</blockquote>
+<p>关于我，我还想说，我这个人身上笑点比较低，随便一触摸就想笑，当然，你们摸我，让我干什么事，我还是很听话的，唯独有一点就是你们别想让我滚，让我滚是有条件的，条件就是必须让我吃饱，吃撑了才可以，这样我才有力气滚动（视图高度一定才可以滚动）。要么设置我的身高是固定的，当然我想长高，所以不建议这么做，要么就是设置我上级的高度，当然要这样做，不要忘了设置flex:1,要不然一样没用。<br><a id="more"></a></p>
+<h2 id="我的性格"><a href="#我的性格" class="headerlink" title="我的性格"></a>我的性格</h2><p>来看看我有哪些性格特点，只有知道了我的性格特点，才更能容易了解我，针对我，容易控制我啊，如果你不了解我，就想让我帮你干活？做梦去吧。</p>
+<ul>
+<li>contentContainerStyle 这个样式会应用到一个内层的内容容器上，所有的子视图都会包裹在内容容器内。</li>
+<li>horizontal 如果设为true，意思是我吃的东西都是左右，在水平方向上排列的，貌似不太容易消化（玩笑），默认false，当然是垂直方向了。</li>
+<li>keyboardDismissMode enum(‘none’, ‘interactive’, ‘on-drag’)  当我滚动的时候，是否隐藏键盘<ul>
+<li>none（默认值），拖拽时不隐藏软键盘。</li>
+<li>on-drag 当拖拽开始的时候隐藏软键盘。</li>
+<li>interactive 软键盘伴随拖拽操作同步地消失，并且如果往上滑动会恢复键盘。安卓设备上不支持这个选项，会表现的和none一样。</li>
+</ul>
+</li>
+<li>keyboardShouldPersistTaps 当此属性为false的时候，在软键盘激活之后，点击焦点文本输入框以外的地方，键盘就会隐藏。如果为true，滚动视图不会响应点击操作，并且键盘不会自动消失。默认值为false。</li>
+<li>onContentSizeChange function 该函数方法会在ScrollView内部可滚动内容的视图发生变化时调用。</li>
+<li>onScroll function 在滚动的过程中，每帧最多调用一次此回调函数。调用的频率可以用scrollEventThrottle属性来控制。</li>
+<li>pagingEnabled 如果为true，滚动视图的滚动视图大小的倍数滚动时停止。这可用于水平分页。默认值false。</li>
+<li>refreshControl 告诉RefreshControl组件，为我供下拉刷新功能。</li>
+<li>removeClippedSubviews  （实验属性） 当为true的时候。在ScrollView视图之外的视图(该视图的overflow属性值必须要为hidden)会从被暂时移除，该设置可以提高滚动的性能。</li>
+<li>scrollEnabled 为false时，内容视图不可以滚动，默认值true。</li>
+<li>showsHorizontalScrollIndicator  当为true时，显示水平滚动条</li>
+<li>showsVerticalScrollIndicator 与上面正好相反。</li>
+</ul>
+<h2 id="我的穿衣打扮"><a href="#我的穿衣打扮" class="headerlink" title="我的穿衣打扮"></a>我的穿衣打扮</h2><p>来，一起来看看，我有哪些外在的服饰和化妆品，可以使用更佳美观和漂亮，修饰我的内在和外在。</p>
+<ul>
+<li>backfaceVisibility ([‘visible’, ‘hidden’]) 显示还是隐藏</li>
+<li>backgroundColor color 背景色</li>
+<li>borderBottomColor color 底部边框颜色</li>
+<li>borderBottomLeftRadius number 左下角圆角大小</li>
+<li>borderBottomRightRadius 自己翻译（与上同理）</li>
+<li>borderBottomWidth 底部边框宽度</li>
+<li>borderColor color 边框颜色</li>
+<li>borderLeftColor color</li>
+<li>borderLeftWidth number 同理</li>
+<li>borderRadius number 四周圆角大小</li>
+<li>borderRightColor color</li>
+<li>borderRightWidth number</li>
+<li>borderStyle （[’solid’, ‘dotted’, ‘dashed’]) 边框的样式，是实现，还是点，还是虚线</li>
+<li>borderTopColor color</li>
+<li>borderTopLeftRadius number</li>
+<li>borderTopRightRadius number</li>
+<li>borderTopWidth number</li>
+<li>borderWidth number 边框宽度</li>
+<li>opacity number 设置透明度</li>
+<li>overflow ([‘visible’, ‘hidden’])</li>
+<li>androidelevation number android5.0以上有的，立体阴影效果</li>
+<li>我只介绍了以上常用的的风格，还有几个和android相关，还有很多与ios相关的属性，我就不再介绍了，自己去官方文档查查吧。地址：[<a href="https://facebook.github.io/react-native/docs/scrollview.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/scrollview.html</a>]</li>
+</ul>
+<h2 id="我的秀丽身材"><a href="#我的秀丽身材" class="headerlink" title="我的秀丽身材"></a>我的秀丽身材</h2><p>闻其声不见其人，光知道我，没见过我岂不是很out？像我这么美的人，你们不用我，是不是有点那个啥？哈哈……</p>
+<h3 id="魔鬼样子"><a href="#魔鬼样子" class="headerlink" title="魔鬼样子"></a>魔鬼样子</h3><p><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/7.gif" alt=""></p>
+<h3 id="逻辑实现"><a href="#逻辑实现" class="headerlink" title="逻辑实现"></a>逻辑实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  AppRegistry,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">  Image,</div><div class="line">  ScrollView,</div><div class="line">  TouchableOpacity,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ImageDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">	<span class="keyword">return</span> (</div><div class="line">	  &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">		 &lt;View style=&#123;styles.title_view&#125;&gt;</div><div class="line">		 &lt;Text style=&#123;styles.title_text&#125;&gt;</div><div class="line">			   空间动态</div><div class="line">		 &lt;/Text&gt;</div><div class="line">		&lt;/View&gt;</div><div class="line">		&lt;ScrollView  ref=&#123;(scrollView) =&gt; &#123; _scrollView = scrollView; &#125;&#125;&gt;</div><div class="line">		&lt;View style=&#123;styles.three_image_view&#125;&gt;</div><div class="line">		 &lt;View style=&#123;styles.vertical_view&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/igs.png')&#125; style=&#123;&#123;alignSelf:'center',width:45,height:45&#125;&#125; /&gt;</div><div class="line">			  &lt;Text style=&#123;styles.top_text&#125;&gt;</div><div class="line">				好友动态</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		  &lt;View style=&#123;styles.vertical_view&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/eqc.png')&#125; style=&#123;&#123;alignSelf:'center',width:45,height:45&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.top_text&#125;&gt;</div><div class="line">				附近</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		  &lt;View style=&#123;styles.vertical_view&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/iei.png')&#125; style=&#123;&#123;alignSelf:'center',width:45,height:45&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.top_text&#125; &gt;</div><div class="line">				兴趣部落</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		&lt;/View&gt;</div><div class="line">		&lt;View style=&#123;&#123;height:30,backgroundColor:'#f9f9fb'&#125;&#125;/&gt;</div><div class="line">		&lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsa.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				羽毛球</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nsb.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				火车票</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;View style=&#123;styles.rectangle_view&#125;&gt;</div><div class="line">		  &lt;View style=&#123;&#123;flexDirection:'row',alignItems: 'center'&#125;&#125;&gt;</div><div class="line">			  &lt;Image source=&#123;require('./img/nrz.png')&#125; style=&#123;&#123;alignSelf:'center',width:30,height:30&#125;&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;styles.rectangle_text&#125; &gt;</div><div class="line">				视频</div><div class="line">			  &lt;/Text&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		  &lt;Image source=&#123;require('./img/ppe.png')&#125; style=&#123;&#123;alignSelf:'center',width:20,height:20&#125;&#125;/&gt;</div><div class="line">		 &lt;/View&gt;</div><div class="line">		 &lt;/ScrollView&gt;</div><div class="line">		 &lt;TouchableOpacity</div><div class="line">		  style=&#123;styles.button&#125;</div><div class="line">		  onPress=&#123;() =&gt; &#123; _scrollView.scrollTo(&#123;y: 0&#125;); &#125;&#125;&gt;</div><div class="line">		  &lt;Text&gt;让我滚回去&lt;/Text&gt;</div><div class="line">		&lt;/TouchableOpacity&gt;</div><div class="line">	  &lt;/View&gt;</div><div class="line">	);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const styles = StyleSheet.create(&#123;</div><div class="line"> container: &#123;</div><div class="line">	flex: 1,</div><div class="line">	backgroundColor: 'white',</div><div class="line">  &#125;,</div><div class="line">   title_view:&#123;</div><div class="line">	flexDirection:'row',</div><div class="line">	height:50,</div><div class="line">	justifyContent: 'center',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor:'#27b5ee',</div><div class="line">  &#125;,</div><div class="line">   title_text:&#123;</div><div class="line">	color:'white',</div><div class="line">	fontSize:20,</div><div class="line">	textAlign:'center'</div><div class="line">  &#125;,</div><div class="line">  three_image_view:&#123;</div><div class="line">	paddingTop: 15,</div><div class="line">	flexDirection:'row',</div><div class="line">	justifyContent: 'space-around',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor:'white',</div><div class="line">  &#125;,</div><div class="line">  vertical_view:&#123;</div><div class="line">	justifyContent: 'center',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor:'white',</div><div class="line">	paddingBottom:15,</div><div class="line">  &#125;,</div><div class="line">   top_text:&#123;</div><div class="line">	marginTop:5,</div><div class="line">	color:'black',</div><div class="line">	fontSize:16,</div><div class="line">	textAlign:'center'</div><div class="line">  &#125;,</div><div class="line">  rectangle_view:&#123;</div><div class="line">	paddingTop:8,</div><div class="line">	paddingBottom:8,</div><div class="line">	paddingLeft:15,</div><div class="line">	paddingRight:15,</div><div class="line">	flexDirection:'row',</div><div class="line">	justifyContent: 'space-between',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor:'white',  </div><div class="line">	borderBottomColor:'#dedfe0',</div><div class="line">	borderBottomWidth:1,</div><div class="line">  &#125;,</div><div class="line">  rectangle_text:&#123;</div><div class="line">	color:'black',</div><div class="line">	fontSize:16,</div><div class="line">	textAlign:'center',</div><div class="line">	paddingLeft:8,</div><div class="line">  &#125;,</div><div class="line">  button: &#123;</div><div class="line">	margin: 7,</div><div class="line">	padding: 5,</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor: '#eaeaea',</div><div class="line">	borderRadius: 3,</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent('ImageDemo', () =&gt; ImageDemo);</div></pre></td></tr></table></figure>
+<p>ok,到这里ScrollView就讲完了，由于非常简单，大家赶紧去练练手吧！不懂的可以在下面留言，由于我也是第一次学，欢迎大家提出不足，一起交流学习。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag">#React Native</a>
+          
+            <a href="/tags/基础组件/" rel="tag">#基础组件</a>
+          
+            <a href="/tags/ScrollView/" rel="tag">#ScrollView</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/04/reactnative-image/" rel="next" title="基础篇章：React Native之 Image 的讲解">
+                <i class="fa fa-chevron-left"></i> 基础篇章：React Native之 Image 的讲解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/31/基础篇章：关于 React Native 之 Touchable 系列组件的讲解/" rel="prev" title="基础篇章：关于 React Native 之 Touchable 系列组件的讲解">
+                基础篇章：关于 React Native 之 Touchable 系列组件的讲解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我的性格"><span class="nav-number">1.</span> <span class="nav-text">我的性格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的穿衣打扮"><span class="nav-number">2.</span> <span class="nav-text">我的穿衣打扮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的秀丽身材"><span class="nav-number">3.</span> <span class="nav-text">我的秀丽身材</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#魔鬼样子"><span class="nav-number">3.1.</span> <span class="nav-text">魔鬼样子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑实现"><span class="nav-number">3.2.</span> <span class="nav-text">逻辑实现</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

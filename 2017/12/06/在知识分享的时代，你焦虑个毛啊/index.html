@@ -1,0 +1,842 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="焦虑," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="最近浏览知乎，经常有人邀请我回答问题，类似都是一些这样的：我现在感觉好迷茫，很焦虑，总感觉自己被社会快淘汰了，经常浏览一些技术社区，订阅公众号，看博客，看到很多技术感觉自己都不会。你们说我该怎么办啊？是的，在碎片化的学习时代，人的焦虑比以前更重了。你是这样的吗？
+
+不管你们有没有这种情况，会不会焦虑，反正作为我个人来讲，我看到很多东西如果不会的话，我会不自觉的陷入焦虑，那该如何改变这种状态呢？有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在知识分享的时代，你焦虑个毛啊">
+<meta property="og:url" content="http://loonggg.github.io/2017/12/06/在知识分享的时代，你焦虑个毛啊/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="最近浏览知乎，经常有人邀请我回答问题，类似都是一些这样的：我现在感觉好迷茫，很焦虑，总感觉自己被社会快淘汰了，经常浏览一些技术社区，订阅公众号，看博客，看到很多技术感觉自己都不会。你们说我该怎么办啊？是的，在碎片化的学习时代，人的焦虑比以前更重了。你是这样的吗？
+
+不管你们有没有这种情况，会不会焦虑，反正作为我个人来讲，我看到很多东西如果不会的话，我会不自觉的陷入焦虑，那该如何改变这种状态呢？有">
+<meta property="og:updated_time" content="2017-12-07T01:45:02.300Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在知识分享的时代，你焦虑个毛啊">
+<meta name="twitter:description" content="最近浏览知乎，经常有人邀请我回答问题，类似都是一些这样的：我现在感觉好迷茫，很焦虑，总感觉自己被社会快淘汰了，经常浏览一些技术社区，订阅公众号，看博客，看到很多技术感觉自己都不会。你们说我该怎么办啊？是的，在碎片化的学习时代，人的焦虑比以前更重了。你是这样的吗？
+
+不管你们有没有这种情况，会不会焦虑，反正作为我个人来讲，我看到很多东西如果不会的话，我会不自觉的陷入焦虑，那该如何改变这种状态呢？有">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 在知识分享的时代，你焦虑个毛啊 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                在知识分享的时代，你焦虑个毛啊
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-06T16:37:23+08:00" content="2017-12-06">
+              2017-12-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2017/12/06/在知识分享的时代，你焦虑个毛啊/" class="leancloud_visitors" data-flag-title="在知识分享的时代，你焦虑个毛啊">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>最近浏览知乎，经常有人邀请我回答问题，类似都是一些这样的：我现在感觉好迷茫，很焦虑，总感觉自己被社会快淘汰了，经常浏览一些技术社区，订阅公众号，看博客，看到很多技术感觉自己都不会。你们说我该怎么办啊？是的，在碎片化的学习时代，人的焦虑比以前更重了。你是这样的吗？</p>
+</blockquote>
+<p>不管你们有没有这种情况，会不会焦虑，反正作为我个人来讲，我看到很多东西如果不会的话，我会不自觉的陷入焦虑，那该如何改变这种状态呢？<strong>有一个方法非常有效，那就是：解决不了问题，就解决掉提出问题的那个人？所以，解决不了焦虑，就解决掉让你焦虑的方式。什么意思？不要杂七杂八的乱看</strong>。</p>
+<p>在这两年进入知识分享红利时代以后，知识分享火了，很多人开始了知识分享，因此也有很多人开始订阅专栏，订阅公众号等，看大家的分享，很多分享感觉别人说的很有道理，为什么我没有想到？<strong>很多分享看了感觉自己不会的东西有很多，甚至感觉越来越多，让自己更清醒的认识了自己的无知</strong>。所以，越读越焦虑，越焦虑越迷茫，我该去向何方？<br><a id="more"></a></p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>造成这种情况的原因，不知道大家想过没有？是不是光想着焦虑了，没有思考一下，是什么造成了你的焦虑，仅仅是因为自己的无知吗？不见得。我认为原因大概如下：</p>
+<h3 id="太过于碎片化"><a href="#太过于碎片化" class="headerlink" title="太过于碎片化"></a>太过于碎片化</h3><p>怎么说呢？随着知识分享热潮的到来，越来越多的人开始了知识分享，再加上自媒体时代，移动互联网的迅速传播，很多人看到了这些知识，开始了迷茫，甚至手无足措的订阅，总想着感觉这些分享跟自己的技术，专业和工作相关，订阅后，能够帮助到我。</p>
+<blockquote>
+<p>举个例子，比如：程序员，一个从事 Android 开发的程序员，仅仅目前只是从事应用层面的开发，他还经常看底层的一些技术博客和专栏，公众号等，还订阅了 Java 后台开发的公众号，博客，甚至订阅了一些 Python ，Go，人工智能方面的专栏，你说你看了这些，能不焦虑吗？你学的过来吗？估计你闲暇时间看得过来，但是学不过来，这就会造成焦虑。</p>
+</blockquote>
+<p>这些知识，东一下，西一下，跟自己的工作看似相连，能有帮助，但是又实际可能关系不大，这么多知识，让你感觉学不过来，看到分享的人好厉害，就会感觉：人家咋这么厉害呢？</p>
+<h3 id="欲望过度"><a href="#欲望过度" class="headerlink" title="欲望过度"></a>欲望过度</h3><p>人啊，得学会知足。<strong>不要看着碗里的，想着锅里的，你能把自己目前负责的一亩三分地耕种好就不错了</strong>。说白了就是欲望过度，总想着一步到位，快速挣钱，感觉懂得多了值钱。<strong>我认为真正的值钱是深度，而不是广度</strong>。当然你又有深度，又有广度那当然最好了。前提是先把深度做好，再去想广度的问题。目前造成你焦虑的原因是深度没做好，不专一的同时，还总想着广度。最后深度没有，广度都是吹牛。所以，一些杂七杂八的造成你焦虑的专栏和订阅就取消吧，只订阅跟你技术相关，工作相关，有利于你深度的一些博客和专栏，公众号等。</p>
+<h3 id="只心动不行动"><a href="#只心动不行动" class="headerlink" title="只心动不行动"></a>只心动不行动</h3><p>很多焦虑的人，基本上都有一个共同点，那就是：<strong>只会焦虑，不会行动</strong>。你看到了知识，不学习，没有到手，能不焦虑？道理是显而易见的，我不多说。焦虑又懒惰。<strong>你有时间悲春伤秋，真的不如着手干点什么</strong>。</p>
+<p>其实以上所有的造成焦虑的原因总结成一句话就是：<strong>看的越多，越知道自己的无知，还不行动</strong>。我国国民在碎片化知识分享的时代，最大的矛盾不是十九大报告中说的，中国特色社会主义进入新时代，我国社会主要矛盾已经转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾，<strong>而是在进入信息过载的时代，我国的主要矛盾是自己的行动跟不上自己的欲望，自己的能力跟不上技术的发展，知识的爆炸之间的矛盾</strong>。</p>
+<h2 id="如何看待现在的碎片化阅读"><a href="#如何看待现在的碎片化阅读" class="headerlink" title="如何看待现在的碎片化阅读"></a>如何看待现在的碎片化阅读</h2><p>首先，我不认为碎片化阅读是学习。<strong>我认为目前碎片化的阅读顶多算是闲暇后的消遣和娱乐</strong>。这是我们需要正确看待的一点。碎片化阅读也不是没用的，我上面说了，可以给你增加一些广度，你读的东西越多，知道的可能就越多，可以在和同事，朋友之间的聊天中显示自己的知识面广，总结成两个字是：<strong>吹牛或者显摆</strong>。对，碎片化阅读可以让你吹牛和显摆。</p>
+<p>其次，你仅仅是通过碎片化阅读可以了解和知道一些知识点，仅仅是知道，而不是自己已经掌握，<strong>学习其实是一个系统性的工程</strong>。碎片化的学习，东一点，西一点的看，不能说没用，但是由于大众没有串接起来的能力，导致你不能完全掌握和驾驭它。所以在用的时候，可能还是会手足无措，这样只会增加自己的焦虑。所以啊，我建议大家学习东西的时候，最好看书。<strong>书是一个系列和系统的工程，而看博客和专栏，公众号都是零零散散的点，点多了可能是成面了，但是凌乱的点组合差了就是错误的系统“面”，这是非常危险的。看书学习是主动型的学习，而看视频，订阅等推荐式的学习是被动型的学习，被动不如主动，多点主动型的比较好</strong>。</p>
+<p>最后，我建议大家要正确看待这个碎片化的阅读和订阅，学习是系统性的工程，目前我们很多人都开始做技术公众号，技术分享，但是大家在阅读和看的时候，不要产生一些焦虑，也不要感觉分享的人很厉害，不一定，说不定没你厉害，术业有专攻，大家各有优点和能力。程序员分很多种，每种又有很多方向，术业有专攻，仅此而已，都有自己擅长不擅长的领域。建议大家去订阅跟自己工作比较密切，有利自己深度拓展的专栏，博客等，少看一些提高广度的。<strong>先深后广，相信自己深度好了就完全没问题了，广度算是附加价值，深度才是核心价值</strong>。</p>
+<p>看完这些分析，是不是心里好受了一些？所以啊，焦虑个毛啊，别焦虑了，别有什么知识恐慌，明明是知识过载，我们按着一个方向攻才是容易成功的，而非全才，全栈。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/焦虑/" rel="tag">#焦虑</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/30/为什么产品经理的工资不能够比程序员高？/" rel="next" title="为什么产品经理的工资不能够比程序员高？">
+                <i class="fa fa-chevron-left"></i> 为什么产品经理的工资不能够比程序员高？
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/07/软件行业里学历和资历哪个更重要？/" rel="prev" title="软件行业里学历和资历哪个更重要？">
+                软件行业里学历和资历哪个更重要？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">1.</span> <span class="nav-text">原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#太过于碎片化"><span class="nav-number">1.1.</span> <span class="nav-text">太过于碎片化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欲望过度"><span class="nav-number">1.2.</span> <span class="nav-text">欲望过度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只心动不行动"><span class="nav-number">1.3.</span> <span class="nav-text">只心动不行动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何看待现在的碎片化阅读"><span class="nav-number">2.</span> <span class="nav-text">如何看待现在的碎片化阅读</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

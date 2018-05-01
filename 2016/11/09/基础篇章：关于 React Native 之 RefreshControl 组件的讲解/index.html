@@ -1,0 +1,868 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React Native,基础组件,RefreshControl," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="我们已经讲完了 ScrollView 和 ListView ，自然而然我们就应该讲的组件就是下拉刷新的喽，因为它们几个是兄弟，常常一块出现，就跟打麻将似的，四缺一不能打，那它们三就是斗地主，三缺一不能玩。今天讲的这个组件就是它们的兄弟：RefreshControl 。
+
+介绍我的母亲官网是这么介绍我的，说：我是大家在使用我的兄弟ScrollView或ListView添加拉刷新功能用的，我们几个好">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础篇章：关于 React Native 之 RefreshControl 组件的讲解">
+<meta property="og:url" content="http://loonggg.github.io/2016/11/09/基础篇章：关于 React Native 之 RefreshControl 组件的讲解/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="我们已经讲完了 ScrollView 和 ListView ，自然而然我们就应该讲的组件就是下拉刷新的喽，因为它们几个是兄弟，常常一块出现，就跟打麻将似的，四缺一不能打，那它们三就是斗地主，三缺一不能玩。今天讲的这个组件就是它们的兄弟：RefreshControl 。
+
+介绍我的母亲官网是这么介绍我的，说：我是大家在使用我的兄弟ScrollView或ListView添加拉刷新功能用的，我们几个好">
+<meta property="og:image" content="https://github.com/loonggg/BlogImages/blob/master/ReactNative/listview/refreshcontrol.gif?raw=true">
+<meta property="og:updated_time" content="2016-11-13T13:24:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础篇章：关于 React Native 之 RefreshControl 组件的讲解">
+<meta name="twitter:description" content="我们已经讲完了 ScrollView 和 ListView ，自然而然我们就应该讲的组件就是下拉刷新的喽，因为它们几个是兄弟，常常一块出现，就跟打麻将似的，四缺一不能打，那它们三就是斗地主，三缺一不能玩。今天讲的这个组件就是它们的兄弟：RefreshControl 。
+
+介绍我的母亲官网是这么介绍我的，说：我是大家在使用我的兄弟ScrollView或ListView添加拉刷新功能用的，我们几个好">
+<meta name="twitter:image" content="https://github.com/loonggg/BlogImages/blob/master/ReactNative/listview/refreshcontrol.gif?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 基础篇章：关于 React Native 之 RefreshControl 组件的讲解 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基础篇章：关于 React Native 之 RefreshControl 组件的讲解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-09T10:39:04+08:00" content="2016-11-09">
+              2016-11-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/11/09/基础篇章：关于 React Native 之 RefreshControl 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 RefreshControl 组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>我们已经讲完了 ScrollView 和 ListView ，自然而然我们就应该讲的组件就是下拉刷新的喽，因为它们几个是兄弟，常常一块出现，就跟打麻将似的，四缺一不能打，那它们三就是斗地主，三缺一不能玩。今天讲的这个组件就是它们的兄弟：RefreshControl 。</p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我的母亲官网是这么介绍我的，说：我是大家在使用我的兄弟ScrollView或ListView添加拉刷新功能用的，我们几个好兄弟常常在一起玩。当我的兄弟ScrollView中 scrollY:0时,触发一个onRefresh事件，我就开始工作，下拉刷新起来。</p>
+<blockquote>
+<p>注意：refreshing 是一个你们可以控制我的属性，这就是为什么你们在使用onRefresh方法时，必须设置为 true，否则，我会立刻停止刷新，不跟你们玩了。</p>
+</blockquote>
+<h2 id="我的特性"><a href="#我的特性" class="headerlink" title="我的特性"></a>我的特性</h2><p>一如既往的，想要跟我玩，而且要玩的好，必须先得了解我的性格和特点才行，知己知彼，才能运用自如嘛。我这人，比较自信，所以不怕把我的弱点和特点透漏给敌人。</p>
+<ul>
+<li>onRefresh function 当视图开始刷新的时候回调</li>
+<li>refreshing bool 视图是否应该在刷新时显示刷新的指示器。</li>
+<li>colors [color] android专有 指定刷新指示器的颜色，至少设置一种颜色，最多可设置四种颜色，相当于android中的refreshLayout</li>
+<li>enabled bool android 是否启用下拉刷新功能</li>
+<li>progressBackgroundColor color android 刷新指示器的背景色</li>
+<li>progressViewOffset number android 进度视图离顶部的偏移量</li>
+<li>size enum(RefreshLayoutConsts.SIZE.DEFAULT, RefreshLayoutConsts.SIZE.LARGE)  android 刷新指示器的大小</li>
+<li>tintColor color ios 刷新指示器的颜色</li>
+<li>title string ios 刷新指示器下面展示的文字</li>
+<li>titleColor color ios title的颜色</li>
+</ul>
+<a id="more"></a>
+<h2 id="如何和我玩"><a href="#如何和我玩" class="headerlink" title="如何和我玩"></a>如何和我玩</h2><p>来，看看我的直观魅力美化效果图：<br><img src="https://github.com/loonggg/BlogImages/blob/master/ReactNative/listview/refreshcontrol.gif?raw=true" alt=""></p>
+<h3 id="逻辑代码实现"><a href="#逻辑代码实现" class="headerlink" title="逻辑代码实现"></a>逻辑代码实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  AppRegistry,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  ListView,</div><div class="line">  Image,</div><div class="line">  TouchableHighlight,</div><div class="line">  RefreshControl,</div><div class="line">  View</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RefreshControlDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">	<span class="keyword">super</span>(props);</div><div class="line">	<span class="keyword">const</span> ds = <span class="keyword">new</span> ListView.DataSource(&#123;<span class="attr">rowHasChanged</span>: <span class="function">(<span class="params">r1, r2</span>) =&gt;</span> r1 !== r2&#125;);</div><div class="line">	<span class="keyword">this</span>.state = &#123;</div><div class="line">	  <span class="attr">isRefreshing</span>: <span class="literal">false</span>,</div><div class="line">	  <span class="attr">dataSource</span>: ds.cloneWithRows(<span class="keyword">this</span>._genRows(<span class="number">-1</span>)),</div><div class="line">	&#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  _genRows(flag)&#123;</div><div class="line">		<span class="keyword">const</span> dataBlob = [];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span> ; i&lt; <span class="number">88</span> ; i ++ )&#123;</div><div class="line">		  <span class="keyword">if</span>(i == flag)&#123;</div><div class="line">			dataBlob.push(<span class="string">"非著名程序员+我被打了"</span>+i);</div><div class="line">		  &#125;<span class="keyword">else</span>&#123;</div><div class="line">			 dataBlob.push(<span class="string">"非著名程序员"</span>+i);</div><div class="line">		  &#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> dataBlob;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">	<span class="keyword">return</span> (</div><div class="line">		&lt;ListView</div><div class="line">		  dataSource=&#123;this.state.dataSource&#125;</div><div class="line">		  renderRow=&#123;this._renderRow.bind(this)&#125;</div><div class="line">		  refreshControl=&#123;</div><div class="line">		  &lt;RefreshControl</div><div class="line">			refreshing=&#123;this.state.isRefreshing&#125;</div><div class="line">			onRefresh=&#123;this._onRefresh.bind(this)&#125;</div><div class="line">			tintColor="#ff0000"</div><div class="line">			colors=&#123;['#ff0000', '#00ff00', '#0000ff']&#125;</div><div class="line">			progressBackgroundColor="#ffff00"</div><div class="line">			enabled=&#123;true&#125;  </div><div class="line">		  /&gt;</div><div class="line">		&#125;</div><div class="line">		/&gt;</div><div class="line">	);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  _renderRow (rowData,sectionID, rowID) &#123;</div><div class="line">	return (</div><div class="line">		&lt;TouchableHighlight onPress=&#123;() =&gt; &#123;</div><div class="line">		  this._pressRow(rowData,rowID);</div><div class="line">		&#125;&#125;</div><div class="line">		underlayColor='red'</div><div class="line">		&gt;</div><div class="line">		  &lt;View&gt;</div><div class="line">			&lt;View style=&#123;styles.row&#125;&gt;</div><div class="line">			  &lt;Image style=&#123;&#123;width:40,height:40&#125;&#125; source=&#123;require('./Thumbnails/head.jpg')&#125;/&gt;</div><div class="line">			  &lt;Text style=&#123;&#123;flex:1,fontSize:20,marginLeft:20&#125;&#125;&gt;</div><div class="line">				&#123;rowData&#125;</div><div class="line">			  &lt;/Text&gt;</div><div class="line">			&lt;/View&gt;</div><div class="line">		  &lt;/View&gt;</div><div class="line">		&lt;/TouchableHighlight&gt;</div><div class="line">	);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">  _pressRow(rowData,rowID)&#123;</div><div class="line">		alert(rowData);</div><div class="line">		this.setState(&#123;dataSource: this.state.dataSource.cloneWithRows(</div><div class="line">		this._genRows(rowID))&#125;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	_refreshRows()&#123;</div><div class="line">		const dataBlob = [];</div><div class="line">		for(let i = 0 ; i&lt; 8 ; i ++ )&#123;</div><div class="line">			dataBlob.push("我爱非著名程序员");</div><div class="line">		&#125;</div><div class="line">		return dataBlob;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	_onRefresh()&#123;</div><div class="line">	  this.setState(&#123;isRefreshing: true&#125;);</div><div class="line">	  setTimeout(() =&gt; &#123;</div><div class="line">	  this.setState(&#123;</div><div class="line">		isRefreshing: false,</div><div class="line">		dataSource: this.state.dataSource.cloneWithRows(</div><div class="line">		this._refreshRows())</div><div class="line">	  &#125;);</div><div class="line">	&#125;, 5000);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const styles = StyleSheet.create(&#123;</div><div class="line">	container: &#123;</div><div class="line">	flex: 1,</div><div class="line">	justifyContent: 'center',</div><div class="line">	alignItems: 'center',</div><div class="line">	backgroundColor: '#F5FCFF',</div><div class="line">  &#125;,</div><div class="line">  row: &#123;</div><div class="line">	flexDirection: 'row',</div><div class="line">	justifyContent: 'center',</div><div class="line">	alignItems:'center',</div><div class="line">	padding: 10,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent('RefreshControlDemo', () =&gt; RefreshControlDemo);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>今天我们讲的这个demo例子，我用的是ListView和RefreshControl搭配使用，因为官网的例子是ScrollView和RefreshControl的搭配使用。所以关于ScrollView和RefreshControl怎么使用，大家请移步官网，看例子，我这里就不重复介绍了。官方例子地址：[<a href="https://facebook.github.io/react-native/docs/refreshcontrol.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/refreshcontrol.html</a>]</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag">#React Native</a>
+          
+            <a href="/tags/基础组件/" rel="tag">#基础组件</a>
+          
+            <a href="/tags/RefreshControl/" rel="tag">#RefreshControl</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/" rel="next" title="基础篇章：关于 React Native 之 ListView 组件的讲解">
+                <i class="fa fa-chevron-left"></i> 基础篇章：关于 React Native 之 ListView 组件的讲解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/13/基础篇章：关于 React Native 之 Navigator 组件的讲解/" rel="prev" title="基础篇章：关于 React Native 之 Navigator 组件的讲解">
+                基础篇章：关于 React Native 之 Navigator 组件的讲解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的特性"><span class="nav-number">2.</span> <span class="nav-text">我的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何和我玩"><span class="nav-number">3.</span> <span class="nav-text">如何和我玩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑代码实现"><span class="nav-number">3.1.</span> <span class="nav-text">逻辑代码实现</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

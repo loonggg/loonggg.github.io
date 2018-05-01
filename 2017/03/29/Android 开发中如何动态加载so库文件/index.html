@@ -1,0 +1,866 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="so文件,so库," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="我想对于静态加载 so 库文件，大家都已经很熟悉了，这里就不多说了。在 Android 开发中调用动态库文件(*.so)都是通过 jni 的方式，而静态加载往往是在 apk 或 jar 包中调用so文件时，都要将对应 so 文件打包进 apk 或 jar 包。
+
+动态加载的优点静态加载，不灵活，apk 包有可能大。所以采用动态加载 so 库文件，有以下几点好处：
+
+灵活，so 文件可以动态加载，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 开发中如何动态加载 so 库文件">
+<meta property="og:url" content="http://loonggg.github.io/2017/03/29/Android 开发中如何动态加载so库文件/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="我想对于静态加载 so 库文件，大家都已经很熟悉了，这里就不多说了。在 Android 开发中调用动态库文件(*.so)都是通过 jni 的方式，而静态加载往往是在 apk 或 jar 包中调用so文件时，都要将对应 so 文件打包进 apk 或 jar 包。
+
+动态加载的优点静态加载，不灵活，apk 包有可能大。所以采用动态加载 so 库文件，有以下几点好处：
+
+灵活，so 文件可以动态加载，">
+<meta property="og:updated_time" content="2017-03-29T12:59:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 开发中如何动态加载 so 库文件">
+<meta name="twitter:description" content="我想对于静态加载 so 库文件，大家都已经很熟悉了，这里就不多说了。在 Android 开发中调用动态库文件(*.so)都是通过 jni 的方式，而静态加载往往是在 apk 或 jar 包中调用so文件时，都要将对应 so 文件打包进 apk 或 jar 包。
+
+动态加载的优点静态加载，不灵活，apk 包有可能大。所以采用动态加载 so 库文件，有以下几点好处：
+
+灵活，so 文件可以动态加载，">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android 开发中如何动态加载 so 库文件 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 开发中如何动态加载 so 库文件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-29T10:39:04+08:00" content="2017-03-29">
+              2017-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2017/03/29/Android 开发中如何动态加载so库文件/" class="leancloud_visitors" data-flag-title="Android 开发中如何动态加载 so 库文件">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>我想对于静态加载 so 库文件，大家都已经很熟悉了，这里就不多说了。在 Android 开发中调用动态库文件(*.so)都是通过 jni 的方式，而静态加载往往是在 apk 或 jar 包中调用so文件时，都要将对应 so 文件打包进 apk 或 jar 包。</p>
+</blockquote>
+<h2 id="动态加载的优点"><a href="#动态加载的优点" class="headerlink" title="动态加载的优点"></a>动态加载的优点</h2><p>静态加载，不灵活，apk 包有可能大。所以采用动态加载 so 库文件，有以下几点好处：</p>
+<ol>
+<li>灵活，so 文件可以动态加载，不是绑定死的，修改方便，so 库有问题，我们可以动态更新。</li>
+<li>so 库文件很大的话，采用动态加载可以减少 apk 的包，变小。</li>
+<li>其实我们常用第三方 so 库，单个可能没问题，如果多个第三方 so 库文件，同时加载可能会出现冲突，而动态加载就能够解决这一问题。</li>
+</ol>
+<a id="more"></a>
+<h2 id="注意路径陷阱"><a href="#注意路径陷阱" class="headerlink" title="注意路径陷阱"></a>注意路径陷阱</h2><p>动态加载 so 库文件，并不是说可以把文件随便存放到某个 sdcard 文件目录下，这样做既不安全，系统也加载不了。</p>
+<p>我们在 Android 中加载 so 文件，提供的 API 如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一种，pathName 库文件的绝对路径</span></div><div class="line"><span class="keyword">void</span> System.load(String pathName);</div><div class="line"><span class="comment">//第二种,参数为库文件名，不包含库文件的扩展名，必须是在JVM属性Java.library.path所指向的路径中，路径可以通过System.getProperty('java.library.path') 获得</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">loadLibrary</span><span class="params">(String libname)</span></span></div></pre></td></tr></table></figure>
+<p>注意：而这里加载的文件路径只能加载两个目录下的 so 文件。那就是：</p>
+<ol>
+<li>/system/lib </li>
+<li>应用程序安装包的路径，即：/data/data/packagename/…</li>
+</ol>
+<p>所以，so 文件动态加载的文件目录不能随便放。这是需要注意的一点。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>既然使用动态加载的好处和陷阱我们都大致了解了，那就可以在实现的时候，注意陷阱就可以了。那基本思路如下：</p>
+<ol>
+<li>网络下载 so 文件到指定目录</li>
+<li>从指定下载的目录复制 copy so文件到可动态加载的文件目录下，比如：/data/data/packagename/…</li>
+<li>配置 gradle ，指定 cpu 架构 </li>
+<li>load 加载</li>
+</ol>
+<p>第一步，我们这里可以简单忽略，假设我们把 so 文件下载到了 /mnt/sdcard/armeabi 目录下。</p>
+<h3 id="复制目录到包路径下"><a href="#复制目录到包路径下" class="headerlink" title="复制目录到包路径下"></a>复制目录到包路径下</h3><p>那我们就应该把 /mnt/sdcard/armeabi 目录下的 so 文件，复制到 应用的包路径下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by loonggg on 2017/3/29.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SoFile</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 加载 so 文件</div><div class="line">     * <span class="doctag">@param</span> context</div><div class="line">     * <span class="doctag">@param</span> fromPath 下载到得sdcard目录</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadSoFile</span><span class="params">(Context context, String fromPath)</span> </span>&#123;</div><div class="line">        File dir = context.getDir(<span class="string">"libs"</span>, Context.MODE_PRIVATE);</div><div class="line">        <span class="keyword">if</span> (!isLoadSoFile(dir)) &#123;</div><div class="line">            copy(fromPath, dir.getAbsolutePath());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 判断 so 文件是否存在</div><div class="line">     * <span class="doctag">@param</span> dir</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isLoadSoFile</span><span class="params">(File dir)</span> </span>&#123;</div><div class="line">        File[] currentFiles;</div><div class="line">        currentFiles = dir.listFiles();</div><div class="line">        <span class="keyword">boolean</span> hasSoLib = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span> (currentFiles == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; currentFiles.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (currentFiles[i].getName().contains(<span class="string">"libwedsa23"</span>)) &#123;</div><div class="line">                hasSoLib = <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> hasSoLib;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> fromFile 指定的下载目录</div><div class="line">     * <span class="doctag">@param</span> toFile 应用的包路径</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">copy</span><span class="params">(String fromFile, String toFile)</span> </span>&#123;</div><div class="line">        <span class="comment">//要复制的文件目录</span></div><div class="line">        File[] currentFiles;</div><div class="line">        File root = <span class="keyword">new</span> File(fromFile);</div><div class="line">        <span class="comment">//如同判断SD卡是否存在或者文件是否存在,如果不存在则 return出去</span></div><div class="line">        <span class="keyword">if</span> (!root.exists()) &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//如果存在则获取当前目录下的全部文件 填充数组</span></div><div class="line">        currentFiles = root.listFiles();</div><div class="line"></div><div class="line">        <span class="comment">//目标目录</span></div><div class="line">        File targetDir = <span class="keyword">new</span> File(toFile);</div><div class="line">        <span class="comment">//创建目录</span></div><div class="line">        <span class="keyword">if</span> (!targetDir.exists()) &#123;</div><div class="line">            targetDir.mkdirs();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//遍历要复制该目录下的全部文件</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; currentFiles.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (currentFiles[i].isDirectory()) &#123;</div><div class="line">                <span class="comment">//如果当前项为子目录 进行递归</span></div><div class="line">                copy(currentFiles[i].getPath() + <span class="string">"/"</span>, toFile + currentFiles[i].getName() + <span class="string">"/"</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">//如果当前项为文件则进行文件拷贝</span></div><div class="line">                <span class="keyword">if</span> (currentFiles[i].getName().contains(<span class="string">".so"</span>)) &#123;</div><div class="line">                    <span class="keyword">int</span> id = copySdcardFile(currentFiles[i].getPath(), toFile + File.separator + currentFiles[i].getName());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">//文件拷贝</span></div><div class="line">    <span class="comment">//要复制的目录下的所有非子目录(文件夹)文件拷贝</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">copySdcardFile</span><span class="params">(String fromFile, String toFile)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            FileInputStream fosfrom = <span class="keyword">new</span> FileInputStream(fromFile);</div><div class="line">            FileOutputStream fosto = <span class="keyword">new</span> FileOutputStream(toFile);</div><div class="line">            ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</div><div class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</div><div class="line">            <span class="keyword">int</span> len = -<span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span> ((len = fosfrom.read(buffer)) != -<span class="number">1</span>) &#123;</div><div class="line">                baos.write(buffer, <span class="number">0</span>, len);</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 从内存到写入到具体文件</span></div><div class="line">            fosto.write(baos.toByteArray());</div><div class="line">            <span class="comment">// 关闭文件流</span></div><div class="line">            baos.close();</div><div class="line">            fosto.close();</div><div class="line">            fosfrom.close();</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="配置-grade-指定-cpu-架构"><a href="#配置-grade-指定-cpu-架构" class="headerlink" title="配置 grade 指定 cpu 架构"></a>配置 grade 指定 cpu 架构</h3><p>我们都知道，在使用 so 文件的时候，so  库类型和 CPU 架构类型，要一致，否则是会报错的。原因很简单，不同 CPU 架构的设备需要用不同类型 so 库。CPU架构有如下几种类型：ARMv5，ARMv7，x86，MIPS，ARMv8，MIPS64 和 x86_64。如果要适配很多手机，就需要在不同的类型下，放置对应的 so 文件。<br>配置方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">defaultConfig &#123;</div><div class="line">        applicationId <span class="string">"xxxx"</span></div><div class="line">        minSdkVersion <span class="number">17</span></div><div class="line">        targetSdkVersion <span class="number">25</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line"></div><div class="line">        ndk &#123;</div><div class="line">            abiFilters <span class="string">"armeabi"</span>,<span class="string">"armeabi-v7a"</span>,<span class="string">"x86"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="load-加载-so-文件"><a href="#load-加载-so-文件" class="headerlink" title="load 加载 so 文件"></a>load 加载 so 文件</h3><p>复制到可加载使用的包路径下后,配置完 gradle 之后，就可以使用 load API 调用了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">File dir =  getApplicationContext().getDir(<span class="string">"l  ibs"</span>, Context.MODE_PRIVATE);</div><div class="line">File[] currentFiles;</div><div class="line">currentFiles = dir.listFiles();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; currentFiles.length; i++) &#123;</div><div class="line">   System.load(currentFiles[i].getAbsolutePath());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样，我们就实现了动态加载 so 文件。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/so文件/" rel="tag">#so文件</a>
+          
+            <a href="/tags/so库/" rel="tag">#so库</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/14/基础篇章：关于 React Native 之 WebView 的讲解/" rel="next" title="基础篇章：关于 React Native 之 WebView 的讲解">
+                <i class="fa fa-chevron-left"></i> 基础篇章：关于 React Native 之 WebView 的讲解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/29/DragerViewLayout/" rel="prev" title="一个可拖拽，移动，自由组合子控件的视图控件，让开发更简单">
+                一个可拖拽，移动，自由组合子控件的视图控件，让开发更简单 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态加载的优点"><span class="nav-number">1.</span> <span class="nav-text">动态加载的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意路径陷阱"><span class="nav-number">2.</span> <span class="nav-text">注意路径陷阱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现思路"><span class="nav-number">3.</span> <span class="nav-text">实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#复制目录到包路径下"><span class="nav-number">3.1.</span> <span class="nav-text">复制目录到包路径下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-grade-指定-cpu-架构"><span class="nav-number">3.2.</span> <span class="nav-text">配置 grade 指定 cpu 架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-加载-so-文件"><span class="nav-number">3.3.</span> <span class="nav-text">load 加载 so 文件</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

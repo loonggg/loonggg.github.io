@@ -1,0 +1,870 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Material Design,Navigation,Drawer," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="从今天开始，我们讲一个关于Material Design风格控件系列的文章。个人认为Material Design风格还是非常漂亮和好看的。关于Material Design的控件，从今天这篇开始一个一个的讲，希望能够对大家有所帮助。
+
+Material Design系列控件，我们今天就先从侧滑菜单栏开始，侧滑菜单栏通过名字我们就知道包含两部分，一部分是侧滑（DrawerLayout），一部分是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Material Design系列之Navigation Drawer">
+<meta property="og:url" content="http://loonggg.github.io/2016/06/19/Android Material Design系列之Navigation Drawer/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="从今天开始，我们讲一个关于Material Design风格控件系列的文章。个人认为Material Design风格还是非常漂亮和好看的。关于Material Design的控件，从今天这篇开始一个一个的讲，希望能够对大家有所帮助。
+
+Material Design系列控件，我们今天就先从侧滑菜单栏开始，侧滑菜单栏通过名字我们就知道包含两部分，一部分是侧滑（DrawerLayout），一部分是">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/26DB607A-FBAD-4ACE-9D2C-6C45D71514B7.png">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/D4FE667A-3519-45DF-AD52-094F7DBB0487.png">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Material Design系列之Navigation Drawer">
+<meta name="twitter:description" content="从今天开始，我们讲一个关于Material Design风格控件系列的文章。个人认为Material Design风格还是非常漂亮和好看的。关于Material Design的控件，从今天这篇开始一个一个的讲，希望能够对大家有所帮助。
+
+Material Design系列控件，我们今天就先从侧滑菜单栏开始，侧滑菜单栏通过名字我们就知道包含两部分，一部分是侧滑（DrawerLayout），一部分是">
+<meta name="twitter:image" content="http://7xsgef.com1.z0.glb.clouddn.com/26DB607A-FBAD-4ACE-9D2C-6C45D71514B7.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android Material Design系列之Navigation Drawer | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android Material Design系列之Navigation Drawer
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-19T12:39:04+08:00" content="2016-06-19">
+              2016-06-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/Material-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Material Design</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/06/19/Android Material Design系列之Navigation Drawer/" class="leancloud_visitors" data-flag-title="Android Material Design系列之Navigation Drawer">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>从今天开始，我们讲一个关于Material Design风格控件系列的文章。个人认为Material Design风格还是非常漂亮和好看的。关于Material Design的控件，从今天这篇开始一个一个的讲，希望能够对大家有所帮助。</p>
+</blockquote>
+<p>Material Design系列控件，我们今天就先从侧滑菜单栏开始，侧滑菜单栏通过名字我们就知道包含两部分，一部分是侧滑（DrawerLayout），一部分是导航菜单栏(NavigationView)。DrawerLayout包含NavigationView，一设置侧滑菜单栏就形成了。因为建立一个侧滑菜单很简单，在用Android Studio新建项目时，最后选择Navigation Drawer Activity或者在新建Activity时选择Navigation Drawer Activity，就出来了。今天我们讲一下它们的自定义配置。</p>
+<h3 id="DrawerLayout布局"><a href="#DrawerLayout布局" class="headerlink" title="DrawerLayout布局"></a>DrawerLayout布局</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">android.support.v4.widget.DrawerLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"></div><div class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line"></div><div class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line"></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/drawer_layout"</span></div><div class="line"></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">    <span class="attr">android:fitsSystemWindows</span>=<span class="string">"true"</span></div><div class="line"></div><div class="line">    <span class="attr">tools:openDrawer</span>=<span class="string">"start"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">include</span></span></div><div class="line"></div><div class="line">        <span class="attr">layout</span>=<span class="string">"@layout/app_bar_main"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> /&gt;</div><div class="line">        </div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.NavigationView</span></span></div><div class="line"></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/nav_view"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_gravity</span>=<span class="string">"start"</span></div><div class="line"></div><div class="line">        <span class="attr">android:fitsSystemWindows</span>=<span class="string">"true"</span></div><div class="line"></div><div class="line">        <span class="attr">app:headerLayout</span>=<span class="string">"@layout/nav_header_main"</span></div><div class="line"></div><div class="line">        <span class="attr">app:menu</span>=<span class="string">"@menu/activity_main_drawer"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.v4.widget.DrawerLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>从上面的布局代码中我们就看出来了，DrawerLayout包含NavigationView，中间的include先不管，那是toolbar，咱改天详细讲。新建完项目，自带的布局效果是这样的，如下：<br><img src="http://7xsgef.com1.z0.glb.clouddn.com/26DB607A-FBAD-4ACE-9D2C-6C45D71514B7.png" alt=""></p>
+<p>从图中，我们可以看到菜单列表，这个菜单列表是我们刚开始建项目时自动生成的，系统默认的，我们需要定制这个菜单变成我们自己的。其实就是要用到了NavigationView。</p>
+<h3 id="NavigationView"><a href="#NavigationView" class="headerlink" title="NavigationView"></a>NavigationView</h3><p>NavigationView分为两部分，一部分是headerLayout，一部分是menu。headerLayout就是对应菜单的顶部部分，一般用来显示用户信息什么的，menu则对应实际的菜单选项。我们从上面的布局代码中可以看出分别对应的就是 app:headerLayout和app:menu。</p>
+<h4 id="headerLayout"><a href="#headerLayout" class="headerlink" title="headerLayout"></a>headerLayout</h4><p>布局代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line"></div><div class="line">    <span class="attr">android:padding</span>=<span class="string">"16dp"</span></div><div class="line"></div><div class="line">    <span class="attr">android:theme</span>=<span class="string">"@style/ThemeOverlay.AppCompat.Dark"</span></div><div class="line"></div><div class="line">    <span class="attr">android:background</span>=<span class="string">"?attr/colorPrimaryDark"</span></div><div class="line"></div><div class="line">    <span class="attr">android:gravity</span>=<span class="string">"center"</span></div><div class="line"></div><div class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line"></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/head_iv"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"60dp"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"60dp"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_marginTop</span>=<span class="string">"30dp"</span></div><div class="line"></div><div class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/head"</span> /&gt;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"非著名程序员"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></div><div class="line"></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"#ffffff"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="menu"><a href="#menu" class="headerlink" title="menu"></a>menu</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">group</span> <span class="attr">android:checkableBehavior</span>=<span class="string">"single"</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span></span></div><div class="line"></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/nav_home"</span></div><div class="line"></div><div class="line">            <span class="attr">android:icon</span>=<span class="string">"@drawable/nav_icon_home"</span></div><div class="line"></div><div class="line">            <span class="attr">android:title</span>=<span class="string">"Home"</span> /&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span></span></div><div class="line"></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/nav_favorite"</span></div><div class="line"></div><div class="line">            <span class="attr">android:icon</span>=<span class="string">"@drawable/nav_icon_favorite"</span></div><div class="line"></div><div class="line">            <span class="attr">android:title</span>=<span class="string">"收藏"</span> /&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span></span></div><div class="line"></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/nav_followers"</span></div><div class="line"></div><div class="line">            <span class="attr">android:icon</span>=<span class="string">"@drawable/nav_icon_followers"</span></div><div class="line"></div><div class="line">            <span class="attr">android:title</span>=<span class="string">"群组"</span> /&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span></span></div><div class="line"></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/nav_settings"</span></div><div class="line"></div><div class="line">            <span class="attr">android:icon</span>=<span class="string">"@drawable/nav_icon_settings"</span></div><div class="line"></div><div class="line">            <span class="attr">android:title</span>=<span class="string">"设置"</span> /&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">group</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:title</span>=<span class="string">"分享和反馈"</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">menu</span>&gt;</span></div><div class="line"></div><div class="line">            <span class="tag">&lt;<span class="name">item</span></span></div><div class="line"></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/nav_share"</span></div><div class="line"></div><div class="line">                <span class="attr">android:icon</span>=<span class="string">"@drawable/nav_icon_my_shares"</span></div><div class="line"></div><div class="line">                <span class="attr">android:title</span>=<span class="string">"分享"</span> /&gt;</div><div class="line"></div><div class="line">            <span class="tag">&lt;<span class="name">item</span></span></div><div class="line"></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/nav_feedback"</span></div><div class="line"></div><div class="line">                <span class="attr">android:icon</span>=<span class="string">"@drawable/nav_icon_feedback"</span></div><div class="line"></div><div class="line">                <span class="attr">android:title</span>=<span class="string">"意见反馈"</span> /&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="初始化相关控件"><a href="#初始化相关控件" class="headerlink" title="初始化相关控件"></a>初始化相关控件</h4><p>里面的Toolbar和FloatingActionButton稍后我们在这个系列讲，对DrawerLayout和NavigationView进行了声明和初始化。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//toolbar的设置，稍后讲这个控件</span></div><div class="line"></div><div class="line">Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</div><div class="line"></div><div class="line">setSupportActionBar(toolbar);</div><div class="line"></div><div class="line"><span class="comment">//悬浮按钮控件，稍后讲这个控件</span></div><div class="line"></div><div class="line">FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);</div><div class="line"></div><div class="line">fab.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">        Snackbar.make(view, <span class="string">"Replace with your own action"</span>, Snackbar.LENGTH_LONG)</div><div class="line"></div><div class="line">                .setAction(<span class="string">"Action"</span>, <span class="keyword">null</span>).show();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//设置DrawerLayout</span></div><div class="line"></div><div class="line">DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);</div><div class="line"></div><div class="line">ActionBarDrawerToggle toggle = <span class="keyword">new</span> ActionBarDrawerToggle(</div><div class="line"></div><div class="line">        <span class="keyword">this</span>, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);</div><div class="line"></div><div class="line">drawer.setDrawerListener(toggle);</div><div class="line"></div><div class="line">toggle.syncState();</div><div class="line"></div><div class="line"><span class="comment">//设置NavigationView</span></div><div class="line"></div><div class="line">NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);</div><div class="line"></div><div class="line">navigationView.setNavigationItemSelectedListener(<span class="keyword">this</span>);</div></pre></td></tr></table></figure></p>
+<h4 id="侧滑菜单中选项按钮的点击事件"><a href="#侧滑菜单中选项按钮的点击事件" class="headerlink" title="侧滑菜单中选项按钮的点击事件"></a>侧滑菜单中选项按钮的点击事件</h4><p>MainActivity实现了NavigationView.OnNavigationItemSelectedListener这个监听事件，然后在实现的监听方法里判断点击事件。</p>
+<p>方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onNavigationItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</div><div class="line"></div><div class="line">       <span class="keyword">int</span> id = item.getItemId();</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (id == R.id.nav_home) &#123;</div><div class="line"></div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"home"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"></div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_favorite) &#123;</div><div class="line"></div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"收藏"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"></div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_followers) &#123;</div><div class="line"></div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"群组"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"></div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_settings) &#123;</div><div class="line"></div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"设置"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"></div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_share) &#123;</div><div class="line"></div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"分享"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"></div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_feedback) &#123;</div><div class="line"></div><div class="line">           Toast.makeText(<span class="keyword">this</span>, <span class="string">"意见反馈"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);</div><div class="line"></div><div class="line">       drawer.closeDrawer(GravityCompat.START);</div><div class="line"></div><div class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>记得实现了监听，别忘了设置监听：navigationView.setNavigationItemSelectedListener(this);</p>
+<p>到这里就讲完了。做完之后的效果图如下：<br><img src="http://7xsgef.com1.z0.glb.clouddn.com/D4FE667A-3519-45DF-AD52-094F7DBB0487.png" alt=""><br>噢，忘了，你们肯定会问，如果点击侧滑上面的头像，怎么实现呢？</p>
+<h3 id="headerLayout上的控件实现"><a href="#headerLayout上的控件实现" class="headerlink" title="headerLayout上的控件实现"></a>headerLayout上的控件实现</h3><p>如果要实现headerLayout上的控件的点击，那就得这样做了，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">View navHeaderView = navigationView.inflateHeaderView(R.layout.header_layout);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">ImageView headIv = (ImageView) navHeaderView.findViewById(R.id.head_iv);</div><div class="line"></div><div class="line">headIv.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"点击我的头像"</span>, Toast.LENGTH_SHORT).show();</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>但是这样做了之后，就相当于在navigationView上又添加了一个headerlayou布局，所以这时，我们需要在布局文件中把</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app:headerLayout=&quot;@layout/header_layout&quot;</div></pre></td></tr></table></figure>
+<p>这行代码去掉，否则会重复的。</p>
+<h3 id="主题和配色"><a href="#主题和配色" class="headerlink" title="主题和配色"></a>主题和配色</h3><p>上面用到的主题和颜色，我们可以在资源文件中配置。</p>
+<p>比如color中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>#3F51B5<span class="tag">&lt;/<span class="name">color</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>#303F9F<span class="tag">&lt;/<span class="name">color</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>#FF4081<span class="tag">&lt;/<span class="name">color</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>比如style中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- Base application theme. --&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.DarkActionBar"</span>&gt;</span><span class="xml"></span></div><div class="line"></div><div class="line">        <span class="comment">&lt;!-- Customize your theme here. --&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>@color/colorPrimary<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>@color/colorPrimaryDark<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>@color/colorAccent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme.NoActionBar"</span>&gt;</span><span class="xml"></span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"windowActionBar"</span>&gt;</span>false<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme.AppBarOverlay"</span> <span class="attr">parent</span>=<span class="string">"ThemeOverlay.AppCompat.Dark.ActionBar"</span> /&gt;</span><span class="xml"></span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme.PopupOverlay"</span> <span class="attr">parent</span>=<span class="string">"ThemeOverlay.AppCompat.Light"</span> /&gt;</span><span class="xml"></span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在这里配置成自己想要实现的主题和颜色即可。这回是真讲完了。是不是很简单，赶紧试一试去吧。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Material-Design/" rel="tag">#Material Design</a>
+          
+            <a href="/tags/Navigation/" rel="tag">#Navigation</a>
+          
+            <a href="/tags/Drawer/" rel="tag">#Drawer</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/05/美团多渠道打包方案详解，速度快到白驹过隙/" rel="next" title="美团多渠道打包方案详解，速度快到白驹过隙">
+                <i class="fa fa-chevron-left"></i> 美团多渠道打包方案详解，速度快到白驹过隙
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/23/Android Material Design系列之FloatingActionButton和Snackbar/" rel="prev" title="Android Material Design系列之FloatingActionButton和Snackbar">
+                Android Material Design系列之FloatingActionButton和Snackbar <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DrawerLayout布局"><span class="nav-number">1.</span> <span class="nav-text">DrawerLayout布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NavigationView"><span class="nav-number">2.</span> <span class="nav-text">NavigationView</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#headerLayout"><span class="nav-number">2.1.</span> <span class="nav-text">headerLayout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#menu"><span class="nav-number">2.2.</span> <span class="nav-text">menu</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化相关控件"><span class="nav-number">3.1.</span> <span class="nav-text">初始化相关控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#侧滑菜单中选项按钮的点击事件"><span class="nav-number">3.2.</span> <span class="nav-text">侧滑菜单中选项按钮的点击事件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#headerLayout上的控件实现"><span class="nav-number">4.</span> <span class="nav-text">headerLayout上的控件实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题和配色"><span class="nav-number">5.</span> <span class="nav-text">主题和配色</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,951 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React Native,基础组件,View,Text," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="从今天开始我们进入基础组件也就是一些简单控件的学习，之前写的文章貌似太正式了，我正在考虑怎么样才能写的有意思，想想挺难的，算了，写一步算一步吧。今天我们就从最简答的View和Text控件讲起。
+
+ViewView其实就是UI最基础的组件，跟我们android中的View不同，它更像我们android中的LinearLayout，RN中的View是一个支持Flexbox布局、样式、一些触摸处理和一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础篇章：React Native 之 View 和 Text 的讲解">
+<meta property="og:url" content="http://loonggg.github.io/2016/10/03/reactnative-textview/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="从今天开始我们进入基础组件也就是一些简单控件的学习，之前写的文章貌似太正式了，我正在考虑怎么样才能写的有意思，想想挺难的，算了，写一步算一步吧。今天我们就从最简答的View和Text控件讲起。
+
+ViewView其实就是UI最基础的组件，跟我们android中的View不同，它更像我们android中的LinearLayout，RN中的View是一个支持Flexbox布局、样式、一些触摸处理和一">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/textview/1.png">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础篇章：React Native 之 View 和 Text 的讲解">
+<meta name="twitter:description" content="从今天开始我们进入基础组件也就是一些简单控件的学习，之前写的文章貌似太正式了，我正在考虑怎么样才能写的有意思，想想挺难的，算了，写一步算一步吧。今天我们就从最简答的View和Text控件讲起。
+
+ViewView其实就是UI最基础的组件，跟我们android中的View不同，它更像我们android中的LinearLayout，RN中的View是一个支持Flexbox布局、样式、一些触摸处理和一">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/textview/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 基础篇章：React Native 之 View 和 Text 的讲解 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基础篇章：React Native 之 View 和 Text 的讲解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-03T10:39:04+08:00" content="2016-10-03">
+              2016-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/10/03/reactnative-textview/" class="leancloud_visitors" data-flag-title="基础篇章：React Native 之 View 和 Text 的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>从今天开始我们进入基础组件也就是一些简单控件的学习，之前写的文章貌似太正式了，我正在考虑怎么样才能写的有意思，想想挺难的，算了，写一步算一步吧。今天我们就从最简答的View和Text控件讲起。</p>
+</blockquote>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View其实就是UI最基础的组件，跟我们android中的View不同，它更像我们android中的LinearLayout，RN中的View是一个支持Flexbox布局、样式、一些触摸处理和一些无障碍功能的容器，并且它可以放到其它的视图里，也可以有任意多个任意类型的子视图。不论在什么平台上，View都会直接对应一个平台的原生视图，无论它是UIView、div还是android.view.View。</p>
+<p>下面我们看一下官方给的例子，官网例子创建了一个View，包含了两个有颜色的方块和一个自定义的组件，并且设置了一个内边距：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewColoredBoxesWithText</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123; </div><div class="line">  render() &#123; </div><div class="line">    <span class="keyword">return</span> ( </div><div class="line">      &lt;View style=&#123;&#123;flexDirection: 'row', height: 100, padding: 20&#125;&#125;&gt; </div><div class="line">        &lt;View style=&#123;&#123;backgroundColor: 'blue', flex: 0.3&#125;&#125; /&gt; </div><div class="line">        &lt;View style=&#123;&#123;backgroundColor: 'red', flex: 0.5&#125;&#125; /&gt; </div><div class="line">        &lt;Text&gt;Hello World!&lt;/Text&gt; </div><div class="line">      &lt;/View&gt; </div><div class="line">      ); </div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>View样式的使用初衷并鼓励大家和StyleSheet搭配使用，这样可以使性能更好，代码看起来更清晰优美。当然内嵌样式如上面的例子也同样可以使用。但是估计大家使用StyleSheet的方法。从小养成好习惯很重要。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="View属性"><a href="#View属性" class="headerlink" title="View属性"></a>View属性</h3><p>我们都知道，通过上篇文章flexbox的讲解，和flexbox搭配使用，可以使view做到横向布局还是垂直布局，还可以调整子元素和控件的位置。今天我们呢，再来扩展一下，看看还有那些属性可以使用呢？</p>
+<ul>
+<li>accessibilityLabel string 设置当用户与此元素交互时，“读屏器”（对视力障碍人士的辅助功能）阅读的文字。默认情况下，这个文字会通过遍历所有的子元素并累加所有的文本标签来构建。</li>
+<li>accessible bool 当为true时，表示该元素是可以进行访问，默认情况下所有可触摸的元素控件都是可以访问的。</li>
+<li>hitSlop {top: number, left: number, bottom: number, right: number} 功能是扩展可触摸的区域，比如你的控件大小是30x40的，你可以设置hitSlop的top为10，bottom为10，这样你的控件大小不变，但是可触摸点击的区域就变大了，为30x60了。</li>
+<li>onAccessibilityTap function 当accessible为true时，如果用户对一个已选中的无障碍元素做了一个双击手势时，系统会调用此函数。</li>
+<li>onLayout function 当组件挂载或者布局变化的时候调用，参数为：{nativeEvent: { layout: {x, y, width, height}}}</li>
+<li>onMagicTap function 当accessible为true时，如果用户做了一个双指轻触(Magic tap)手势，系统会回调此方法。</li>
+<li>当然还有很多触摸响应的事件的回调，暂时先不讲，在运用到的时候再讲解即可，我先去研究透它。</li>
+</ul>
+<h3 id="View的style"><a href="#View的style" class="headerlink" title="View的style"></a>View的style</h3><ul>
+<li>Layout Props…</li>
+<li>Shadow Props…</li>
+<li>Transforms…</li>
+<li>backfaceVisibility 可选参数[‘visible’, ‘hidden’]，视图显示还是隐藏</li>
+<li>backgroundColor color 背景颜色</li>
+<li>borderBottomColor color 底部边框颜色</li>
+<li>borderBottomLeftRadius 左下方圆角的大小</li>
+<li>borderBottomRightRadius 右下方圆角大小</li>
+<li>borderBottomWidth 底部边框的宽度</li>
+<li>borderColor color 边框颜色</li>
+<li>borderLeftColor color 左边框颜色</li>
+<li>borderLeftWidth 不翻译了，同上</li>
+<li>borderRadius 边框圆角</li>
+<li>borderRightColor color</li>
+<li>borderRightWidth ReactPropTypes.number</li>
+<li>borderStyle 可选参数[‘solid’, ‘dotted’, ‘dashed’]实体线，点，虚线</li>
+<li>borderTopColor color</li>
+<li>borderTopLeftRadius ReactPropTypes.number</li>
+<li>borderTopRightRadius ReactPropTypes.number</li>
+<li>borderTopWidth ReactPropTypes.number</li>
+<li>borderWidth 边框宽度</li>
+<li>opacity 设置透明度</li>
+<li>overflow ReactPropTypes.oneOf([‘visible’, ‘hidden’])</li>
+<li>elevation 设置立体阴影效果<blockquote>
+<p>这个参数是android独有的，相信学过android5.0的同学肯定认识它，z轴上显示阴影大小</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="testID"><a href="#testID" class="headerlink" title="testID"></a>testID</h3><ul>
+<li>accessibilityComponentType android独有 是否该ui组件和原生组件一致化处理</li>
+<li>accessibilityLiveRegion enum(‘none’, ‘polite’, ‘assertive’)  android 当ui发生变化时是否通知用户，只适用于API19以上的手机</li>
+<li>collapsable bool android 布局优化，如果一个View只用于布局它的子组件，则它可能会为了优化而从原生布局树中移除。 把此属性设为false可以禁用这个优化，以确保对应视图在原生结构中存在。</li>
+<li>importantForAccessibility [ ‘auto’, ‘yes’, ‘no’, ‘no-hide-descendants’] android 设置视图响应等级<br>可选的值:<ul>
+<li>auto - 系统来决定这个视图对于辅助功能是否重要 - 默认(推荐)。</li>
+<li>yes - 这个视图对于辅助功能而言重要。</li>
+<li>no - 这个视图对辅助功能不重要。</li>
+<li>no-hide-descendants - 这个视图，以及所有的后代视图，都对于辅助功能不重要。</li>
+</ul>
+</li>
+<li>needsOffscreenAlphaCompositing bool android 设置View是否需要渲染和半透明度效果处理的先后次序。</li>
+<li>renderToHardwareTextureAndroid bool android 决定这个视图是否要把它自己（以及所有的子视图）渲染到一个GPU上的硬件纹理中。</li>
+<li>accessibilityTraits PropTypes.oneOfType([ PropTypes.oneOf(AccessibilityTraits) ios 终于来了一个ios的，参数太多，自己去看吧，我对ios也不是很熟</li>
+<li>shouldRasterizeIOS bool ios 决定这个视图是否需要在被混合之前绘制到一个位图上。</li>
+</ul>
+<p>官方文档地址：<a href="https://facebook.github.io/react-native/docs/view.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/view.html</a><br>里面有很多例子，自己去看，我就不复制粘贴过来占空间了，好学习的自行去阅读。</p>
+<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>Text就是React Native中展示文本的一个组件，跟我们android中的TextView功能是一样的。学习它就没什么难度，所以就把Text和View放到一起来讲了，看起来很简单，这样一口气看完就可以了。</p>
+<p>按官方文档的话来说，Text它也支持嵌套，样式和触摸处理，其实这句话我说不说，大家应该都能知道，不说又不好，说了，怕把大家当傻瓜，哈哈……这里由于Text太简单，例子就不先说了，直接讲属性。</p>
+<h3 id="Text属性"><a href="#Text属性" class="headerlink" title="Text属性"></a>Text属性</h3><ul>
+<li>accessible bool 表明视图是否为可访问性元素，默认是true，可访问</li>
+<li>ellipsizeMode enum(‘head’, ‘middle’, ‘tail’, ‘clip’) 这个功能相当于我们android中的ellipsize，文本很长时，省略号显示的位置，是开头，中间还是末尾显示省略号。<blockquote>
+<p>clip是ios上独有的，设置这个属性时，必须先设置text的行数。</p>
+</blockquote>
+</li>
+<li>numberOfLines 文本的行数</li>
+<li>onLayout function 布局发生变化时调用</li>
+<li>onLongPress function 长按事件</li>
+<li>onPress function 按下或者点击事件</li>
+</ul>
+<h3 id="Text的style"><a href="#Text的style" class="headerlink" title="Text的style"></a>Text的style</h3><ul>
+<li>color color 字体颜色</li>
+<li>fontFamily string 字体名称</li>
+<li>fontSize number 字体大小</li>
+<li>fontStyle [‘normal’, ‘italic’] 字体样式，正常还是斜着</li>
+<li>fontWeight [‘normal’ /<em>default</em>/, ‘bold’, ‘100’, ‘200’, ‘300’, ‘400’, ‘500’, ‘600’, ‘700’, ‘800’, ‘900’]  字体是正常，还是粗体，等等，数字代表粗细的权重</li>
+<li>lineHeight number 行高</li>
+<li>textAlign[‘auto’ /<em>default</em>/, ‘left’, ‘right’, ‘center’, ‘justify’] 指定文本的对齐方式。其中’justify’值仅iOS支持。</li>
+<li>textDecorationLine [‘none’ /<em>default</em>/, ‘underline’, ‘line-through’, ‘underline line-through’]  横线位置 </li>
+<li>textShadowColor color 阴影颜色</li>
+<li>textShadowOffset {width，height}  设置阴影效果</li>
+<li>textShadowRadius number 阴影效果圆角</li>
+<li>textAlignVertical [‘auto’ /<em>default</em>/, ‘top’, ‘bottom’, ‘center’] 文本垂直对其方式</li>
+<li>ios独有的style<ul>
+<li>fontVariant </li>
+<li>letterSpacing</li>
+<li>textDecorationColor color</li>
+<li>textDecorationStyle </li>
+<li>writingDirection</li>
+</ul>
+</li>
+</ul>
+<h3 id="特别内容"><a href="#特别内容" class="headerlink" title="特别内容"></a>特别内容</h3><ul>
+<li>在Text内部的元素不再使用flexbox布局，而是采用文本布局。这意味着<text>内部的元素不再是一个个矩形，而可能会在行末进行折叠。通俗点说：也就是一个Text接着Text，横向，如果文本已经到末尾了，那就直接换行。</text></li>
+<li>而且style我们使用内嵌的方式，可以实现文本内容不同的样式，如果Text中又嵌入了一个Text，父Text文本是红色文字，子Text是蓝色，这样的内容我们可以实现红蓝一块展示的效果。</li>
+<li>还有一个特点就是：样式继承，就是子组件如果没有写样式，会继承父组件的过来。</li>
+</ul>
+<h2 id="综合实例"><a href="#综合实例" class="headerlink" title="综合实例"></a>综合实例</h2><p>大家思考一下，这个布局怎么实现，通过今天学习的，很简单的一个例子，如图：<br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/ReactNative/textview/1.png" alt=""></p>
+<h3 id="例子代码："><a href="#例子代码：" class="headerlink" title="例子代码："></a>例子代码：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  AppRegistry,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextViewDemo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.container&#125;</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.title_view&#125;</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.title_text&#125;</span>&gt;</span></div><div class="line">               新闻详情</div><div class="line">         <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.source_view&#125;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.source_text&#125;</span>&gt;</span></div><div class="line">               纽约时报中文网</div><div class="line">         <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.source_text&#125;</span>&gt;</span></div><div class="line">               四小时前</div><div class="line">         <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.content_title_text&#125;</span>&gt;</span></div><div class="line">               与做爱相比，我们更重视接吻</div><div class="line">         <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;styles.content_text&#125;</span>&gt;</span></div><div class="line">               为什么在热恋中我们总是吻个不停？为什么傲骨贤妻中的女主角与丈夫做爱的次数多于接吻？对用情专一人群的研究发现，接吻而非性爱的频率与爱情幸福度最密切相关。</div><div class="line">         <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  <span class="attr">container</span>: &#123;</div><div class="line">    <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">backgroundColor</span>: <span class="string">'white'</span>,</div><div class="line">  &#125;,</div><div class="line">   <span class="attr">title_view</span>:&#123;</div><div class="line">    <span class="attr">flexDirection</span>:<span class="string">'row'</span>,</div><div class="line">    <span class="attr">height</span>:<span class="number">50</span>,</div><div class="line">    <span class="attr">justifyContent</span>: <span class="string">'center'</span>,</div><div class="line">    <span class="attr">alignItems</span>: <span class="string">'center'</span>,</div><div class="line">    <span class="attr">backgroundColor</span>:<span class="string">'#27b5ee'</span>,</div><div class="line">  &#125;,</div><div class="line">   <span class="attr">title_text</span>:&#123;</div><div class="line">    <span class="attr">color</span>:<span class="string">'white'</span>,</div><div class="line">    <span class="attr">fontSize</span>:<span class="number">22</span>,</div><div class="line">    <span class="attr">textAlign</span>:<span class="string">'center'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">source_view</span>:&#123;</div><div class="line">    <span class="attr">flexDirection</span>:<span class="string">'row'</span>,</div><div class="line">    <span class="attr">height</span>:<span class="number">20</span>,</div><div class="line">    <span class="attr">marginTop</span>:<span class="number">10</span>,</div><div class="line">    <span class="attr">justifyContent</span>: <span class="string">'space-between'</span>,</div><div class="line">    <span class="attr">alignItems</span>: <span class="string">'center'</span>,</div><div class="line">    <span class="attr">backgroundColor</span>:<span class="string">'white'</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">source_text</span>:&#123;</div><div class="line">    <span class="attr">color</span>:<span class="string">'#b1b1b1'</span>,</div><div class="line">    <span class="attr">fontSize</span>:<span class="number">14</span>,</div><div class="line">    <span class="attr">marginLeft</span>:<span class="number">25</span>,</div><div class="line">    <span class="attr">marginRight</span>:<span class="number">25</span>,</div><div class="line">    <span class="attr">textAlign</span>:<span class="string">'center'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">content_title_text</span>:&#123;</div><div class="line">    <span class="attr">color</span>:<span class="string">'#343434'</span>,</div><div class="line">    <span class="attr">fontSize</span>:<span class="number">20</span>,</div><div class="line">    <span class="attr">marginTop</span>:<span class="number">8</span>,</div><div class="line">    <span class="attr">marginLeft</span>:<span class="number">25</span>,</div><div class="line">    <span class="attr">marginRight</span>:<span class="number">25</span>,</div><div class="line">    <span class="attr">textAlign</span>:<span class="string">'left'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">content_text</span>:&#123;</div><div class="line">    <span class="attr">color</span>:<span class="string">'#b2b2b2'</span>,</div><div class="line">    <span class="attr">fontSize</span>:<span class="number">16</span>,</div><div class="line">    <span class="attr">marginTop</span>:<span class="number">12</span>,</div><div class="line">    <span class="attr">marginLeft</span>:<span class="number">25</span>,</div><div class="line">    <span class="attr">marginRight</span>:<span class="number">25</span>,</div><div class="line">    <span class="attr">textAlign</span>:<span class="string">'left'</span></div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'TextViewDemo'</span>, () =&gt; TextViewDemo);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag">#React Native</a>
+          
+            <a href="/tags/基础组件/" rel="tag">#基础组件</a>
+          
+            <a href="/tags/View/" rel="tag">#View</a>
+          
+            <a href="/tags/Text/" rel="tag">#Text</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/02/react-native-flexbox/" rel="next" title="基础篇章：React Native之Flexbox的讲解（Height and Width）">
+                <i class="fa fa-chevron-left"></i> 基础篇章：React Native之Flexbox的讲解（Height and Width）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/03/reactnative-textinput/" rel="prev" title="基础篇章：React Native 之 TextInput 的讲解">
+                基础篇章：React Native 之 TextInput 的讲解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">1.</span> <span class="nav-text">View</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View属性"><span class="nav-number">1.1.</span> <span class="nav-text">View属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View的style"><span class="nav-number">1.2.</span> <span class="nav-text">View的style</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#testID"><span class="nav-number">1.3.</span> <span class="nav-text">testID</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text"><span class="nav-number">2.</span> <span class="nav-text">Text</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Text属性"><span class="nav-number">2.1.</span> <span class="nav-text">Text属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Text的style"><span class="nav-number">2.2.</span> <span class="nav-text">Text的style</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特别内容"><span class="nav-number">2.3.</span> <span class="nav-text">特别内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合实例"><span class="nav-number">3.</span> <span class="nav-text">综合实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子代码："><span class="nav-number">3.1.</span> <span class="nav-text">例子代码：</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

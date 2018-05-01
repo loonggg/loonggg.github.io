@@ -1,0 +1,847 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="技术感想," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="导语：你知道普通程序员和优秀程序员之间的差距吗？其实答案很简单，那就是「愚公移山」和「女娲补天」之间的区别。
+
+之所以提这个话题，跟前两天在微信群里的讨论有关，年后本该是跳槽、找工作的高峰月份，各公司面试邀约应该很多，但是听群里的反馈却是不太容易。从行业发展角度看，移动互联网连续火爆数年，已逐步走向稳定；从国家发展形势看，从去年开始，整个国家经济形势不景气，不只失业率增多，好多移动互联网公司裁员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「能写代码」是愚公移山，「会写代码」是女娲补天">
+<meta property="og:url" content="http://loonggg.github.io/2016/03/13/「能写代码」是愚公移山，「会写代码」是女娲补天 /index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="导语：你知道普通程序员和优秀程序员之间的差距吗？其实答案很简单，那就是「愚公移山」和「女娲补天」之间的区别。
+
+之所以提这个话题，跟前两天在微信群里的讨论有关，年后本该是跳槽、找工作的高峰月份，各公司面试邀约应该很多，但是听群里的反馈却是不太容易。从行业发展角度看，移动互联网连续火爆数年，已逐步走向稳定；从国家发展形势看，从去年开始，整个国家经济形势不景气，不只失业率增多，好多移动互联网公司裁员">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「能写代码」是愚公移山，「会写代码」是女娲补天">
+<meta name="twitter:description" content="导语：你知道普通程序员和优秀程序员之间的差距吗？其实答案很简单，那就是「愚公移山」和「女娲补天」之间的区别。
+
+之所以提这个话题，跟前两天在微信群里的讨论有关，年后本该是跳槽、找工作的高峰月份，各公司面试邀约应该很多，但是听群里的反馈却是不太容易。从行业发展角度看，移动互联网连续火爆数年，已逐步走向稳定；从国家发展形势看，从去年开始，整个国家经济形势不景气，不只失业率增多，好多移动互联网公司裁员">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 「能写代码」是愚公移山，「会写代码」是女娲补天 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                「能写代码」是愚公移山，「会写代码」是女娲补天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-13T22:37:23+08:00" content="2016-03-13">
+              2016-03-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/03/13/「能写代码」是愚公移山，「会写代码」是女娲补天 /" class="leancloud_visitors" data-flag-title="「能写代码」是愚公移山，「会写代码」是女娲补天">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>导语：你知道普通程序员和优秀程序员之间的差距吗？其实答案很简单，那就是「愚公移山」和「女娲补天」之间的区别。</p>
+</blockquote>
+<p>之所以提这个话题，跟前两天在微信群里的讨论有关，年后本该是跳槽、找工作的高峰月份，各公司面试邀约应该很多，但是听群里的反馈却是不太容易。从行业发展角度看，移动互联网连续火爆数年，已逐步走向稳定；从国家发展形势看，从去年开始，整个国家经济形势不景气，不只失业率增多，好多移动互联网公司裁员、倒闭；从程序员职业角度看，现今「挨踢」培训机构屡见不鲜，大都打着包学包会包分配，三俩月速成的口号忽悠人，导致很多学员没有打牢基础，就匆忙走上岗位，而且培训机构过分鼓吹使得学员们没有真正认清自身实际，没有正确定位！</p>
+<p>建议大家这段时间不要裸辞，边工作，边寻找机会才是最好的选择。「裸辞」倘若一时找不到工作可能会导致心慌，没有安全感，甚至会产生「自我怀疑」和「自我否定」！如果在职场暂时迷茫也不要心慌，因为只有经历过了痛苦和绝望之后，才能够「浴火重生」，找到方向。<br><a id="more"></a></p>
+<h2 id="从本质上区分，一个是被动，一个是主动"><a href="#从本质上区分，一个是被动，一个是主动" class="headerlink" title="从本质上区分，一个是被动，一个是主动"></a>从本质上区分，一个是被动，一个是主动</h2><p>由于近几年来移动互联网行业实在火爆，程序员这条路已经由10年前的「羊肠小道」，修成了「康庄大道」，跟高速公路似的，但是还是挤，拥挤的跟北京早晚高峰的地铁似的，涌入的人越来越多，感觉门槛似乎很低。很多人看准了计算机行业工资高，好就业，转行当程序员。其实不然，一个行业健康的发展是因为有很多有兴趣，有爱好的人涌入，这部分人由于兴趣和爱好，喜欢钻研，想要更深入的去了解底层知识和原理，所以容易提高，这就是优秀的程序员，而大部分人是被现实所逼迫，从而选择了一个职业，逼迫往往而导致被动，时间久了就会变得平庸。中国有句俗语叫「心随我动」，一旦从事了这个行业，时间久了，差距就会慢慢拉开，所以优秀和普通从根本上就有差别。</p>
+<h2 id="从能力上分，一个是搬运工，一个是设计者"><a href="#从能力上分，一个是搬运工，一个是设计者" class="headerlink" title="从能力上分，一个是搬运工，一个是设计者"></a>从能力上分，一个是搬运工，一个是设计者</h2><h3 id="「能写代码」是愚公移山"><a href="#「能写代码」是愚公移山" class="headerlink" title="「能写代码」是愚公移山"></a>「能写代码」是愚公移山</h3><p>为什么说能写代码是愚公移山呢？我们中国大部分程序员都应该处于一个初级程序员的水平，怎么讲？只有少数的程序员处于中高级水平。愚公移山就是愚公为了有一条近道（可以形容为生存），而不停的去挖山，子子孙孙重复的去做同一件事，就像我们编程，如果你一直在公司重重 复复的当代码的搬运工，天天就会写界面，这就是能写代码！即使你有10年的工作经历，但是经验就是刚当程序员那一年！十年如一日的做同一件事，你确实足够坚持，也不否认你有爆发的那一年，就像愚公一样需要中彩票的几率依靠两个大神帮你解决问题。</p>
+<p>能写代码是一个基础水平，初级能力，要想走的高，看的远，不要「安于现状」，勇于攀岩和破冰，才能改变世界。中国现在的基础情况是不缺乏初级程序员，而是缺乏大部分中高级程序员，这就是为什么大部分公司在招聘的时候为什么喜欢3到5年工作经验的程序员了，喜欢归喜欢，这个限制只不过是提高了他们能招聘到中高级程序员的几率罢了，毕竟「十年如一日」的程序员占据了市场的大部分。</p>
+<h3 id="「会写代码」是女娲补天"><a href="#「会写代码」是女娲补天" class="headerlink" title="「会写代码」是女娲补天"></a>「会写代码」是女娲补天</h3><p>女娲补天？这又怎么讲？优秀的程序员就像女娲一样，拥有极其强大的能力，不仅仅可以探索和创造，也能及时出手，写出如五彩石一样的漂亮，严谨的代码去补天，堵上天一样的大窟窿和大漏洞，还人类一个美丽的「天上人间」，保持程序「完美运行」。如果人间恶魔兴起，扰乱民心，她可以有的放矢，一招制敌。优秀的程序员就是如此，他不仅仅是能写代码，而是会写代码，这种高境界的水平，不仅仅是有经验，经历过大大小小的崩溃战争，而是在制敌中探索和学习，如何保卫程序稳定生长和运行，把恶魔消灭在萌芽般的象牙塔之内！</p>
+<p>会写代码就是如此，他知道怎么去搭建架构，构建地基，把恶魔封印在程序之外。优秀的程序员会写代码更是会一直保持在「深度学习」之中，白天打仗提升实力，晚上「闭关修炼」提高自己。使自己打造的天上人间如仙境一般，越来越美，偶尔来了雾霾，也会如女娲补天一样，能轻松得召唤到西伯利亚的寒风，把它吹走。</p>
+<p>总结：会写代码和能写代码的差距就是：</p>
+<ol>
+<li><p>我喜欢闭关修炼，你满足安于现状</p>
+</li>
+<li><p>我是兴趣驱动型，你是迫不得已型</p>
+</li>
+<li><p>同样都是坚持，我是坚持学习，你是坚持复制</p>
+</li>
+<li><p>我追求的是长远进步，你疲于奔命的挣钱（挣钱没有错，错的是眼光）。</p>
+</li>
+</ol>
+<p>差距就是在这些不经意的细节中拉大的。你感觉复制粘贴完成任务就行，人家想的是如何更好的写出代码，提高效率。你按部就班，日复一日的使用同样的方法，人家总想着学习和进步，使用最新的技术完成功能，两年之后，你还是只会一种落后的方法，人家却是用更好的方式完成了任务，你这时可能感觉没什么？假如一年之后，官方突然宣布，不再支持你的旧方法，你是否会「怅然若失」？而人家可能会「欣喜若狂」的在想：那个破方法，早应该被淘汰了。你说不急，我现在再重新开始学习， 殊不知一大批使用新方法的毕业生正在来袭，而前卫的学习者说不定又在探索更新的技术。这就是这个行业现状。</p>
+<p>最近在看书，不说了，说多了都是泪，我也是仅仅处于「能写代码」的水平。要努力了！要争取向「会写代码」的方向努力！今赋此文，纯属有感而发，希望能与大家共勉。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术感想/" rel="tag">#技术感想</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/01/我的奇葩面试经历之奇葩面试题/" rel="next" title="我的奇葩面试经历之奇葩面试题">
+                <i class="fa fa-chevron-left"></i> 我的奇葩面试经历之奇葩面试题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/16/浅谈开发中的MVVM模式及与MVP和MVC的区别/" rel="prev" title="浅谈开发中的MVVM模式及与MVP和MVC的区别">
+                浅谈开发中的MVVM模式及与MVP和MVC的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从本质上区分，一个是被动，一个是主动"><span class="nav-number">1.</span> <span class="nav-text">从本质上区分，一个是被动，一个是主动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从能力上分，一个是搬运工，一个是设计者"><span class="nav-number">2.</span> <span class="nav-text">从能力上分，一个是搬运工，一个是设计者</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#「能写代码」是愚公移山"><span class="nav-number">2.1.</span> <span class="nav-text">「能写代码」是愚公移山</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#「会写代码」是女娲补天"><span class="nav-number">2.2.</span> <span class="nav-text">「会写代码」是女娲补天</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

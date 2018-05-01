@@ -1,0 +1,864 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="闹钟,AlarmManager," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前些时候，有人在我「非著名程序员」公众号的后台问我有没有设置闹钟的demo，我当时说承诺为大家写一个，一直没空，直到最近又有人跟我要，我决定抽时间写一个吧。确实设置闹钟是一个比较麻烦的东西。我在这里写的这个demo抽出来了封装了一个类库，大家直接调用其中的设置闹钟和取消闹钟的方法即可。可以设置每天的闹钟，周一到星期天之间多选的闹钟，也可以设置选择一次性闹钟，跟系统设置闹钟的方式基本差不多吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Android中设置闹钟的相对比较完善的解决方案">
+<meta property="og:url" content="http://loonggg.github.io/2016/05/25/关于Android中设置闹钟的相对比较完善的解决方案/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="前些时候，有人在我「非著名程序员」公众号的后台问我有没有设置闹钟的demo，我当时说承诺为大家写一个，一直没空，直到最近又有人跟我要，我决定抽时间写一个吧。确实设置闹钟是一个比较麻烦的东西。我在这里写的这个demo抽出来了封装了一个类库，大家直接调用其中的设置闹钟和取消闹钟的方法即可。可以设置每天的闹钟，周一到星期天之间多选的闹钟，也可以设置选择一次性闹钟，跟系统设置闹钟的方式基本差不多吧。">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/AlarmManager/ssdsfsdfs.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/AlarmManager/Screenshot_2016-05-24-18-20-28-249_AlarmManagerCl.png">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Android中设置闹钟的相对比较完善的解决方案">
+<meta name="twitter:description" content="前些时候，有人在我「非著名程序员」公众号的后台问我有没有设置闹钟的demo，我当时说承诺为大家写一个，一直没空，直到最近又有人跟我要，我决定抽时间写一个吧。确实设置闹钟是一个比较麻烦的东西。我在这里写的这个demo抽出来了封装了一个类库，大家直接调用其中的设置闹钟和取消闹钟的方法即可。可以设置每天的闹钟，周一到星期天之间多选的闹钟，也可以设置选择一次性闹钟，跟系统设置闹钟的方式基本差不多吧。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/loonggg/BlogImages/master/AlarmManager/ssdsfsdfs.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 关于Android中设置闹钟的相对比较完善的解决方案 | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于Android中设置闹钟的相对比较完善的解决方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-25T16:37:23+08:00" content="2016-05-25">
+              2016-05-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/05/25/关于Android中设置闹钟的相对比较完善的解决方案/" class="leancloud_visitors" data-flag-title="关于Android中设置闹钟的相对比较完善的解决方案">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>前些时候，有人在我「非著名程序员」公众号的后台问我有没有设置闹钟的demo，我当时说承诺为大家写一个，一直没空，直到最近又有人跟我要，我决定抽时间写一个吧。确实设置闹钟是一个比较麻烦的东西。我在这里写的这个demo抽出来了封装了一个类库，大家直接调用其中的设置闹钟和取消闹钟的方法即可。可以设置每天的闹钟，周一到星期天之间多选的闹钟，也可以设置选择一次性闹钟，跟系统设置闹钟的方式基本差不多吧。</p>
+</blockquote>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p>来看分析和讲解之前，先看看效果吧，效果图如下：</p>
+<p><strong>设置界面</strong><br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/AlarmManager/ssdsfsdfs.gif" alt=""><br><strong>闹钟提醒界面</strong><br><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/AlarmManager/Screenshot_2016-05-24-18-20-28-249_AlarmManagerCl.png" alt=""><br><a id="more"></a></p>
+<h3 id="AlarmManager"><a href="#AlarmManager" class="headerlink" title="AlarmManager"></a>AlarmManager</h3><p>对于AlarmManager里的方法我就不逐一介绍了，如果都介绍讲完估计就天黑了。AlarmManager这个类提供对系统闹钟服务的访问接口。<br>在API 19 以前，AlarmManager的常用方法有三个：</p>
+<ul>
+<li>set(int type，long startTime，PendingIntent pi)；<br>该方法用于设置一次性闹钟，第一个参数表示闹钟类型，第二个参数表示闹钟执行时间，第三个参数表示闹钟响应动作。</li>
+<li>setRepeating(int type，long startTime，long intervalTime，PendingIntent pi)；<br>该方法用于设置重复闹钟，第一个参数表示闹钟类型，第二个参数表示闹钟首次执行时间，第三个参数表示闹钟两次执行的间隔时间，第三个参数表示闹钟响应动作。</li>
+<li>setInexactRepeating（int type，long startTime，long intervalTime，PendingIntent pi）；<br>该方法也用于设置重复闹钟，与第二个方法相似，不过其两个闹钟执行的间隔时间不是固定的而已。</li>
+</ul>
+<p>从API 19开始，AlarmManager的机制都是非准确传递，操作系统将会转换闹钟，来最小化唤醒和电池使用。targetSdkVersion在API 19之前应用仍将继续使用以前的行为，所有的闹钟在要求准确传递的情况下都会准确传递。</p>
+<p>从API 19以后，则采用了如下方法：</p>
+<ul>
+<li>setWindow(int, long, long, PendingIntent)</li>
+<li>setExact(int, long, PendingIntent)<br>从上面的两个方法我们可以看出，没有了repeat，就是设置了闹钟只能响一次了，而且这两种方法都可以设置精确的，第一个相对于第二种方法来说，应该是比较省电的。因为setWindow这个方法允许应用程序利用电池优化来自交货批处理即使它适度的及时性要求警报。</li>
+</ul>
+<h3 id="主要问题"><a href="#主要问题" class="headerlink" title="主要问题"></a>主要问题</h3><ol>
+<li>API 19以后没有了重复设置，那如果设置一个闹钟每天都准确提醒呢？</li>
+<li>手机重启之后，设置的闹钟是否还有效？</li>
+<li>应用程序被杀死之后，闹钟是否还有效？</li>
+</ol>
+<p>说实话，这些问题我相信大家肯定都遇到过，而且解决起来相当费劲，确实是。来看我们如何一一解决吧。</p>
+<h3 id="解决遇到的坑"><a href="#解决遇到的坑" class="headerlink" title="解决遇到的坑"></a>解决遇到的坑</h3><h4 id="API-19以后如何设置重复闹钟"><a href="#API-19以后如何设置重复闹钟" class="headerlink" title="API 19以后如何设置重复闹钟"></a>API 19以后如何设置重复闹钟</h4><p>我们知道，我们在使用AlarmManager设置了提醒之后，是通过广播接收的，设置的提醒时间一到，系统发送我们自定义的广播，我们接收到，应用程序提醒。那提醒的时候，我们可以再重新设置一次嘛，这就解决了API 19设置重复闹钟的问题。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">PendingIntent sender = PendingIntent.getBroadcast(context, id, intent, PendingIntent</div><div class="line">                .FLAG_CANCEL_CURRENT);</div><div class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">            am.setWindow(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis()),</div><div class="line">                    intervalMillis, sender);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</div><div class="line">                am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                am.setRepeating(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis</div><div class="line">                        ()), intervalMillis, sender);</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>根据判断系统版本，使用不同的设置闹钟的方法，进行设置。接下来我们通过广播接收系统发来的通知，进行闹钟提醒。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoongggAlarmReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        String msg = intent.getStringExtra(<span class="string">"msg"</span>);</div><div class="line">        <span class="keyword">long</span> intervalMillis = intent.getLongExtra(<span class="string">"intervalMillis"</span>, <span class="number">0</span>);</div><div class="line">        <span class="keyword">if</span> (intervalMillis != <span class="number">0</span>) &#123;</div><div class="line">            AlarmManagerUtil.setAlarmTime(context, System.currentTimeMillis() + intervalMillis,</div><div class="line">                    intent);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> flag = intent.getIntExtra(<span class="string">"soundOrVibrator"</span>, <span class="number">0</span>);</div><div class="line">        Intent clockIntent = <span class="keyword">new</span> Intent(context, ClockAlarmActivity.class);</div><div class="line">        clockIntent.putExtra(<span class="string">"msg"</span>, msg);</div><div class="line">        clockIntent.putExtra(<span class="string">"flag"</span>, flag);</div><div class="line">        clockIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">        context.startActivity(clockIntent);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过上面的广播，我们可以看到，我是通过那个时间间隔是否为零来判断API 19之后是否是重复闹钟，不为0，就再重新设置一遍。我们来一起看看setAlarmTime()这个方法。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ALARM_ACTION = <span class="string">"com.loonggg.alarm.clock"</span>;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setAlarmTime</span><span class="params">(Context context, <span class="keyword">long</span> timeInMillis, Intent intent)</span> </span>&#123;</div><div class="line">       AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);</div><div class="line">       PendingIntent sender = PendingIntent.getBroadcast(context, intent.getIntExtra(<span class="string">"id"</span>, <span class="number">0</span>),</div><div class="line">               intent, PendingIntent.FLAG_CANCEL_CURRENT);</div><div class="line">       <span class="keyword">int</span> interval = (<span class="keyword">int</span>) intent.getLongExtra(<span class="string">"intervalMillis"</span>, <span class="number">0</span>);</div><div class="line">       <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">           am.setWindow(AlarmManager.RTC_WAKEUP, timeInMillis, interval, sender);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>就这样，重复的问题就解决了。</p>
+<h4 id="手机重启之后，闹钟失效怎么解决"><a href="#手机重启之后，闹钟失效怎么解决" class="headerlink" title="手机重启之后，闹钟失效怎么解决"></a>手机重启之后，闹钟失效怎么解决</h4><p>对，手机重启之后，闹钟确实是失效了，要想解决这个问题，那就再设置一个监听手机重启的广播，等手机重启的时候，再重新设置一遍，即可解决上面的问题。</p>
+<p>看看我在手机重启广播里调用了我封装的重新设置闹钟的方法。这样就解决了手机重启之后，闹钟失效的问题。<br><strong>注意：广播需要在清单文件注册，小伙伴们别忘记了哈。我在这里就不贴出代码来了。</strong></p>
+<h4 id="应用程序被杀死，闹钟失效"><a href="#应用程序被杀死，闹钟失效" class="headerlink" title="应用程序被杀死，闹钟失效"></a>应用程序被杀死，闹钟失效</h4><p>可以告诉你们的是，这个还真的没有什么好的解决方案，如果你们程序里写了服务，可以在服务重启的时候，判断重新再把闹钟注册一次，或者在打开应用的时候重新注册一次，反正就是能有利于闹钟注册的地方，进行重新设置。如果闹钟设置的id是一样的，后边设置的会自动覆盖先前设置的闹钟。如果谁有比较好的解决应用程序被杀死后，闹钟失效的问题，欢迎大家提供出来分享。</p>
+<h3 id="这个封装的类库的好处"><a href="#这个封装的类库的好处" class="headerlink" title="这个封装的类库的好处"></a>这个封装的类库的好处</h3><p>好处就是我把方法都给你们封装好了，直接就可以调用。</p>
+<ul>
+<li>直接传入时分的值就可以了。比如：直接传入某个时间点：12:30，然后传入是否是每天提醒，还是周几提醒等</li>
+<li>闹钟提醒的界面我也已经封装到里面了，还算好看，懒的同学不需要再写了，不满意的同学可以直接下载类库修改。</li>
+<li>取消闹钟的方法，我也已经进行了封装。</li>
+</ul>
+<p>总之，就是非常方便，到底有多方便大家直接看demo就知道了，不满意的同学可以直接下载类库进行修改。</p>
+<p>demo和类库地址：<a href="https://github.com/loonggg/Android-AlarmManagerClock" target="_blank" rel="external">https://github.com/loonggg/Android-AlarmManagerClock</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/闹钟/" rel="tag">#闹钟</a>
+          
+            <a href="/tags/AlarmManager/" rel="tag">#AlarmManager</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/16/通过来模仿稀土掘金个人页面的布局来学习使用CoordinatorLayout/" rel="next" title="通过来模仿稀土掘金个人页面的布局来学习使用CoordinatorLayout">
+                <i class="fa fa-chevron-left"></i> 通过来模仿稀土掘金个人页面的布局来学习使用CoordinatorLayout
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/26/为什么找不到工作的是你，技术差的还是你/" rel="prev" title="为什么找不到工作的是你，技术差的还是你？">
+                为什么找不到工作的是你，技术差的还是你？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#效果图"><span class="nav-number">1.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AlarmManager"><span class="nav-number">2.</span> <span class="nav-text">AlarmManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要问题"><span class="nav-number">3.</span> <span class="nav-text">主要问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决遇到的坑"><span class="nav-number">4.</span> <span class="nav-text">解决遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API-19以后如何设置重复闹钟"><span class="nav-number">4.1.</span> <span class="nav-text">API 19以后如何设置重复闹钟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手机重启之后，闹钟失效怎么解决"><span class="nav-number">4.2.</span> <span class="nav-text">手机重启之后，闹钟失效怎么解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用程序被杀死，闹钟失效"><span class="nav-number">4.3.</span> <span class="nav-text">应用程序被杀死，闹钟失效</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这个封装的类库的好处"><span class="nav-number">5.</span> <span class="nav-text">这个封装的类库的好处</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

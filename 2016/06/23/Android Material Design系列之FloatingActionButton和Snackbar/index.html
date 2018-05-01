@@ -1,0 +1,880 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Material Design,FloatingActionButton,Snackbar," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="今天主讲的Material Design系列的两个控件都不难，所以一起讲了，分别是FloatingActionButton和Snackbar。这个系列都是主讲的Material Design风格的控件，所以都是控件的一些基本使用，也会扩展讲一些与这个控件相关的东西和效果，如果都会了的同学，可以不看这个系列。当然看一下也没啥，再巩固一下知识点也挺好的。
+
+FloatingActionButtonF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Material Design系列之FloatingActionButton和Snackbar">
+<meta property="og:url" content="http://loonggg.github.io/2016/06/23/Android Material Design系列之FloatingActionButton和Snackbar/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="今天主讲的Material Design系列的两个控件都不难，所以一起讲了，分别是FloatingActionButton和Snackbar。这个系列都是主讲的Material Design风格的控件，所以都是控件的一些基本使用，也会扩展讲一些与这个控件相关的东西和效果，如果都会了的同学，可以不看这个系列。当然看一下也没啥，再巩固一下知识点也挺好的。
+
+FloatingActionButtonF">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/fsdfsdfsdf45d45sd6fsd465fsd.gif">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/sss%E4%B8%89%E5%8D%81%E5%A4%9A%E5%B2%81%E7%9A%84.gif">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/Screenshot_2016-06-22-17-23-37-541_MaterialDesign.png">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/Screenshot_2016-06-22-18-19-20-260_MaterialDesign.png">
+<meta property="og:image" content="http://7xsgef.com1.z0.glb.clouddn.com/Screenshot_2016-06-26-17-32-14-556_MaterialDesign.png">
+<meta property="og:updated_time" content="2016-11-03T06:56:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Material Design系列之FloatingActionButton和Snackbar">
+<meta name="twitter:description" content="今天主讲的Material Design系列的两个控件都不难，所以一起讲了，分别是FloatingActionButton和Snackbar。这个系列都是主讲的Material Design风格的控件，所以都是控件的一些基本使用，也会扩展讲一些与这个控件相关的东西和效果，如果都会了的同学，可以不看这个系列。当然看一下也没啥，再巩固一下知识点也挺好的。
+
+FloatingActionButtonF">
+<meta name="twitter:image" content="http://7xsgef.com1.z0.glb.clouddn.com/fsdfsdfsdf45d45sd6fsd465fsd.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android Material Design系列之FloatingActionButton和Snackbar | 非著名程序员 </title>
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android Material Design系列之FloatingActionButton和Snackbar
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-23T12:39:04+08:00" content="2016-06-23">
+              2016-06-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/Material-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Material Design</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/06/23/Android Material Design系列之FloatingActionButton和Snackbar/" class="leancloud_visitors" data-flag-title="Android Material Design系列之FloatingActionButton和Snackbar">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>今天主讲的Material Design系列的两个控件都不难，所以一起讲了，分别是FloatingActionButton和Snackbar。这个系列都是主讲的Material Design风格的控件，所以都是控件的一些基本使用，也会扩展讲一些与这个控件相关的东西和效果，如果都会了的同学，可以不看这个系列。当然看一下也没啥，再巩固一下知识点也挺好的。</p>
+</blockquote>
+<h3 id="FloatingActionButton"><a href="#FloatingActionButton" class="headerlink" title="FloatingActionButton"></a>FloatingActionButton</h3><p>FloatingActionButton从本质讲就是一个ImageView，从FloatingActionButton的继承来看，它首先继承了ImageButton，然后是ImageButton继承了ImageView。所以FloatingActionButton是重写ImageView的，所有FloatingActionButton拥有ImageView的一切属性。FloatingActionButton顾名思义就是一个浮动按钮。</p>
+<h4 id="FloatingActionButton属性介绍"><a href="#FloatingActionButton属性介绍" class="headerlink" title="FloatingActionButton属性介绍"></a>FloatingActionButton属性介绍</h4><p>由于FloatingActionButton本质上是ImageView，跟ImageView相关的就不介绍，这里重点介绍新加的几个属性。</p>
+<ul>
+<li>app:fabSize ：FloatingActionButton的大小，有两种赋值分别是 “mini” 和 “normal”，默认是“normal”.</li>
+<li>app:backgroundTint：FloatingActionButton默认正常显示时的背景颜色</li>
+<li>app:elevation ：FloatingActionButton阴影的深度，默认时的阴影</li>
+<li>app:rippleColor：FloatingActionButton点击时的背景颜色</li>
+<li>app:pressedTranslationZ：FloatingActionButton点击时阴影的深度</li>
+</ul>
+<h4 id="例子效果图"><a href="#例子效果图" class="headerlink" title="例子效果图"></a>例子效果图</h4><p><img src="http://7xsgef.com1.z0.glb.clouddn.com/fsdfsdfsdf45d45sd6fsd465fsd.gif" alt=""><br><a id="more"></a><br>代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">android.support.design.widget.FloatingActionButton</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/fab"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_gravity</span>=<span class="string">"bottom|end"</span></div><div class="line">        <span class="attr">android:layout_margin</span>=<span class="string">"@dimen/fab_margin"</span></div><div class="line">        <span class="attr">android:src</span>=<span class="string">"@drawable/add"</span></div><div class="line">        <span class="attr">app:backgroundTint</span>=<span class="string">"@color/add_bg_color"</span></div><div class="line">        <span class="attr">app:elevation</span>=<span class="string">"6dp"</span></div><div class="line">        <span class="attr">app:rippleColor</span>=<span class="string">"@color/add_selected_color"</span></div><div class="line">        <span class="attr">app:pressedTranslationZ</span>=<span class="string">"25dp"</span></div><div class="line">        <span class="attr">app:fabSize</span>=<span class="string">"normal"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>掌握了我给你们说的那几个属性，就基本掌握了FloatingActionButton的用法了。FloatingActionButton之所以出现这么久了，不太火，不太常用，估计跟他悬浮有关，容易挡住其他内容。那我们现在就研究改如何在滑动列表时隐藏和显示这个悬浮按钮FloatingActionButton。</p>
+<h4 id="FloatingActionButton显示与隐藏"><a href="#FloatingActionButton显示与隐藏" class="headerlink" title="FloatingActionButton显示与隐藏"></a>FloatingActionButton显示与隐藏</h4><p>那如何实现滑动列表时，下滑显示和上滑隐藏的效果呢？其实很简单，官方也提供了方法，但是得继承FloatingActionButton.Behavior进行重写。在这里我为了实现这个效果，给布局添加了一个RecyclerView，方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by loonggg on 2016/6/22.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FloatingActionButtonScrollBehavior</span> <span class="keyword">extends</span> <span class="title">FloatingActionButton</span>.<span class="title">Behavior</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FloatingActionButtonScrollBehavior</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onStartNestedScroll</span><span class="params">(<span class="keyword">final</span> CoordinatorLayout coordinatorLayout, <span class="keyword">final</span></span></span></div><div class="line">    FloatingActionButton child, <span class="keyword">final</span> View directTargetChild, <span class="keyword">final</span> View target, <span class="keyword">final</span> <span class="keyword">int</span></div><div class="line">            nestedScrollAxes) &#123;</div><div class="line">        <span class="comment">// 确保是竖直判断的滚动</span></div><div class="line">        <span class="keyword">return</span> nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL || <span class="keyword">super</span>.onStartNestedScroll</div><div class="line">                (coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNestedScroll</span><span class="params">(<span class="keyword">final</span> CoordinatorLayout coordinatorLayout, <span class="keyword">final</span></span></span></div><div class="line">    FloatingActionButton child, <span class="keyword">final</span> View target, <span class="keyword">final</span> <span class="keyword">int</span> dxConsumed, <span class="keyword">final</span> <span class="keyword">int</span> dyConsumed,</div><div class="line">                               <span class="keyword">final</span> <span class="keyword">int</span> dxUnconsumed, <span class="keyword">final</span> <span class="keyword">int</span> dyUnconsumed) &#123;</div><div class="line">        <span class="keyword">super</span>.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed,</div><div class="line">                dxUnconsumed, dyUnconsumed);</div><div class="line">        <span class="keyword">if</span> (dyConsumed &gt; <span class="number">0</span> &amp;&amp; child.getVisibility() == View.VISIBLE) &#123;</div><div class="line">            child.hide();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dyConsumed &lt; <span class="number">0</span> &amp;&amp; child.getVisibility() != View.VISIBLE) &#123;</div><div class="line">            child.show();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>看动画效果，如下：<br><img src="http://7xsgef.com1.z0.glb.clouddn.com/sss%E4%B8%89%E5%8D%81%E5%A4%9A%E5%B2%81%E7%9A%84.gif" alt=""></p>
+<p>其实我感觉你们可以还会想说，点击一下这个悬浮按钮，动画弹出多个按钮这个效果怎么实现，这里我就不讲了，github上有太多跟这个相关的例子了。<br>可以参考这个例子：<br><a href="https://github.com/Clans/FloatingActionButton" target="_blank" rel="external">https://github.com/Clans/FloatingActionButton</a></p>
+<h3 id="Snackbar"><a href="#Snackbar" class="headerlink" title="Snackbar"></a>Snackbar</h3><p>Snackbar提供了一个介于Toast和AlertDialog之间轻量级控件，它可以很方便的提供消息的提示和动作反馈。<br>它的使用方式也是非常的简单，跟Toast差不多，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> Snackbar snackbar = Snackbar.make(view, <span class="string">"关注非著名程序员公众号了吗？"</span>, Snackbar</div><div class="line">        .LENGTH_LONG);</div><div class="line">snackbar.show();</div><div class="line">snackbar.setAction(<span class="string">"关注"</span>, <span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                        snackbar.dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="http://7xsgef.com1.z0.glb.clouddn.com/Screenshot_2016-06-22-17-23-37-541_MaterialDesign.png" alt=""></p>
+<h4 id="Snackbar样式"><a href="#Snackbar样式" class="headerlink" title="Snackbar样式"></a>Snackbar样式</h4><p>如何修改Snackbar样式呢？其实也非常简单。代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> Snackbar snackbar = Snackbar.make(rv, <span class="string">"你知道非著名程序员这个公众号吗？"</span>, Snackbar</div><div class="line">                        .LENGTH_LONG);</div><div class="line"><span class="comment">// 设置动作按钮颜色</span></div><div class="line">snackbar.setActionTextColor(getResources().getColor(R.color.add_bg_color));</div><div class="line"><span class="comment">// 获取 snackbar 视图</span></div><div class="line">View snackbarView = snackbar.getView();</div><div class="line"></div><div class="line"><span class="comment">//设置修改snackbar文本颜色</span></div><div class="line"><span class="keyword">int</span> snackbarTextId = android.support.design.R.id.snackbar_text;</div><div class="line">TextView tv = (TextView) snackbarView.findViewById(snackbarTextId);</div><div class="line">tv.setTextColor(getResources().getColor(R.color.add_bg_color));</div><div class="line"><span class="comment">//设置snackbar背景色</span></div><div class="line">snackbarView.setBackgroundColor(Color.GRAY);</div><div class="line">snackbar.show();</div><div class="line">snackbar.setAction(<span class="string">"知道"</span>, <span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">        snackbar.dismiss();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>效果图如下：<br><img src="http://7xsgef.com1.z0.glb.clouddn.com/Screenshot_2016-06-22-18-19-20-260_MaterialDesign.png" alt=""></p>
+<h4 id="添加icon和改变Snackbar的位置"><a href="#添加icon和改变Snackbar的位置" class="headerlink" title="添加icon和改变Snackbar的位置"></a>添加icon和改变Snackbar的位置</h4><p>修改了背景色，文字按钮颜色，是不是还不过瘾？看看我们如何在Snackbar上添加上一个icon图片。其实也非常简单，和修改样式的过程差不多。代码如下：</p>
+<ul>
+<li><p>添加icon</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">View snackbarView = snackbar.getView();</div><div class="line"><span class="comment">//设置icon</span></div><div class="line">ImageView iconImage = <span class="keyword">new</span> ImageView(MainActivity.<span class="keyword">this</span>);</div><div class="line">iconImage.setImageResource(R.mipmap.ic_launcher);</div><div class="line"><span class="comment">//icon插入布局</span></div><div class="line">Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbarView;</div><div class="line">Snackbar.SnackbarLayout.LayoutParams sl = <span class="keyword">new</span> Snackbar.SnackbarLayout.LayoutParams(vl.WRAP_CONTENT, vl.WRAP_CONTENT);</div><div class="line"><span class="comment">//让icon的布局位于父布局垂直居中的位置</span></div><div class="line">sl.gravity = Gravity.CENTER_VERTICAL;</div><div class="line">iconImage.setLayoutParams(sl);</div><div class="line">snackbarLayout.addView(iconImage, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>改变Snackbar的位置<br>其实改变Snackbar的位置和设置icon的位置布局大同小异，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取 snackbar 视图</span></div><div class="line">View snackbarView = snackbar.getView();</div><div class="line">ViewGroup.LayoutParams vl = snackbarView.getLayoutParams();</div><div class="line">CoordinatorLayout.LayoutParams cl = <span class="keyword">new</span> CoordinatorLayout.LayoutParams(vl.width, vl.height);</div><div class="line">cl.gravity = Gravity.CENTER_VERTICAL;</div><div class="line">snackbarView.setLayoutParams(cl);</div></pre></td></tr></table></figure>
+</li>
+<li><p>效果图如下：<br><img src="http://7xsgef.com1.z0.glb.clouddn.com/Screenshot_2016-06-26-17-32-14-556_MaterialDesign.png" alt=""></p>
+</li>
+</ul>
+<p>到这里，关于FloatingActionButton和Snackbar基本就讲完了。非常简单，我相信大家都很容易理解。Material Design系列一发出去的时候，有人私下发消息要源码，前期我感觉没必要，以为都是控件的基本使用嘛，挡不住我心好啊，这个系列我都写在了一个demo里，我会慢慢完善，直到更新完。</p>
+<p>demo的github地址：<a href="https://github.com/loonggg/MaterialDesignDemo" target="_blank" rel="external">https://github.com/loonggg/MaterialDesignDemo</a> 去star吧，我会慢慢完善的。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Material-Design/" rel="tag">#Material Design</a>
+          
+            <a href="/tags/FloatingActionButton/" rel="tag">#FloatingActionButton</a>
+          
+            <a href="/tags/Snackbar/" rel="tag">#Snackbar</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/19/Android Material Design系列之Navigation Drawer/" rel="next" title="Android Material Design系列之Navigation Drawer">
+                <i class="fa fa-chevron-left"></i> Android Material Design系列之Navigation Drawer
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/28/Android Material Design系列之Toolbar/" rel="prev" title="Android Material Design系列之Toolbar">
+                Android Material Design系列之Toolbar <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#FloatingActionButton"><span class="nav-number">1.</span> <span class="nav-text">FloatingActionButton</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FloatingActionButton属性介绍"><span class="nav-number">1.1.</span> <span class="nav-text">FloatingActionButton属性介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子效果图"><span class="nav-number">1.2.</span> <span class="nav-text">例子效果图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FloatingActionButton显示与隐藏"><span class="nav-number">1.3.</span> <span class="nav-text">FloatingActionButton显示与隐藏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Snackbar"><span class="nav-number">2.</span> <span class="nav-text">Snackbar</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Snackbar样式"><span class="nav-number">2.1.</span> <span class="nav-text">Snackbar样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加icon和改变Snackbar的位置"><span class="nav-number">2.2.</span> <span class="nav-text">添加icon和改变Snackbar的位置</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
