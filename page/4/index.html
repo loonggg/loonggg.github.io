@@ -260,6 +260,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 ListView 组件的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-02T10:39:04+08:00" content="2016-11-02">
+              2016-11-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 ListView 组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>我们讲完ScrollView组件，其实顺其自然的就应该讲解ListView,对于前段和移动端的开发人员应该非常熟悉这样的控件吧，具体是做什么的，我感觉不用我讲了吧。我们来看看它怎么使用吧。</p>
+</blockquote>
+<p>大家好，我是ListView，我是React Native大家族中基础组件中，一个核心组件。我可以高效的展示垂直滚动的变化的数据列表，而且这个列表有一个特点就是结构和数据比较相似才可以哦。</p>
+<p>我和ScrollView那家伙不太相同，我更适于长列表数据，且元素个数可以增删。和ScrollView不同的是，我并不立即渲染所有元素，而是优先渲染屏幕上可见的元素。怎么样？是不是感觉我更聪明？</p>
+<p>我有两个必须的属性是dataSource和renderRow。dataSource是列表的数据源，而renderRow则逐个解析数据源中的数据，然后返回一个设定好格式的组件来渲染。举个例子：我最基本的使用方式就是创建一个ListView.DataSource数据源，然后给它传递一个普通的数据数组，再使用数据源来实例化一个ListView组件，并且定义它的renderRow回调函数，这个函数会接受数组中的每个数据作为参数，返回一个可渲染的组件（作为我的每一行）。</p>
+<blockquote>
+<p>记住：rowHasChanged函数也是我的必需属性。用于比较两行数据是否是同一个数据来判断某行数据是否变化了。</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/31/基础篇章：关于 React Native 之 Touchable 系列组件的讲解/" itemprop="url">
                   基础篇章：关于 React Native 之 Touchable 系列组件的讲解
                 </a>
@@ -1462,141 +1601,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/glide2gif/" itemprop="url">
-                  Glide 展示 gif 动态图的介绍和走过的坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T12:39:04+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/疑难杂症/" itemprop="url" rel="index">
-                    <span itemprop="name">疑难杂症</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/08/21/glide2gif/" class="leancloud_visitors" data-flag-title="Glide 展示 gif 动态图的介绍和走过的坑">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>每天跟我要展示gif图demo的人很多，我有点纳闷，大家不知道很多第三方库都可以加载gif吗？比如Glide和Fresco都可以啊，大家不用它加载gif图吗？我有点纳闷，这几个方式加载的效果都还可以。当然也有点坑在里面，需要大家注意一下。</p>
-</blockquote>
-<p>我以前写的那个关于gif图的demo其实是很早以前写的，但是那时候水平很菜，好几年前了，也不是完全自己写的，参考的别人写的，之后自己整理的。所以很不咋的。我发现每天都有人跟我要展示gif的demo，我想分享给大家展示gif图的几个好用的库。</p>
-<h4 id="Glide"><a href="#Glide" class="headerlink" title="Glide"></a>Glide</h4><p>如果用过Glide的同学可能大家都知道Glide是谷歌的一位员工开源的，名字叫：bumptech。这个库被广泛的运用在google的开源项目中，这个Glide说到底和Picasso很像，Glide和Picasso有90%的相似度，应该是基于Picasso开发的。但是Glide是支持动态gif图的。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/glide2gif/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1642,7 +1646,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-count">84</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1659,7 +1663,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

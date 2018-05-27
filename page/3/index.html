@@ -260,8 +260,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/" itemprop="url">
-                  基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解
+                <a class="post-title-link" href="/2017/01/04/基础篇章：关于 React Native 之 Modal 组件的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 Modal 组件的讲解
                 </a>
               
             
@@ -274,8 +274,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-19T10:39:04+08:00" content="2016-12-19">
-              2016-12-19
+            <time itemprop="dateCreated" datetime="2017-01-04T10:39:04+08:00" content="2017-01-04">
+              2017-01-04
             </time>
           </span>
 
@@ -316,7 +316,7 @@
 
           
           
-             <span id="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解">
+             <span id="/2017/01/04/基础篇章：关于 React Native 之 Modal 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 Modal 组件的讲解">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -338,18 +338,30 @@
 
       
         
-          <p>看完了这个组件的名字 KeyboardAvoidingView ，你们心里肯定会想这是个什么东西，Keyboard 大家肯定知道是键盘，那是关于键盘的什么呢？Avoiding 是避免，回避的意思，这会大家估计知道什么了吧？键盘避免视图组件，我们在开发的时候，经常会遇到手机上弹出的键盘常常会挡住当前的视图，所以这个 KeyboardAvoidingView 组件的功能就是解决这个常见问题的，它可以自动根据手机上键盘的位置，调整自身的position或底部的padding，以避免被遮挡。</p>
-<h3 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h3><p>老样子，我们先来看看 KeyboardAvoidingView 组件的属性，只有了解了这些属性和方法，我们才能运用自如，属性如下：</p>
+          <blockquote>
+<p>Modal是模态视图，它的作用是可以用来覆盖 React Native中根视图的原生视图，Modal模态视图是一种覆盖包围当前内容视图的一个简单方法。</p>
+</blockquote>
+<p>注意：如果你需要如何在您的应用程序的其余部分呈现模态的更多控制，那么可以考虑使用顶级导航（top-level Navigator）。</p>
+<h3 id="Modal-属性"><a href="#Modal-属性" class="headerlink" title="Modal 属性"></a>Modal 属性</h3><p>照例，我想大家都知道我的习惯了，毕竟官网也是这个顺序，那就是在用人之前，先要了解人，毕竟疑人不用，用人不疑嘛，要想相信一个人，首先得了解一个人嘛。来，看看 Modal 的相关属性。</p>
 <ul>
-<li>behavior 位移焦点时就使用哪个属性来自适应，该参数的可选值为：height, position, padding</li>
-<li>contentContainerStyle 如果设定behavior值为’position’，则会生成一个View作为内容容器。此属性用于指定此内容容器的样式。</li>
-<li>keyboardVerticalOffset 可能应用视图离屏幕顶部有一些距离，利用这个属性来补偿修正这段距离（键盘在竖直方向上的偏移量）<br>看完属性，我们再看看几个简单的方法：</li>
-<li>relativeKeyboardHeight(keyboardFrame)</li>
-<li>onKeyboardChange(event)  键盘改变时回调的方法</li>
-<li>onLayout(event) </li>
+<li>animated bool 是否有动画效果，不过这个属性已经被抛弃了，取之代替的是：animationType</li>
+<li><p>animationType ([‘none’, ‘slide’, ‘fade’]) 这个animationType属性作用就是如何控制模态动画，有一下三个类型：</p>
+<ul>
+<li>none 出现的时候不带动画效果</li>
+<li>fade 带有淡入动画的效果</li>
+<li>slide 从底部滑动出来的动画效果</li>
+</ul>
+</li>
+<li><p>onRequestClose Platform.OS === ‘android’ ? PropTypes.func.isRequired : PropTypes.func  这是一个 Android 平台需要的属性，它的作用是当这个模态视图取消或者关闭消失的时候回调这个函数</p>
+</li>
+<li>onShow function 当模态视图显示的时候调用此函数</li>
+<li>transparent bool 布尔值，是否透明，true 将使得在一个透明背景的模式</li>
+<li>visible bool 布尔值，是否可见</li>
+<li>onOrientationChange func ios 当在显示模态的方向变化时回调此函数</li>
+<li>supportedOrientations ios ([‘portrait’, ‘portrait-upside-down’, ‘landscape’, ‘landscape-left’, ‘landscape-right’])) </li>
 </ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/#more" rel="contents">
+            <a class="btn" href="/2017/01/04/基础篇章：关于 React Native 之 Modal 组件的讲解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -513,6 +525,146 @@
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/19/基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-19T10:39:04+08:00" content="2016-12-19">
+              2016-12-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>看完了这个组件的名字 KeyboardAvoidingView ，你们心里肯定会想这是个什么东西，Keyboard 大家肯定知道是键盘，那是关于键盘的什么呢？Avoiding 是避免，回避的意思，这会大家估计知道什么了吧？键盘避免视图组件，我们在开发的时候，经常会遇到手机上弹出的键盘常常会挡住当前的视图，所以这个 KeyboardAvoidingView 组件的功能就是解决这个常见问题的，它可以自动根据手机上键盘的位置，调整自身的position或底部的padding，以避免被遮挡。</p>
+<h3 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h3><p>老样子，我们先来看看 KeyboardAvoidingView 组件的属性，只有了解了这些属性和方法，我们才能运用自如，属性如下：</p>
+<ul>
+<li>behavior 位移焦点时就使用哪个属性来自适应，该参数的可选值为：height, position, padding</li>
+<li>contentContainerStyle 如果设定behavior值为’position’，则会生成一个View作为内容容器。此属性用于指定此内容容器的样式。</li>
+<li>keyboardVerticalOffset 可能应用视图离屏幕顶部有一些距离，利用这个属性来补偿修正这段距离（键盘在竖直方向上的偏移量）<br>看完属性，我们再看看几个简单的方法：</li>
+<li>relativeKeyboardHeight(keyboardFrame)</li>
+<li>onKeyboardChange(event)  键盘改变时回调的方法</li>
+<li>onLayout(event) </li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1555,145 +1707,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/" itemprop="url">
-                  基础篇章：关于 React Native 之 ListView 组件的讲解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-02T10:39:04+08:00" content="2016-11-02">
-              2016-11-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React Native</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 ListView 组件的讲解">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>我们讲完ScrollView组件，其实顺其自然的就应该讲解ListView,对于前段和移动端的开发人员应该非常熟悉这样的控件吧，具体是做什么的，我感觉不用我讲了吧。我们来看看它怎么使用吧。</p>
-</blockquote>
-<p>大家好，我是ListView，我是React Native大家族中基础组件中，一个核心组件。我可以高效的展示垂直滚动的变化的数据列表，而且这个列表有一个特点就是结构和数据比较相似才可以哦。</p>
-<p>我和ScrollView那家伙不太相同，我更适于长列表数据，且元素个数可以增删。和ScrollView不同的是，我并不立即渲染所有元素，而是优先渲染屏幕上可见的元素。怎么样？是不是感觉我更聪明？</p>
-<p>我有两个必须的属性是dataSource和renderRow。dataSource是列表的数据源，而renderRow则逐个解析数据源中的数据，然后返回一个设定好格式的组件来渲染。举个例子：我最基本的使用方式就是创建一个ListView.DataSource数据源，然后给它传递一个普通的数据数组，再使用数据源来实例化一个ListView组件，并且定义它的renderRow回调函数，这个函数会接受数组中的每个数据作为参数，返回一个可渲染的组件（作为我的每一行）。</p>
-<blockquote>
-<p>记住：rowHasChanged函数也是我的必需属性。用于比较两行数据是否是同一个数据来判断某行数据是否变化了。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1739,7 +1752,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-count">84</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1756,7 +1769,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">112</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
