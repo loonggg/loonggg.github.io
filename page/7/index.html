@@ -260,6 +260,130 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/11/如何使用AndroidStudio将开源项目Android library发布到jcenter /" itemprop="url">
+                  如何使用AndroidStudio将开源项目library发布到jcenter
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T02:37:23+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/05/11/如何使用AndroidStudio将开源项目Android library发布到jcenter /" class="leancloud_visitors" data-flag-title="如何使用AndroidStudio将开源项目library发布到jcenter">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>我相信技术爱好者都喜欢开源，也都喜欢分享，随着技术的慢慢提高，很多开发者想将自己的开源类库分享出来，对于Android开发者来说，以前使用Eclipse开发时，直接引用类库或者打成jar包分享出来就行，现在使用AndroidStudio开发，引用类库直接在<strong>build.gradle</strong>文件里面添加一行引用代码即可。我们带着问题进入分析。</p>
+</blockquote>
+<h2 id="为什么只需要添加一行引用代码即可"><a href="#为什么只需要添加一行引用代码即可" class="headerlink" title="为什么只需要添加一行引用代码即可"></a>为什么只需要添加一行引用代码即可</h2><p>AndroidStudio是从Maven Repository服务器下载类库的。基本上有jcenter和Maven Central这两个服务器用于下载Android的类库。 一开始AndroidStudio是使用MavenCentral作为默认的远程仓库下载类库的。但是MavenCentral有一些问题没有解决。首先是对于开发者不友好，开发者想上传自己的类库到MavenCentral非常困难，所以后来AndroidStudio团队决定把默认远程仓库换成jcenter。</p>
+<p>所以我们在gradle里经常能够看到如下的代码配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这就是jcenter仓库的配置。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/11/如何使用AndroidStudio将开源项目Android library发布到jcenter /#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/10/北漂程序员的笑与泪/" itemprop="url">
                   北漂程序员的笑与泪
                 </a>
@@ -1344,127 +1468,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/16/context/" itemprop="url">
-                  什么是Context
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-16T12:39:04+08:00" content="2016-04-16">
-              2016-04-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/04/16/context/" class="leancloud_visitors" data-flag-title="什么是Context">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天的面试题，也就是我们常见面试题系列的第二题，我们来讲一讲android中的context。我相信大家android开发者一定对于这个context非常熟悉，肯定都有使用过，肯定没有没使用过的。但是这个context是什么呢？有多少人能理解呢？我们上一个题讲的是listview，这个也是非常常见的，今天的context也是非常常见的，所以面试题其实离我们很近的，一定都是常用的才会问题，很少有公司面试一些非常偏僻的，不用的东西，在开发中没用面试什么啊？对吧，好了，有点扯多了，我们从茄子地里回来，接着讲这个context。</p>
-<h2 id="什么是context？"><a href="#什么是context？" class="headerlink" title="什么是context？"></a>什么是context？</h2><p>这个在我们开发中最熟悉而又陌生的朋友到底是什么呢？可能大家会不约而同的说，是场景，是上下文，但是到底有多少人理解这个原理呢？我简单概括一下，应该有以下几点：<br>①、它描述的是一个应用程序环境的信息，即上下文。<br>②、该类是一个抽象(abstract class)类，Android提供了该抽象类的具体实现类。<br>③、通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如：启动一个Activity，发送广播，接受Intent信息等。</p>
-<p>说了这三点好像你还有点模糊，那我就总结来说。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/16/context/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1510,7 +1513,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">87</span>
+              <span class="site-state-item-count">88</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1527,7 +1530,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">117</span>
+                <span class="site-state-item-count">118</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
