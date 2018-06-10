@@ -260,6 +260,131 @@
             
               
                 
+                <a class="post-title-link" href="/2016/01/03/AndroidStudio使用Gradle多渠道打包/" itemprop="url">
+                  Android Studio 使用Gradle多渠道打包
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-03T22:37:23+08:00" content="2016-01-03">
+              2016-01-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/01/03/AndroidStudio使用Gradle多渠道打包/" class="leancloud_visitors" data-flag-title="Android Studio 使用Gradle多渠道打包">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>我们都知道国内应用市场非常多，为了统计各个应用市场的app下载量和使用情况，我们需要多渠道的打包。如果一个一个的手动去打包岂不烦死了，要多麻烦就有多麻烦。这就要求我们学会使用Gradle进行多渠道打包。废话不多说了，直接进入正题吧！</p>
+</blockquote>
+<h2 id="第一步：配置AndroidManifest-xml"><a href="#第一步：配置AndroidManifest-xml" class="headerlink" title="第一步：配置AndroidManifest.xml"></a>第一步：配置AndroidManifest.xml</h2><p>以友盟渠道为例，渠道信息一般都是写在 AndroidManifest.xml文件中，大约如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data android:name=&quot;UMENG_CHANNEL&quot; android:value=&quot;xiaomi&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>如果不使用多渠道打包方法，那就需要我们手动一个一个去修改value中的值，xiaomi，360，qq，wandoujia等等。<br>使用多渠道打包的方式，就需要把上面的value配置成下面的方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data    android:name=&quot;UMENG_CHANNEL&quot;    android:value=&quot;$&#123;UMENG_CHANNEL_VALUE&#125;&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>其中${UMENG_CHANNEL_VALUE}中的值就是你在gradle中自定义配置的值。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/03/AndroidStudio使用Gradle多渠道打包/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/22/Retrofit初探和使用/" itemprop="url">
                   Retrofit初探和使用
                 </a>
@@ -1319,7 +1444,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">88</span>
+              <span class="site-state-item-count">89</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1336,7 +1461,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">118</span>
+                <span class="site-state-item-count">119</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
