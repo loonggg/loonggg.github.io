@@ -259,6 +259,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/04/reactnative-image/" itemprop="url">
+                  基础篇章：React Native之 Image 的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-04T10:39:04+08:00" content="2016-10-04">
+              2016-10-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/10/04/reactnative-image/" class="leancloud_visitors" data-flag-title="基础篇章：React Native之 Image 的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>今天一起来学习一些Image这个组件，它其实就是相当于我们android控件中的ImageView。</p>
+</blockquote>
+<p>我们先看例子，看看加载本地图片和远程服务器图片的方式，其实差不多。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRegistry, View, Image &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DisplayAnImage</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View&gt;</div><div class="line">        &lt;Image</div><div class="line">          source=&#123;require('./img/favicon.png')&#125;</div><div class="line">        /&gt;</div><div class="line">        &lt;Image</div><div class="line">          style=&#123;&#123;width: 50, height: 50&#125;&#125;</div><div class="line">          source=&#123;&#123;uri: 'https://facebook.github.io/react/img/logo_og.png'&#125;&#125;</div><div class="line">        /&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第一个就是直接在source里写相对路径，第二个就是直接写图片的服务器地址即可。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/04/reactnative-image/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/03/reactnative-textinput/" itemprop="url">
                   基础篇章：React Native 之 TextInput 的讲解
                 </a>
@@ -1468,145 +1603,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/09/Android Material Design系列之CoordinatorLayout，CollapsingToolbarLayout等/" itemprop="url">
-                  Android Material Design系列之CoordinatorLayout，CollapsingToolbarLayout等
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-09T12:39:04+08:00" content="2016-07-09">
-              2016-07-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/Material-Design/" itemprop="url" rel="index">
-                    <span itemprop="name">Material Design</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/07/09/Android Material Design系列之CoordinatorLayout，CollapsingToolbarLayout等/" class="leancloud_visitors" data-flag-title="Android Material Design系列之CoordinatorLayout，CollapsingToolbarLayout等">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>这篇文章其实我一直在想，是写还是不写，因为关于讲 CoordinatorLayout，AppBarLayout，CollapsingToolbarLayout，Toolbar，TabLayout 等这些控件的使用，以前写过一篇，那就是《通过来模仿稀土掘金个人页面的布局来学习使用CoordinatorLayout 》，一直关注和看公众号的关注者应该看到过，上一篇的推送也特别讲了 CoordinatorLayout 的其他用法，看过的人都说还能这么用啊？哈哈……这次写这篇是对我上一篇《通过来模仿稀土掘金个人页面的布局来学习使用CoordinatorLayout 》遗留问题的加强和修改。</p>
-</blockquote>
-<p>这次关于 CoordinatorLayout，AppBarLayout，CollapsingToolbarLayout，Toolbar，TabLayout 等这些控件的用法我就不讲了，不懂的或者不清楚的就去看《通过来模仿稀土掘金个人页面的布局来学习使用CoordinatorLayout 》这篇文章，因为这次我们主讲怎么把上次大家给我提问的问题进行修改和加强，优化等。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/09/Android Material Design系列之CoordinatorLayout，CollapsingToolbarLayout等/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1647,7 +1648,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">90</span>
+              <span class="site-state-item-count">91</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1664,7 +1665,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-count">121</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
