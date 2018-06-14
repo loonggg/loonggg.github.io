@@ -259,6 +259,131 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/22/Android数据绑定框架DataBinding/" itemprop="url">
+                  Android数据绑定框架DataBinding，堪称解决界面逻辑的黑科技
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-22T12:39:04+08:00" content="2016-02-22">
+              2016-02-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/02/22/Android数据绑定框架DataBinding/" class="leancloud_visitors" data-flag-title="Android数据绑定框架DataBinding，堪称解决界面逻辑的黑科技">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>去年谷歌 I/O大会上介绍了一个非常厉害的新框架DataBinding， 数据绑定框架给我们带来了很大的方便，以前我们可能需要在每个Activity里写很多的findViewById，不仅麻烦，还增加了代码的耦合性，如果我们使用DataBinding，就可以抛弃那么多的findViewById，省时省力。说到这里，其实网上也有很多快速的注解框架，但是注解框架与DataBinding想比还是不好用，而且官网文档说DataBinding还能提高解析XML的速度，其实DataBinding的好用，不仅仅体现在可以省去使用很多啰嗦findViewById，还有很多。往下看你就会明白的。</p>
+</blockquote>
+<p>在介绍DataBinding之前，肯定要先学会搭建使用它的环境。鉴于是去年发布的，现在大家AS的版本估计都在1.5以上了，就在1.5的版本上搭建和介绍吧，1.5之前的大家可以在网上搜索，因为我看网上大多数是介绍的1.3的使用方法，还没有很多对于1.5之后的环境搭建方法。</p>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><p>Android 的 Gradle 插件版本不低于 1.5.0-alpha1：<br>classpath ‘com.android.tools.build:gradle:1.5.0’<br>然后修改对应模块（Module）的 build.grade：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ....</div><div class="line">    dataBinding &#123;</div><div class="line">        enabled = true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意：Android stuido 的版本一定要大于1.3，而且Android Studio目前对binding对象没有自动代码提示，只会在编译时进行检查。</p>
+<p>就是这么简单，但是1.3及以前的版本，对于环境的搭建，可能就会麻烦一点（没事1.3的环境搭建方法，网上多得是）。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/22/Android数据绑定框架DataBinding/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/26/浅谈Andorid开发中的MVP模式/" itemprop="url">
                   浅谈Andorid开发中的MVP模式
                 </a>
@@ -1388,133 +1513,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/09/推荐几个非常有用的开发工具之Android Studio插件/" itemprop="url">
-                  推荐几个非常有用的开发工具之Android Studio插件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-09T22:37:23+08:00" content="2015-07-09">
-              2015-07-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2015/07/09/推荐几个非常有用的开发工具之Android Studio插件/" class="leancloud_visitors" data-flag-title="推荐几个非常有用的开发工具之Android Studio插件">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>我们都知道Eclipse开发Android将在今年年底google不再继续提供相应的开发支持，转而开始强烈发展Android Studio，现在我就分享几款能帮助团队提升工作效率的几个Android Studio插件和工具。</p>
-</blockquote>
-<h2 id="SelectorChapek"><a href="#SelectorChapek" class="headerlink" title="SelectorChapek"></a>SelectorChapek</h2><p>SelectorChapek是一款帮助我们快速完成Selector的AndroidStudio插件。安装方法如下：</p>
-<ol>
-<li>选择Preferences→Plugins→Browse repositories搜索SelectorChapek安装</li>
-<li>下载并在Preferences→Plugins→Install plugin from disk选择安装</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/loonggg/BlogImages/master/as插件/select_option.png" alt=""><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/09/推荐几个非常有用的开发工具之Android Studio插件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1560,7 +1558,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">91</span>
+              <span class="site-state-item-count">92</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1577,7 +1575,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-count">124</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
