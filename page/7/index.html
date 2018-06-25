@@ -259,6 +259,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/19/Android Material Design系列之Navigation Drawer/" itemprop="url">
+                  Android Material Design系列之Navigation Drawer
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-19T12:39:04+08:00" content="2016-06-19">
+              2016-06-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/Material-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Material Design</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/06/19/Android Material Design系列之Navigation Drawer/" class="leancloud_visitors" data-flag-title="Android Material Design系列之Navigation Drawer">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>从今天开始，我们讲一个关于Material Design风格控件系列的文章。个人认为Material Design风格还是非常漂亮和好看的。关于Material Design的控件，从今天这篇开始一个一个的讲，希望能够对大家有所帮助。</p>
+</blockquote>
+<p>Material Design系列控件，我们今天就先从侧滑菜单栏开始，侧滑菜单栏通过名字我们就知道包含两部分，一部分是侧滑（DrawerLayout），一部分是导航菜单栏(NavigationView)。DrawerLayout包含NavigationView，一设置侧滑菜单栏就形成了。因为建立一个侧滑菜单很简单，在用Android Studio新建项目时，最后选择Navigation Drawer Activity或者在新建Activity时选择Navigation Drawer Activity，就出来了。今天我们讲一下它们的自定义配置。</p>
+<h3 id="DrawerLayout布局"><a href="#DrawerLayout布局" class="headerlink" title="DrawerLayout布局"></a>DrawerLayout布局</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">android.support.v4.widget.DrawerLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line"></div><div class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line"></div><div class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line"></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/drawer_layout"</span></div><div class="line"></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">    <span class="attr">android:fitsSystemWindows</span>=<span class="string">"true"</span></div><div class="line"></div><div class="line">    <span class="attr">tools:openDrawer</span>=<span class="string">"start"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">include</span></div><div class="line"></div><div class="line">        <span class="attr">layout</span>=<span class="string">"@layout/app_bar_main"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> /&gt;</span></div><div class="line">        </div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.NavigationView</span></div><div class="line"></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/nav_view"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line"></div><div class="line">        <span class="attr">android:layout_gravity</span>=<span class="string">"start"</span></div><div class="line"></div><div class="line">        <span class="attr">android:fitsSystemWindows</span>=<span class="string">"true"</span></div><div class="line"></div><div class="line">        <span class="attr">app:headerLayout</span>=<span class="string">"@layout/nav_header_main"</span></div><div class="line"></div><div class="line">        <span class="attr">app:menu</span>=<span class="string">"@menu/activity_main_drawer"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.v4.widget.DrawerLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/19/Android Material Design系列之Navigation Drawer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/05/美团多渠道打包方案详解，速度快到白驹过隙/" itemprop="url">
                   美团多渠道打包方案详解，速度快到白驹过隙
                 </a>
@@ -1358,129 +1493,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/28/Android6.0运行时权限的处理及解决办法/" itemprop="url">
-                  Android6.0运行时权限的处理及解决办法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-28T12:39:04+08:00" content="2016-04-28">
-              2016-04-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/04/28/Android6.0运行时权限的处理及解决办法/" class="leancloud_visitors" data-flag-title="Android6.0运行时权限的处理及解决办法">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>随着今年Android6.0系统的国产ROM终于来了，适配6.0已经势在必行了。最近也有很多开发者在微信私聊和咨询我遇到的问题，其中有一些都是关于Android6.0权限的，我感觉有必要写一篇文章来解惑了。Runtime Permissions在6.0系统的几个变化中，还是比较大的。</p>
-<p>如果你在Android6.0系统的手机上如果遇到了这样的错误，必定跟其运行时权限有关。</p>
-<p><strong>open failed: EACCES (Permission denied)</strong></p>
-<h2 id="权限变化"><a href="#权限变化" class="headerlink" title="权限变化"></a>权限变化</h2><p>在Adroid系统6.0以前，权限的处理是在App安装时授权，授权完了才能完成相关的安装。而在6.0的系统上，是先安装App，在安装完之后，在使用相关权限的操作时，才会弹出权限的提示框，用户同意授权之后才能正常使用。谷歌这样做，可以让用户更加清醒的认识相关权限的使用，在一定程度上更加人性化和保护了用户的隐私。</p>
-<p>谷歌官方将权限分为了两类，一个是正常权限（Normal Permissions），这类权限不涉及用户隐私，是不需要用户进行授权的，比如访问网络，手机震动等。还有一类是危险权限（Dangerous Permissions），一般是涉及到用户隐私的，需要用户进行授权，比如操作SD卡的写入，相机，录音等。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/28/Android6.0运行时权限的处理及解决办法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1526,7 +1538,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">95</span>
+              <span class="site-state-item-count">96</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1543,7 +1555,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">126</span>
+                <span class="site-state-item-count">127</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
