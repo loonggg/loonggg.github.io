@@ -259,6 +259,166 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/14/基础篇章：关于 React Native 之 WebView 的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 WebView 的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T10:39:04+08:00" content="2017-03-14">
+              2017-03-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2017/03/14/基础篇章：关于 React Native 之 WebView 的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 WebView 的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>今天讲解的这个组件真的是很基础，不用多说，相信大家关于这个控件，一看就会。当然实践才是检验自己最好的方法。</p>
+</blockquote>
+<p>大家好，我就是很多人喜欢用，而且常用的组件：WebView ，我就是WebView ，WebView 就是我。我的功能就是一句：在本地视图中呈现web内容。给我一个链接，我还你一堆内容。非常的神奇吧，这就像，牛吃进去的是草，拉出来的是……不对，哈哈，开个玩笑。和我玩其实很简单，了解我的性格特点，再给我一个吃的，我就能给你玩出你想要的花样。</p>
+<h2 id="我的属性"><a href="#我的属性" class="headerlink" title="我的属性"></a>我的属性</h2><ul>
+<li>automaticallyAdjustContentInsets bool 设置是否自动调整内嵌插页内容</li>
+<li>contentInset 设置网页内嵌内容大小，距离上下左右边距</li>
+<li>injectedJavaScript string 设置在网页加载之前注入的一段JS代码</li>
+<li>mediaPlaybackRequiresUserAction bool 设置页面中的HTML5音视频是否需要在用户点击后再开始播放。默认值为false</li>
+<li>onError function 网页加载失败时调用</li>
+<li>onLoad function 网页加载成功时调用</li>
+<li>onLoadEnd function 网页加载结束时（无论成功或失败）调用</li>
+<li>onLoadStart function 网页加载开始时调用</li>
+<li>onNavigationStateChange function 当导航状态发生变化时回调</li>
+<li>renderError function 渲染视图错误时使用</li>
+<li>renderLoading function 该函数功能是返回一个加载指示器</li>
+<li>scalesPageToFit bool 设置是否要把网页缩放到适应视图的大小，和改变缩放比例</li>
+<li>source {uri: string, method: string, headers: object, body: string}, {html: string, baseUrl: string}, number  存放加载静态html或者url等</li>
+<li>startInLoadingState bool 强制webview在第一次加载时是否显示加载视图</li>
+<li>domStorageEnabled bool android 控制dom存储是否启用</li>
+<li>javaScriptEnabled bool android 是否启用支持js</li>
+<li>userAgent string android 设置userAgent</li>
+<li>allowsInlineMediaPlayback bool ios 指定HTML5视频是在网页当前位置播放还是使用原生的全屏播放器播放，默认值为false。</li>
+<li>bounces bool  ios 设置当它到达内容的边缘web视图是否反弹。默认值是true。</li>
+<li>dataDetectorTypes DataDetectorTypes, [object Object] ios 确实可点击的url类型</li>
+<li>decelerationRate ScrollView.propTypes.decelerationRate ios 滚动滑动速率</li>
+<li>onShouldStartLoadWithRequest function  ios</li>
+<li>scrollEnabled bool ios 是否滚动</li>
+</ul>
+<p>看看，我的性格还是很多变的吧，这么多，其实用起来都是很简单的，不信看实例。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/14/基础篇章：关于 React Native 之 WebView 的讲解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/26/教你如何用RecyclerView做一个好用的轮播图/" itemprop="url">
                   教你如何用 RecyclerView 做一个好用的轮播图
                 </a>
@@ -805,6 +965,146 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-19T10:39:04+08:00" content="2016-12-19">
+              2016-12-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>看完了这个组件的名字 KeyboardAvoidingView ，你们心里肯定会想这是个什么东西，Keyboard 大家肯定知道是键盘，那是关于键盘的什么呢？Avoiding 是避免，回避的意思，这会大家估计知道什么了吧？键盘避免视图组件，我们在开发的时候，经常会遇到手机上弹出的键盘常常会挡住当前的视图，所以这个 KeyboardAvoidingView 组件的功能就是解决这个常见问题的，它可以自动根据手机上键盘的位置，调整自身的position或底部的padding，以避免被遮挡。</p>
+<h3 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h3><p>老样子，我们先来看看 KeyboardAvoidingView 组件的属性，只有了解了这些属性和方法，我们才能运用自如，属性如下：</p>
+<ul>
+<li>behavior 位移焦点时就使用哪个属性来自适应，该参数的可选值为：height, position, padding</li>
+<li>contentContainerStyle 如果设定behavior值为’position’，则会生成一个View作为内容容器。此属性用于指定此内容容器的样式。</li>
+<li>keyboardVerticalOffset 可能应用视图离屏幕顶部有一些距离，利用这个属性来补偿修正这段距离（键盘在竖直方向上的偏移量）<br>看完属性，我们再看看几个简单的方法：</li>
+<li>relativeKeyboardHeight(keyboardFrame)</li>
+<li>onKeyboardChange(event)  键盘改变时回调的方法</li>
+<li>onLayout(event) </li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/19/基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解/" itemprop="url">
                   基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解
                 </a>
@@ -918,146 +1218,6 @@
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/19/基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/" itemprop="url">
-                  基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-19T10:39:04+08:00" content="2016-12-19">
-              2016-12-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React Native</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>看完了这个组件的名字 KeyboardAvoidingView ，你们心里肯定会想这是个什么东西，Keyboard 大家肯定知道是键盘，那是关于键盘的什么呢？Avoiding 是避免，回避的意思，这会大家估计知道什么了吧？键盘避免视图组件，我们在开发的时候，经常会遇到手机上弹出的键盘常常会挡住当前的视图，所以这个 KeyboardAvoidingView 组件的功能就是解决这个常见问题的，它可以自动根据手机上键盘的位置，调整自身的position或底部的padding，以避免被遮挡。</p>
-<h3 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h3><p>老样子，我们先来看看 KeyboardAvoidingView 组件的属性，只有了解了这些属性和方法，我们才能运用自如，属性如下：</p>
-<ul>
-<li>behavior 位移焦点时就使用哪个属性来自适应，该参数的可选值为：height, position, padding</li>
-<li>contentContainerStyle 如果设定behavior值为’position’，则会生成一个View作为内容容器。此属性用于指定此内容容器的样式。</li>
-<li>keyboardVerticalOffset 可能应用视图离屏幕顶部有一些距离，利用这个属性来补偿修正这段距离（键盘在竖直方向上的偏移量）<br>看完属性，我们再看看几个简单的方法：</li>
-<li>relativeKeyboardHeight(keyboardFrame)</li>
-<li>onKeyboardChange(event)  键盘改变时回调的方法</li>
-<li>onLayout(event) </li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/19/基础篇章：关于 React Native 之 KeyboardAvoidingView 组件的讲解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1532,148 +1692,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/23/基础篇章：关于 React Native 之 Switch 和 ProgressBarAndroid 组件的讲解/" itemprop="url">
-                  基础篇章：关于 React Native 之 Switch 和 ProgressBarAndroid 组件的讲解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-23T10:39:04+08:00" content="2016-11-23">
-              2016-11-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React Native</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/11/23/基础篇章：关于 React Native 之 Switch 和 ProgressBarAndroid 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 Switch 和 ProgressBarAndroid 组件的讲解">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>今天我们来讲两个比较简单的组件的使用方法，分别是 Switch 和 ProgressBarAndroid 组件，由于非常简单，所以这两个控件的讲解就直接用一篇文章就够了。</p>
-</blockquote>
-<h2 id="Switch组件"><a href="#Switch组件" class="headerlink" title="Switch组件"></a>Switch组件</h2><p>今天我们来讲Switch组件，什么是Switch组件呢？我感觉大家都是做过移动开发的，应该知道是做什么用的。顾名思义：开关，控制组件。在使用它时，我们必须使用onValueChange回调来更新value属性以响应用户的动作。如果不更新value属性，组件只会按一开始给定的value值来渲染且保持不变，看上去就像完全不动。</p>
-<h3 id="Switch组件属性"><a href="#Switch组件属性" class="headerlink" title="Switch组件属性"></a>Switch组件属性</h3><ul>
-<li>disabled bool 如果是true，组件将不动，不进行交互，默认是false</li>
-<li>onValueChange function 当值改变的时候回调此函数，参数是新的值</li>
-<li>value bool 开关的值，如果是true表示开关打开，默认false</li>
-<li>onTintColor color  ios 当开关打开后的背景色</li>
-<li>thumbTintColor color ios 开关上圆形按钮的背景颜色</li>
-<li>tintColor color 关闭状态时边框颜色</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/23/基础篇章：关于 React Native 之 Switch 和 ProgressBarAndroid 组件的讲解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1719,7 +1737,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1736,7 +1754,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">131</span>
+                <span class="site-state-item-count">133</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
