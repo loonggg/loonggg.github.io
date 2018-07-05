@@ -259,6 +259,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/01/22/otto/" itemprop="url">
+                  浅析Otto框架，并与EventBus对比
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-22T12:39:04+08:00" content="2016-01-22">
+              2016-01-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/01/22/otto/" class="leancloud_visitors" data-flag-title="浅析Otto框架，并与EventBus对比">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>前两天在公众号里发了一篇有关EventBus的文章《玩转EventBus,详解其使用》，有读者和开发者反馈说没有OTTO好用。确实是，各有优缺点吧，那今天就有必要再讲一下Otto事件框架。</p>
+</blockquote>
+<p>OTTO是Square推出的基于Guava项目的Android支持库，otto是一个事件总线，用于应用程序的不同组件之间进行有效的通信。OTTO是基于Observer的设计模式。它有发布者，订阅者这两个主要对象。OTTO的最佳实践就是通过反射牺牲了微小的性能，同时极大的降低了程序的耦合度。</p>
+<p>Otto 官网： <a href="http://square.github.io/otto/">http://square.github.io/otto/</a></p>
+<h2 id="Why和应用场景"><a href="#Why和应用场景" class="headerlink" title="Why和应用场景"></a>Why和应用场景</h2><h4 id="1-Why"><a href="#1-Why" class="headerlink" title="1. Why"></a>1. Why</h4><p>Otto框架的主要功能是帮助我们来降低多个组件通信之间的耦合度的（解耦）。</p>
+<h4 id="2-应用场景"><a href="#2-应用场景" class="headerlink" title="2. 应用场景"></a>2. 应用场景</h4><p>比如：由界面 A 跳转到界面 B ，然后点击 B 中的 button, 现在要更新 界面 A 的视图。再比如：界面有一个 界面 A,A 里面的有个 Fragment, 点击 Fragment 中的一个 button,跳转到界面 B, 点击界面 B的 button 要更新界面 A 的 Fragment 的视图，等等。</p>
+<p>我们可以看出上面举例的两种场景，以前可以用startActivityForResult 和 interface 的方式实现的话,会比较麻烦,并且产生了很多的状态判断和逻辑判断,并且可能产生很多不必要的 bug, 代码量也比较大和繁琐,使用 otto 就可以能容易的避免这些问题。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/22/otto/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/03/AndroidStudio使用Gradle多渠道打包/" itemprop="url">
                   Android Studio 使用Gradle多渠道打包
                 </a>
@@ -1443,7 +1569,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-count">100</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

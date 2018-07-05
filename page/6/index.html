@@ -259,6 +259,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/03/reactnative-textinput/" itemprop="url">
+                  基础篇章：React Native 之 TextInput 的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-03T12:39:04+08:00" content="2016-10-03">
+              2016-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/10/03/reactnative-textinput/" class="leancloud_visitors" data-flag-title="基础篇章：React Native 之 TextInput 的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>今天我们讲解的是React Native基础系列之TextInput的讲解，如果想学习更多的开发知识或者移动开发文章，欢迎大家关注我的微信公众号：非著名程序员（smart_android）。</p>
+</blockquote>
+<p>TextInput 是一个允许用户输入文本的基础组件。它有一个onChangeText的属性，该属性接受一个函数，每当文本输入发生变化时，此函数就会被调用。它还有一个onSubmitEditing的属性，当文本输入完被提交的时候调用。</p>
+<h2 id="官网例子"><a href="#官网例子" class="headerlink" title="官网例子"></a>官网例子</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRegistry, Text, TextInput, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PizzaTranslator</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">	<span class="keyword">super</span>(props);</div><div class="line">	<span class="keyword">this</span>.state = &#123;<span class="attr">text</span>: <span class="string">''</span>&#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">	<span class="keyword">return</span> (</div><div class="line">	  <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;&#123;padding:</span> <span class="attr">10</span>&#125;&#125;&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">TextInput</span></div><div class="line">		  <span class="attr">style</span>=<span class="string">&#123;&#123;height:</span> <span class="attr">40</span>&#125;&#125;</div><div class="line">		  <span class="attr">placeholder</span>=<span class="string">"Type here to translate!"</span></div><div class="line">		  <span class="attr">onChangeText</span>=<span class="string">&#123;(text)</span> =&gt;</span> this.setState(&#123;text&#125;)&#125;</div><div class="line">		/&gt;</div><div class="line">		<span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;padding:</span> <span class="attr">10</span>, <span class="attr">fontSize:</span> <span class="attr">42</span>&#125;&#125;&gt;</span></div><div class="line">		  &#123;this.state.text.split(' ').map((word) =&gt; word &amp;&amp; '🍕').join(' ')&#125;</div><div class="line">		<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">	  <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">	);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">AppRegistry.registerComponent('PizzaTranslator', () =&gt; PizzaTranslator);</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/03/reactnative-textinput/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/03/reactnative-textview/" itemprop="url">
                   基础篇章：React Native 之 View 和 Text 的讲解
                 </a>
@@ -1467,148 +1602,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/04/Android Material Design系列之Palette/" itemprop="url">
-                  Android Material Design系列之Palette
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T12:39:04+08:00" content="2016-07-04">
-              2016-07-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/Material-Design/" itemprop="url" rel="index">
-                    <span itemprop="name">Material Design</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/07/04/Android Material Design系列之Palette/" class="leancloud_visitors" data-flag-title="Android Material Design系列之Palette">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>今天我们讲的这个Palette非常好用，也非常好玩。 Palette的作用是从图像中提取突出的颜色，这样我们可以根据提取到的色值把它赋给Toolbar，标题，状态栏等，可以使我们的整个界面色调统一，效果非常好看。</p>
-</blockquote>
-<h4 id="Palette介绍"><a href="#Palette介绍" class="headerlink" title="Palette介绍"></a>Palette介绍</h4><p>Palette顾名思义调色板， Palette的作用是可以从图像中提取图片的颜色。我们可以把提取的颜色融入到App UI中，可以使UI风格更加美观融洽。<br>Palette可以提取的颜色如下：</p>
-<ul>
-<li>Vibrant （有活力的）</li>
-<li>Vibrant dark（有活力的 暗色）</li>
-<li>Vibrant light（有活力的 亮色）</li>
-<li>Muted （柔和的）</li>
-<li>Muted dark（柔和的 暗色）</li>
-<li>Muted light（柔和的 亮色）</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/04/Android Material Design系列之Palette/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1654,7 +1647,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-count">100</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

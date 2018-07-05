@@ -259,6 +259,168 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/01/基础篇章：关于 React Native 之 ViewPagerAndroid 组件的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 ViewPagerAndroid 组件的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-01T10:39:04+08:00" content="2016-12-01">
+              2016-12-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/12/01/基础篇章：关于 React Native 之 ViewPagerAndroid 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 ViewPagerAndroid 组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天我们来讲解一下关于 ViewPager 的使用，它是一个允许子视图左右滚动翻页的容器。而且每一个 ViewPagerAndroid 的子容器会被视作一个单独的页，并且会被拉伸填满整个 ViewPagerAndroid。</p>
+<blockquote>
+<p>特别注意：ViewPagerAndroid 中所有的子视图必须是，必须是，必须是纯 View 组件，不能是复合的容器和组件。我们可以给每个子视图设置样式，比如：padding 或者 backgroundColor 。</p>
+</blockquote>
+<p>来，我们看一看 ViewPagerAndroid 有哪些属性或者方法呢？</p>
+<h3 id="ViewPagerAndroid-属性"><a href="#ViewPagerAndroid-属性" class="headerlink" title="ViewPagerAndroid 属性"></a>ViewPagerAndroid 属性</h3><ul>
+<li>initialPage number 顾名思义：初始索引页，当然我们也可以通过 setPage 函数来翻页，还可以通过 onPageSelected 方法来监听页面的滑动。</li>
+<li><p>keyboardDismissMode enum(‘none’, “on-drag”) 这个还是很人性化的，就是监听在滑动的时候是否隐藏软键盘。</p>
+<ul>
+<li>none ： 默认值，意思是不会隐藏消失</li>
+<li>on-drag ： 当拖拽滑动时软键盘消失</li>
+</ul>
+</li>
+<li><p>onPageScroll function 当在页面间滑动切换时（不管是动画还是由于用户在页间滑动或者拖拽）执行。<br>  回调参数中的event.nativeEvent对象会包含如下数据：</p>
+<ul>
+<li>position 从左数起第一个当前可见的页面的下标。</li>
+<li>offset 一个在[0,1)（大于等于0，小于1）之间的范围，代表当前页面切换的状态。值x表示现在”position”所表示的页有(1 - x)的部分可见，而下一页有x的部分可见。]</li>
+</ul>
+</li>
+<li><p>onPageScrollStateChanged function 顾名思义：当页面滑动状态变化时调用这个函数，页面滑动的状态有三种：</p>
+<ul>
+<li>idle ： 无交互时，空闲状态</li>
+<li>dragging ： 拖拽滑动中，意思是页面正在拖拽当中</li>
+<li>settling ： 处理中，意味着当前页面发生过交互，且正在结束开头或收尾的动画。</li>
+</ul>
+</li>
+<li><p>onPageSelected function 上面我们提到过，这个函数是当页面切换完成后调用。该方法回调参数中的event.nativeEvent对象会携带一个属性 : ‘position’  。该属性代表当前选中的页面的索引值。</p>
+</li>
+<li><p>scrollEnabled bool  布尔值，true是默认是，可以滑动，false代表禁止滚动。</p>
+</li>
+</ul>
+<p>我们熟悉了这些属性和函数之后，那就应该实践了，其实实践这些东西都很简单，当然代码这东西看起来简单，自己写起来可能就会有问题，所以我们行动来来，做一个实例吧。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/01/基础篇章：关于 React Native 之 ViewPagerAndroid 组件的讲解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/27/基础篇章：React Native之 ActivityIndicator 的讲解/" itemprop="url">
                   基础篇章：关于 React Native之 ActivityIndicator 组件的讲解
                 </a>
@@ -1490,141 +1652,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/03/reactnative-textinput/" itemprop="url">
-                  基础篇章：React Native 之 TextInput 的讲解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-03T12:39:04+08:00" content="2016-10-03">
-              2016-10-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React Native</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/10/03/reactnative-textinput/" class="leancloud_visitors" data-flag-title="基础篇章：React Native 之 TextInput 的讲解">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>今天我们讲解的是React Native基础系列之TextInput的讲解，如果想学习更多的开发知识或者移动开发文章，欢迎大家关注我的微信公众号：非著名程序员（smart_android）。</p>
-</blockquote>
-<p>TextInput 是一个允许用户输入文本的基础组件。它有一个onChangeText的属性，该属性接受一个函数，每当文本输入发生变化时，此函数就会被调用。它还有一个onSubmitEditing的属性，当文本输入完被提交的时候调用。</p>
-<h2 id="官网例子"><a href="#官网例子" class="headerlink" title="官网例子"></a>官网例子</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; AppRegistry, Text, TextInput, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PizzaTranslator</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">	<span class="keyword">super</span>(props);</div><div class="line">	<span class="keyword">this</span>.state = &#123;<span class="attr">text</span>: <span class="string">''</span>&#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">	<span class="keyword">return</span> (</div><div class="line">	  <span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;&#123;padding:</span> <span class="attr">10</span>&#125;&#125;&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">TextInput</span></div><div class="line">		  <span class="attr">style</span>=<span class="string">&#123;&#123;height:</span> <span class="attr">40</span>&#125;&#125;</div><div class="line">		  <span class="attr">placeholder</span>=<span class="string">"Type here to translate!"</span></div><div class="line">		  <span class="attr">onChangeText</span>=<span class="string">&#123;(text)</span> =&gt;</span> this.setState(&#123;text&#125;)&#125;</div><div class="line">		/&gt;</div><div class="line">		<span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;padding:</span> <span class="attr">10</span>, <span class="attr">fontSize:</span> <span class="attr">42</span>&#125;&#125;&gt;</span></div><div class="line">		  &#123;this.state.text.split(' ').map((word) =&gt; word &amp;&amp; '🍕').join(' ')&#125;</div><div class="line">		<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">	  <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">	);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">AppRegistry.registerComponent('PizzaTranslator', () =&gt; PizzaTranslator);</span></div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/03/reactnative-textinput/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1670,7 +1697,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-count">100</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
