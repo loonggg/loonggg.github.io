@@ -399,6 +399,169 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/19/基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-19T10:39:04+08:00" content="2016-12-19">
+              2016-12-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/12/19/基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>看名字我们就知道这个组件仅限 Android 平台能用。Android 中的 DrawerLayout 就是一个抽屉导航组件，所以这个组件的功能当然也是一样的。</p>
+<p>DrawerLayoutAndroid 是通过 renderNavigationView 方法渲染的，并且它的直接子视图是放置内容的主视图。我们的这个抽屉导航视图一开始是看不见的，就像抽屉一样，你不拉开抽屉你看不到东西，所以导航视图可以从drawerPosition指定的窗口侧面拖拽出来，并且抽屉的宽度可以使用drawerWidth属性来指定。</p>
+<h3 id="DrawerLayoutAndroid-属性"><a href="#DrawerLayoutAndroid-属性" class="headerlink" title="DrawerLayoutAndroid 属性"></a>DrawerLayoutAndroid 属性</h3><ul>
+<li>drawerBackgroundColor color  设置抽屉导航的背景色。默认值是白色。如果你想设置抽屉的透明度，使用RGBA。<blockquote>
+<p>比如：return (</p>
+<pre><code> &lt;DrawerLayoutAndroid drawerBackgroundColor=&quot;rgba(0,0,0,0.5)&quot;&gt;
+ &lt;/DrawerLayoutAndroid&gt;
+);
+</code></pre></blockquote>
+</li>
+<li>drawerLockMode enum(‘unlocked’, ‘locked-closed’, ‘locked-open’)<br>  抽屉导航的三种锁定模式：<ul>
+<li>unlocked (默认值)，意思是此时抽屉可以响应打开和关闭的手势操作。<ul>
+<li>locked-closed，意思是此时抽屉将保持关闭，不可用手势打开。</li>
+<li>locked-open，意思是此时抽屉将保持打开，不可用手势关闭。<br>记住：无论抽屉处于那种状态，我们都可以调用openDrawer/closeDrawer这  两个方法打开和关闭。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>drawerPosition  left 和right 设置抽屉导航菜单从哪一侧进行滑动出来，根据共有两个枚举值分别    为:DrawerLayoutAndroid.positions.Left和DrawerLayoutAndroid.positions.Right</li>
+<li>drawerWidth number 指定抽屉的宽度，即从窗口的边缘拉到视图中的更精确的宽度</li>
+<li>keyboardDismissMode 枚举类型(‘none’,’on-drag’)  none默认值，默认不会隐藏键盘，on-drag：是当拖拽开始的时候隐藏键盘</li>
+<li>onDrawerClose func 每当导航视图被关闭时调用的函数</li>
+<li>onDrawerOpen func 当导航视图被打开后调用该方法</li>
+<li>onDrawerSlide func 每当导航视图（抽屉）产生交互相互作用的时候调用此回调函数</li>
+<li>onDrawerStateChanged func 每当抽屉的状态变化时调用此回调函数。抽屉可以有3种状态：<ul>
+<li>dle（空闲），表示现在导航条上没有任何正在进行的交互。</li>
+<li>dragging（拖拽中），表示用户正在与导航条进行交互。</li>
+<li>settling（停靠中），表示用户刚刚结束与导航条的交互，导航条正在结束打开或者关闭的动画。</li>
+</ul>
+</li>
+<li>renderNavigationView  该方法用于渲染一个可以从屏幕一边拖入的导航视图</li>
+<li>statusBarBackgroundColor color 使抽屉导航覆盖整个屏幕，并绘制状态栏的背景，使其能够在覆盖到状态栏。它将只对API 21以上的效果</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/19/基础篇章：关于 React Native 之 DrawerLayoutAndroid 组件的讲解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/07/基础篇章：关于 React Native 之 Picker 组件的讲解/" itemprop="url">
                   基础篇章：关于 React Native 之 Picker 组件的讲解
                 </a>
@@ -1530,144 +1693,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/31/基础篇章：关于 React Native 之 Touchable 系列组件的讲解/" itemprop="url">
-                  基础篇章：关于 React Native 之 Touchable 系列组件的讲解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-31T10:39:04+08:00" content="2016-10-31">
-              2016-10-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React Native</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/10/31/基础篇章：关于 React Native 之 Touchable 系列组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 Touchable 系列组件的讲解">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>在上篇 ScrollView 的讲解的实例中，我们使用了TouchableOpacity的点击事件组件，可能很多人不是很理解，所以今天我们来讲讲触摸组件，这样有利于我们以后写实例。</p>
-</blockquote>
-<h2 id="Touchable前传"><a href="#Touchable前传" class="headerlink" title="Touchable前传"></a>Touchable前传</h2><p>Touchable系列组件，为什么是系列组件呢，去看官方文档我们知道，文档导航组件介绍中，有四个关于Touchable的组件，分别是：TouchableHighlight ，TouchableNativeFeedback，TouchableOpacity，TouchableWithoutFeedback。为什么要放到一起讲呢，因为这四个组件功能差不多，只不过是效果不太一样，所以放到一起讲很方便，而是从名字我们就可以看出触摸有效果和没效果之分，所以TouchableHighlight ，TouchableNativeFeedback，TouchableOpacity这三个带有触摸效果的组件是继承与TouchableWithoutFeedback的，它是触摸不带有反馈效果的。</p>
-<h2 id="TouchableWithoutFeedback"><a href="#TouchableWithoutFeedback" class="headerlink" title="TouchableWithoutFeedback"></a>TouchableWithoutFeedback</h2><p>除非你有一个非常的原因和理由，否则不要轻易使用这个组件。所有能够响应触摸事件的元素都应该带有一个反馈效果，这就是为什么web应用体验总是显得不如原生效果好的原因之一。</p>
-<blockquote>
-<p>友情提示：TouchableWithoutFeedback supports only one child If you wish to have several child components, wrap them in a View.（TouchableWithoutFeedback只支持一个子节点，如果你希望有多个子元素，请用view包裹住它们再使用）。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/31/基础篇章：关于 React Native 之 Touchable 系列组件的讲解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1713,7 +1738,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1730,7 +1755,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">136</span>
+                <span class="site-state-item-count">137</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
