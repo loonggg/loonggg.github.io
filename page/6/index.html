@@ -259,6 +259,295 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/09/基础篇章：关于 React Native 之 RefreshControl 组件的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 RefreshControl 组件的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-09T10:39:04+08:00" content="2016-11-09">
+              2016-11-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/11/09/基础篇章：关于 React Native 之 RefreshControl 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 RefreshControl 组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>我们已经讲完了 ScrollView 和 ListView ，自然而然我们就应该讲的组件就是下拉刷新的喽，因为它们几个是兄弟，常常一块出现，就跟打麻将似的，四缺一不能打，那它们三就是斗地主，三缺一不能玩。今天讲的这个组件就是它们的兄弟：RefreshControl 。</p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我的母亲官网是这么介绍我的，说：我是大家在使用我的兄弟ScrollView或ListView添加拉刷新功能用的，我们几个好兄弟常常在一起玩。当我的兄弟ScrollView中 scrollY:0时,触发一个onRefresh事件，我就开始工作，下拉刷新起来。</p>
+<blockquote>
+<p>注意：refreshing 是一个你们可以控制我的属性，这就是为什么你们在使用onRefresh方法时，必须设置为 true，否则，我会立刻停止刷新，不跟你们玩了。</p>
+</blockquote>
+<h2 id="我的特性"><a href="#我的特性" class="headerlink" title="我的特性"></a>我的特性</h2><p>一如既往的，想要跟我玩，而且要玩的好，必须先得了解我的性格和特点才行，知己知彼，才能运用自如嘛。我这人，比较自信，所以不怕把我的弱点和特点透漏给敌人。</p>
+<ul>
+<li>onRefresh function 当视图开始刷新的时候回调</li>
+<li>refreshing bool 视图是否应该在刷新时显示刷新的指示器。</li>
+<li>colors [color] android专有 指定刷新指示器的颜色，至少设置一种颜色，最多可设置四种颜色，相当于android中的refreshLayout</li>
+<li>enabled bool android 是否启用下拉刷新功能</li>
+<li>progressBackgroundColor color android 刷新指示器的背景色</li>
+<li>progressViewOffset number android 进度视图离顶部的偏移量</li>
+<li>size enum(RefreshLayoutConsts.SIZE.DEFAULT, RefreshLayoutConsts.SIZE.LARGE)  android 刷新指示器的大小</li>
+<li>tintColor color ios 刷新指示器的颜色</li>
+<li>title string ios 刷新指示器下面展示的文字</li>
+<li>titleColor color ios title的颜色</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/09/基础篇章：关于 React Native 之 RefreshControl 组件的讲解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/" itemprop="url">
+                  基础篇章：关于 React Native 之 ListView 组件的讲解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-02T10:39:04+08:00" content="2016-11-02">
+              2016-11-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/" class="leancloud_visitors" data-flag-title="基础篇章：关于 React Native 之 ListView 组件的讲解">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>我们讲完ScrollView组件，其实顺其自然的就应该讲解ListView,对于前段和移动端的开发人员应该非常熟悉这样的控件吧，具体是做什么的，我感觉不用我讲了吧。我们来看看它怎么使用吧。</p>
+</blockquote>
+<p>大家好，我是ListView，我是React Native大家族中基础组件中，一个核心组件。我可以高效的展示垂直滚动的变化的数据列表，而且这个列表有一个特点就是结构和数据比较相似才可以哦。</p>
+<p>我和ScrollView那家伙不太相同，我更适于长列表数据，且元素个数可以增删。和ScrollView不同的是，我并不立即渲染所有元素，而是优先渲染屏幕上可见的元素。怎么样？是不是感觉我更聪明？</p>
+<p>我有两个必须的属性是dataSource和renderRow。dataSource是列表的数据源，而renderRow则逐个解析数据源中的数据，然后返回一个设定好格式的组件来渲染。举个例子：我最基本的使用方式就是创建一个ListView.DataSource数据源，然后给它传递一个普通的数据数组，再使用数据源来实例化一个ListView组件，并且定义它的renderRow回调函数，这个函数会接受数组中的每个数据作为参数，返回一个可渲染的组件（作为我的每一行）。</p>
+<blockquote>
+<p>记住：rowHasChanged函数也是我的必需属性。用于比较两行数据是否是同一个数据来判断某行数据是否变化了。</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/02/基础篇章：关于 React Native 之 ListView 组件的讲解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/31/基础篇章：关于 React Native 之 Touchable 系列组件的讲解/" itemprop="url">
                   基础篇章：关于 React Native 之 Touchable 系列组件的讲解
                 </a>
@@ -1323,279 +1612,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/25/React Native 开发环境配置 For Android/" itemprop="url">
-                  环境配置：React Native 开发环境配置 For Android
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-25T12:39:04+08:00" content="2016-09-25">
-              2016-09-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React Native</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/09/25/React Native 开发环境配置 For Android/" class="leancloud_visitors" data-flag-title="环境配置：React Native 开发环境配置 For Android">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>React Native 是FaceBook开源的一个项目，FaceBook希望可以用写 Web App 的方式去写 Native App。它可以让我们用JS和React来开发应用，使用React Native可以通吃Android 和 IOS ,以及Web,仅仅需要一份业务逻辑代码就可以来创建我们的应用。</p>
-</blockquote>
-<h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>React Native 是由 React 衍生出来的，而 React 起源于 Facebook 的内部项目，因为FaceBook对市场上所有 JavaScript MVC 框架，都不太满意，就决定自己写一套，用来架设自己的 Instagram 的网站。等做出来以后，发现这套东西很不错，而且好用，就在2013年5月开源了。</p>
-<p>而衍生的 React Native 项目，希望用写 Web App 的方式去写 Native App。这样同一组人只需要写一次 UI ，就能同时运行在服务器、浏览器和手机上。FaceBook最早发布的关于React Native是针对IOS的，而React Native for Android是在去年也就是2015年9月15日开源发布的。现阶段React Native的体验虽然已经很不错了，只能说很接近原生应用，但是还是不能达到Native App的体验。所以它很火，将来的事，我们将来说，但是目前已经非常火了，多门技术，多条路。我们也应该学学了。</p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><blockquote>
-<p>因为我用的是macbook，所以这次环境搭建是根据mac电脑来说的，不过大家放心，针对windows电脑的环境搭建，我会分享给大家一篇文章或者视频的，不会忘了你们的。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/25/React Native 开发环境配置 For Android/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/glide2gif/" itemprop="url">
-                  Glide 展示 gif 动态图的介绍和走过的坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T12:39:04+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/" itemprop="url" rel="index">
-                    <span itemprop="name">技术博客</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术博客/疑难杂症/" itemprop="url" rel="index">
-                    <span itemprop="name">疑难杂症</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2016/08/21/glide2gif/" class="leancloud_visitors" data-flag-title="Glide 展示 gif 动态图的介绍和走过的坑">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>每天跟我要展示gif图demo的人很多，我有点纳闷，大家不知道很多第三方库都可以加载gif吗？比如Glide和Fresco都可以啊，大家不用它加载gif图吗？我有点纳闷，这几个方式加载的效果都还可以。当然也有点坑在里面，需要大家注意一下。</p>
-</blockquote>
-<p>我以前写的那个关于gif图的demo其实是很早以前写的，但是那时候水平很菜，好几年前了，也不是完全自己写的，参考的别人写的，之后自己整理的。所以很不咋的。我发现每天都有人跟我要展示gif的demo，我想分享给大家展示gif图的几个好用的库。</p>
-<h4 id="Glide"><a href="#Glide" class="headerlink" title="Glide"></a>Glide</h4><p>如果用过Glide的同学可能大家都知道Glide是谷歌的一位员工开源的，名字叫：bumptech。这个库被广泛的运用在google的开源项目中，这个Glide说到底和Picasso很像，Glide和Picasso有90%的相似度，应该是基于Picasso开发的。但是Glide是支持动态gif图的。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/glide2gif/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1641,7 +1657,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">103</span>
+              <span class="site-state-item-count">105</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1658,7 +1674,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">137</span>
+                <span class="site-state-item-count">139</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
