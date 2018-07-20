@@ -1,0 +1,851 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/loonggg/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/loonggg/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Google,微信小程序," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="我相信在前天中午开始，大家的微信朋友圈估计都被 Google 刚刚上线的微信小程序「猜画小歌」刷屏了，之所以被刷屏，不仅仅是因为它有趣好玩，而是因为 Google 基于 AI 技术来识别大家的神作，很多人都不敢相信，我画成这样，竟然都认识，各种灵魂画手一个个的诞生了，基于 AI 的有趣，好玩，让你们兴趣盎然，各种调侃，这是它火爆的一个原因。
+
+今天我想通过这款 Google 推出的微信小程序「猜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google 小程序「猜画小歌」背后的 AI 技术和原理浅析">
+<meta property="og:url" content="http://loonggg.github.io/2018/07/21/Google 小程序「猜画小歌」背后的 AI 技术和原理浅析/index.html">
+<meta property="og:site_name" content="非著名程序员">
+<meta property="og:description" content="我相信在前天中午开始，大家的微信朋友圈估计都被 Google 刚刚上线的微信小程序「猜画小歌」刷屏了，之所以被刷屏，不仅仅是因为它有趣好玩，而是因为 Google 基于 AI 技术来识别大家的神作，很多人都不敢相信，我画成这样，竟然都认识，各种灵魂画手一个个的诞生了，基于 AI 的有趣，好玩，让你们兴趣盎然，各种调侃，这是它火爆的一个原因。
+
+今天我想通过这款 Google 推出的微信小程序「猜">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1ftfhsy9zlrj30u00dhmyq.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcly1ftfhsxreclj30sg1spwj3.jpg">
+<meta property="og:updated_time" content="2018-07-20T23:23:18.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google 小程序「猜画小歌」背后的 AI 技术和原理浅析">
+<meta name="twitter:description" content="我相信在前天中午开始，大家的微信朋友圈估计都被 Google 刚刚上线的微信小程序「猜画小歌」刷屏了，之所以被刷屏，不仅仅是因为它有趣好玩，而是因为 Google 基于 AI 技术来识别大家的神作，很多人都不敢相信，我画成这样，竟然都认识，各种灵魂画手一个个的诞生了，基于 AI 的有趣，好玩，让你们兴趣盎然，各种调侃，这是它火爆的一个原因。
+
+今天我想通过这款 Google 推出的微信小程序「猜">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1ftfhsy9zlrj30u00dhmyq.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Google 小程序「猜画小歌」背后的 AI 技术和原理浅析 | 非著名程序员 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">非著名程序员</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">我是涩郎，也是一个有情怀的码农，请叫我非著名程序员。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Google 小程序「猜画小歌」背后的 AI 技术和原理浅析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-21T06:37:23+08:00" content="2018-07-21">
+              2018-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术博客/" itemprop="url" rel="index">
+                    <span itemprop="name">技术博客</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2018/07/21/Google 小程序「猜画小歌」背后的 AI 技术和原理浅析/" class="leancloud_visitors" data-flag-title="Google 小程序「猜画小歌」背后的 AI 技术和原理浅析">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>我相信在前天中午开始，大家的微信朋友圈估计都被 Google 刚刚上线的微信小程序「猜画小歌」刷屏了，之所以被刷屏，不仅仅是因为它有趣好玩，而是因为 Google 基于 AI 技术来识别大家的神作，很多人都不敢相信，我画成这样，竟然都认识，各种灵魂画手一个个的诞生了，基于 AI 的有趣，好玩，让你们兴趣盎然，各种调侃，这是它火爆的一个原因。</p>
+</blockquote>
+<p>今天我想通过这款 Google 推出的微信小程序「猜画小歌」，来聊一聊它背后的机器学习的相关知识，我个人仅仅只是读过关于机器学习的资料和书，浅尝辄止，我不是专门搞机器学习和人工智能的，所以只算是浅析和谈自己的看法。</p>
+<h2 id="机器学习原理"><a href="#机器学习原理" class="headerlink" title="机器学习原理"></a>机器学习原理</h2><p>要聊到机器学习，我们应该知道，它主要有两种方法：<strong>监督式学习（Supervised Learning）和无监督式学习（Unsupervised Learning）</strong>。<br><a id="more"></a><br><strong>什么是监督式学习</strong></p>
+<p>所谓监督式学习，就是需要我们提供大量的学习样本，包括样本相关的特征数据以及相应的标签。AI 程序可以通过这些样本来学习相关的规律或是模式，然后通过得到的规律或模式来判断没有被打过标签的数据是什么样的数据。</p>
+<p>就比如：「猜画小歌」，我们小程序的用户画了大量的带着标签的画作，通过你画的每个带着标签的画作，AI 程序就知道，原来人类是这么画这个房子，这个船，这个苹果等等这些东西的。原来人类眼中的他们是这样的。它就会分析我们画作的每一个特点和特征，从而进行自我学习。我们提供这些大量的带着标签的数据样本也叫：<strong>训练数据（training data）</strong> 。</p>
+<p>通过机器学习的算法，找到每幅画作在不同手写体下的特征，进而找到规律和模式。然后通过得到的规律或模式来识别那些没有被打过标签的画，以此完成识别手写画作的目标。 </p>
+<p><strong>当然，这个 AI 小程序在上线之前，肯定已经用上万甚至几十万的样本训练过了，所以你在画的时候，它会根据你画的特征进行一些分析和识别。而我们画的这些又被它当做样本，通过算法进行了自我学习。</strong></p>
+<p><strong>其实说白了，Google 挺聪明的，让 AI 小程序识别和猜测人类的画作，通过大量我们提供的免费标注训练让这个系统得到更好的学习，提升和优化。其实最后的目的可能就是：AI 智能小程序就会自己独立创作绘画，画出各种跟人类一样的作品。</strong></p>
+<p><strong>所以啊，大家都是在玩的同时，在给这个 AI 小程序当陪练呢！！！</strong>我每个用户都为它的进化提供了大量的帮助和数据。大家画的越多，提供的数据样本就越多，它通过自我学习和算法分析，就会识别越准确，自己也就越了解人类。</p>
+<p><strong>什么是无监督式学习？</strong></p>
+<p>无监督式学习 (Unsupervised Learning) 是人工智能网络的一种算法 (algorithm)，其目的是去对原始资料进行分类，以便了解资料内部结构。有别于监督式学习网络，无监督式学习网络在学习时并不知道其分类结果是否正确，亦即没有受到监督式增强 (告诉它何种学习是正确的)。其特点是仅对此种网络提供输入范例，而它会自动从这些范例中找出其潜在类别规则。当学习完毕并经测试后，也可以将之应用到新的案例上。</p>
+<p>无监督学习里典型的例子就是聚类了。聚类的目的在于把相似的东西聚在一起，而我们并不关心这一类是什么。因此，一个聚类算法通常只需要知道如何计算相似度就可以开始工作了。<a href="http://godcoder.me/about/" target="_blank" rel="external">欢迎大家关注我的微信公众号：<strong>非著名程序员</strong></a></p>
+<p>可能还会有什么半监督式学习，这个就是上述两者的结合，基本思想是利用数据分布上的模型假设, 建立学习器对未标签样本进行标签。</p>
+<h2 id="「猜画小歌」背后的-AI-技术"><a href="#「猜画小歌」背后的-AI-技术" class="headerlink" title="「猜画小歌」背后的 AI 技术"></a>「猜画小歌」背后的 AI 技术</h2><p>「猜画小歌」对我们画作的辨识，其实利用的就是神经网络技术，是基于对大量涂鸦样本的学习。就像，我刚才在上面监督式学习那里所说的。</p>
+<p>Google 表示，「猜画小歌」由来自 Google 人工智能的神经网络技术驱动。该网络源全世界范围，超过 5000 万个手绘素描的数据群。机器学习手绘素描后，可以通过粗糙的草图来识别物体。例如一团长着耳朵的墨迹可能是一只熊猫。</p>
+<p>而这个小程序利用的技术就是：<strong>RNN</strong>，也就是<strong>递归神经网络</strong>。这个技术其实谷歌在之前早就使用了，并不新鲜，在去年 11 月，Google 专门研究人 “Quick, Draw!” 的看图猜物品功能。可以根据你勾勒的几笔猜测三个可能的物品。Google 表示，这个技术是通过模拟人脑在画一个物体时是如何运用线条、形状以及其它绘画要素来进行推断。<a href="http://godcoder.me/about/" target="_blank" rel="external">欢迎大家关注我的微信公众号：<strong>非著名程序员</strong></a></p>
+<p>我们在这个小程序上开始画作，训练神经网络，让 AI 来理解人们在绘制画作时是在何时起笔、走笔方向、何时停笔的。当经过训练的 RNN 模型接收到人类绘制的画作后，会生成一张类似的新画作。</p>
+<p>你以为仅仅如此吗？不是，<strong>如果你画的画作不对，有瑕疵，它其实还会纠正呢！</strong>在 RNN 模型当中，当用户创作出的灵魂画作，还没有画完时，比如只是画出了人的头，还没有画耳朵，AI仍然能够重构出“正常”的画作来。RNN 模型仍然会继续生成有耳朵，有眼睛的正常人头。</p>
+<p>所以，在「猜画小歌」小程序中，你仅仅可能只是画出了一个大致的线条，还没画完的时候，AI 就已经认出你画的是什么东西呢？它读取的是你的起笔，线条，和一些特征数据，就能够快速猜出你画的是什么？而且还能帮你补全和纠正。</p>
+<p>你打开小程序，找到「我的画作」点进去，在每一幅画作的下面写着这么一句话：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1ftfhsy9zlrj30u00dhmyq.jpg" alt="WechatIMG641"></p>
+<p>最后，大家来欣赏一下我的灵魂画作吧！如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1ftfhsxreclj30sg1spwj3.jpg" alt="WechatIMG642"></p>
+<p>最后，关于机器学习和 AI 技术，关于这款微信小程序，欢迎大家留言交流一下自己的看法和观点，一起交流进步。<a href="http://godcoder.me/about/" target="_blank" rel="external">欢迎大家关注我的微信公众号：<strong>非著名程序员</strong></a></p>
+<p><strong>每天分享有趣的技术内容和工具，让你的编程更加快乐，更多好玩，有趣的内容，尽在非著名程序员。</strong></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="loonggg wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号「 非著名程序员」！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechatpay.jpg" alt="loonggg WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay.jpg" alt="loonggg Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Google/" rel="tag">#Google</a>
+          
+            <a href="/tags/微信小程序/" rel="tag">#微信小程序</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/18/Kotlin 2018 调查：1:4 的 Java 开发者在迁移后表示后悔/" rel="next" title="Kotlin 2018 调查：1/4 的 Java 开发者在迁移后表示后悔">
+                <i class="fa fa-chevron-left"></i> Kotlin 2018 调查：1/4 的 Java 开发者在迁移后表示后悔
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE5My82NzQ4">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="loonggg" />
+          <p class="site-author-name" itemprop="name">loonggg</p>
+          <p class="site-description motion-element" itemprop="description">码农，自媒体达人，欢迎大家关注我的微信公众号：非著名程序员。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">107</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">140</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/SayGoogleTalk" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/5078115336/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhuanlan.zhihu.com/loonggg" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://loonggg.com/" target="_blank">loonggg</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://codernote.top/" target="_blank">codernote</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习原理"><span class="nav-number">1.</span> <span class="nav-text">机器学习原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#「猜画小歌」背后的-AI-技术"><span class="nav-number">2.</span> <span class="nav-text">「猜画小歌」背后的 AI 技术</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">loonggg</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<br/>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/loonggg/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/loonggg/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"godcoderisme"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("quyQAne9h4hSLJ1hkLB2VHJV-gzGzoHsz", "nMURjXLLY5VUIn0oXxrHBEe5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
